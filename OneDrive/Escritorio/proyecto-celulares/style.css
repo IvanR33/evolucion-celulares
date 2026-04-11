@@ -1,83 +1,89 @@
-/* 1. RESET Y CONFIGURACIÓN GENERAL */
-* {
+/* Configuraciones base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a1a; /* Fondo oscuro */
+    color: #e0e0e0;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    background-color: #121212; /* Fondo oscuro pro */
-    color: #e0e0e0;           /* Letras gris claro para no cansar la vista */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-}
-
-/* 2. CABECERA (HEADER) */
 header {
-    background-color: #1f1f1f;
-    padding: 40px 20px;
+    background-color: #0078d4; /* Azul INACAP/Windows */
+    color: white;
+    padding: 30px 0;
     text-align: center;
-    border-bottom: 4px solid #007bff; /* Azul INACAP */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 header h1 {
-    color: #ffffff;
+    margin: 0;
     font-size: 2.5rem;
-    margin-bottom: 10px;
 }
 
-/* 3. NAVEGACIÓN */
+/* Navegación */
 nav ul {
     list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 15px;
+    padding: 15px 0 0 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
 }
 
 nav a {
-    color: #007bff;
+    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    border-bottom: 2px solid #ffffff;
 }
 
-/* 4. CONTENEDOR DE HITOS */
-main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
+/* Tarjetas de Celulares */
 article {
-    background-color: #1e1e1e;
-    margin-bottom: 30px;
-    padding: 25px;
-    border-radius: 12px;
-    border-left: 5px solid #007bff;
-    transition: transform 0.3s ease;
-}
-
-article:hover {
-    transform: scale(1.02); /* Efecto visual al pasar el mouse */
-}
-
-article img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 15px 0;
-    display: block;
-}
-
-/* 5. PIE DE PÁGINA */
-footer {
-    text-align: center;
+    background-color: #2d2d2d;
+    margin: 30px auto;
     padding: 20px;
-    background-color: #1f1f1f;
-    font-size: 0.9rem;
+    width: 85%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    text-align: center;
+    border: 1px solid #444;
+}
+
+article h3 {
+    color: #00a2ff;
+    margin-top: 0;
+}
+
+/* EL CONTROL DE LAS FOTOS (Clase que pusimos en el HTML) */
+.foto-celular {
+    width: 100%;
+    max-width: 220px;    /* Tamaño ideal para que no se desborde */
+    height: 250px;       /* Altura fija para que todas las tarjetas midan lo mismo */
+    object-fit: contain; /* Ajusta la foto sin deformarla ni estirarla */
+    background-color: #ffffff; /* Fondo blanco para que resalten los equipos */
+    padding: 10px;
+    border-radius: 10px;
+    display: block;
+    margin: 15px auto;
+}
+
+/* Pie de página */
+footer {
+    background-color: #111;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #888;
+    text-align: center;
     margin-top: 50px;
+}
+
+p strong {
+    color: #00a2ff;
 }
