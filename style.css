@@ -1,29 +1,82 @@
 body {
     background-color: #121212;
-    color: white;
-    font-family: Arial, sans-serif;
+    color: #ffffff;
+    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    line-height: 1.6;
 }
 
 header {
-    background-color: #007bff;
-    padding: 20px;
+    background: linear-gradient(135deg, #0056b3, #003d80);
+    padding: 40px 20px;
     text-align: center;
+    border-bottom: 5px solid #007bff;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.8rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+nav a {
+    color: #80bfff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: white;
+}
+
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    border-bottom: 3px solid #007bff;
+    padding-bottom: 12px;
 }
 
 article {
     background-color: #1e1e1e;
-    margin: 20px;
-    padding: 15px;
-    border-radius: 10px;
+    margin-bottom: 35px;
+    padding: 25px;
+    border-radius: 12px;
     border: 1px solid #333;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease;
+}
+
+article:hover {
+    transform: translateY(-5px);
 }
 
 .foto-celular {
-    width: 200px;
+    width: 100%;
+    max-width: 320px;
     height: auto;
     display: block;
-    margin: 10px 0;
-    border-radius: 5px;
+    margin: 20px auto;           /* Centra la imagen */
+    border-radius: 10px;
+    border: 3px solid #444;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #888;
+    border-top: 1px solid #333;
+    margin-top: 40px;
 }
