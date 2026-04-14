@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cronología técnica de hitos del hardware móvil - Iván Ignacio</title>
     <style>
+        /* ESTILOS EXISTENTES */
         body {
             background-color: #121212;
             color: #ffffff;
@@ -20,16 +21,8 @@
             border-bottom: 5px solid #007bff;
         }
         
-        h1 {
-            margin: 0;
-            font-size: 2.6rem;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            opacity: 0.9;
-        }
+        h1 { margin: 0; font-size: 2.6rem; }
+        .subtitle { font-size: 1.2rem; margin-top: 10px; opacity: 0.9; }
         
         nav ul {
             list-style: none;
@@ -40,27 +33,17 @@
             margin-top: 15px;
         }
         
-        nav a {
-            color: #80bfff;
-            text-decoration: none;
-            font-weight: bold;
-        }
+        nav a { color: #80bfff; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: white; }
         
-        nav a:hover {
-            color: white;
-        }
-        
-        main {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
+        main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
         
         h2 {
             border-bottom: 3px solid #007bff;
             padding-bottom: 12px;
             text-align: center;
             color: #007bff;
+            margin-top: 50px;
         }
         
         article {
@@ -73,14 +56,8 @@
             transition: transform 0.3s ease;
         }
         
-        article:hover {
-            transform: translateY(-5px);
-        }
-        
-        h3 {
-            color: #80bfff;
-            margin-top: 0;
-        }
+        article:hover { transform: translateY(-5px); }
+        h3 { color: #80bfff; margin-top: 0; }
         
         .foto-celular {
             width: 100%;
@@ -92,7 +69,58 @@
             border: 3px solid #555;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
+
+        /* --- NUEVOS ESTILOS PARA TABLA Y FORMULARIO (EXIGENCIA PAUTA) --- */
         
+        /* Estilos de Tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background-color: #1e1e1e;
+            color: white;
+        }
+        table, th, td { border: 1px solid #007bff; }
+        th, td { padding: 15px; text-align: left; }
+        th { background-color: #003d80; color: #80bfff; }
+
+        /* Estilos de Lista */
+        .lista-servicios {
+            background-color: #1e1e1e;
+            padding: 20px 40px;
+            border-radius: 12px;
+            border-left: 5px solid #007bff;
+        }
+
+        /* Estilos de Formulario */
+        .formulario-contacto {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .campo { margin-bottom: 20px; display: flex; flex-direction: column; }
+        label { margin-bottom: 8px; color: #80bfff; font-weight: bold; }
+        input, textarea {
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background-color: #2a2a2a;
+            color: white;
+            font-size: 1rem;
+        }
+        input:focus, textarea:focus { border-color: #007bff; outline: none; }
+        .btn-enviar {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+        .btn-enviar:hover { background: #0056b3; }
+
         footer {
             text-align: center;
             padding: 30px;
@@ -112,7 +140,8 @@
         <nav>
             <ul>
                 <li><a href="#hitos">Cronología</a></li>
-                <li><a href="https://github.com/IvanR33" target="_blank">Mi GitHub</a></li>
+                <li><a href="#comparativa">Tabla Comparativa</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -145,6 +174,70 @@
                 <p><strong>Logro:</strong> Considerado el primer "Smartphone" oficial por usar un sistema operativo avanzado (Symbian).</p>
             </article>
         </section>
+
+        <section id="comparativa">
+            <h2>Especificaciones y Resumen</h2>
+            
+            <div class="lista-servicios">
+                <h3>Servicios de Análisis Técnico:</h3>
+                <ul>
+                    <li>Revisión de arquitectura de hardware móvil.</li>
+                    <li>Evaluación de sistemas operativos históricos.</li>
+                    <li>Estudio de hitos de conectividad celular.</li>
+                </ul>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Año de Lanzamiento</th>
+                        <th>Modelo del Equipo</th>
+                        <th>Innovación de Hardware</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1997</td>
+                        <td>Siemens S10</td>
+                        <td>Pantalla Color (6 colores)</td>
+                    </tr>
+                    <tr>
+                        <td>1999</td>
+                        <td>Samsung SPH-M100</td>
+                        <td>Reproducción MP3 Nativa</td>
+                    </tr>
+                    <tr>
+                        <td>2000</td>
+                        <td>Ericsson R380</td>
+                        <td>OS Symbian Avanzado</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="contacto">
+            <h2>Formulario de Contacto</h2>
+            <article class="formulario-contacto">
+                <form action="#" method="post">
+                    <div class="campo">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Ej: Iván Ignacio">
+                    </div>
+
+                    <div class="campo">
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" id="email" name="email" required placeholder="ejemplo@correo.cl">
+                    </div>
+
+                    <div class="campo">
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Escribe tu consulta aquí..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-enviar">Enviar Información</button>
+                </form>
+            </article>
+        </section>
     </main>
 
     <footer>
@@ -153,4 +246,3 @@
 
 </body>
 </html>
-
