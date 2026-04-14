@@ -1,0 +1,5 @@
+REGISTRO DE CONSULTAS IA - EVALUACIÓN SUMATIVA 1
+Estudiante: Iván Ignacio Jiménez Reyes
+
+Consulta: "¿Cómo estructurar una landing page semántica y qué atributos son obligatorios para la accesibilidad?"
+Recomendación aplicada: Se implementó el uso de etiquetas <article> para hitos móviles y etiquetas <label> vinculadas a inputs mediante 'id' y 'for' para asegurar la compatibilidad con lectores de pantalla, cumpliendo con la pauta de evaluación.
