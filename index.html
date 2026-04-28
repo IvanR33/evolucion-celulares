@@ -4,247 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cronología técnica de hitos del hardware móvil - Iván Ignacio</title>
-    <style>
-        :root {
-            --primary: #007bff;
-            --primary-dark: #0056b3;
-            --bg: #0f0f0f;
-            --card: #1a1a1a;
-            --text: #e0e0e0;
-            --accent: #80bfff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.7;
-        }
-
-        header {
-            background: linear-gradient(135deg, #003d80, #001f40);
-            padding: 60px 20px 50px;
-            text-align: center;
-            border-bottom: 6px solid var(--primary);
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            color: var(--accent);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: rgba(0, 123, 255, 0.2);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        main {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        h2 {
-            color: var(--primary);
-            text-align: center;
-            margin: 60px 0 35px;
-            font-size: 2.1rem;
-            border-bottom: 3px solid var(--primary);
-            padding-bottom: 15px;
-        }
-
-        article {
-            background-color: var(--card);
-            margin-bottom: 40px;
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid #333;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s ease;
-        }
-
-        article:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0, 123, 255, 0.15);
-        }
-
-        .foto-celular {
-            width: 100%;
-            max-width: 420px;
-            height: auto;
-            display: block;
-            margin: 25px auto;
-            border-radius: 12px;
-            border: 4px solid #444;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            background-color: var(--card);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 16px;
-            text-align: left;
-            border-bottom: 1px solid #333;
-        }
-
-        th {
-            background-color: #003366;
-            color: var(--accent);
-        }
-
-        .lista-servicios {
-            background-color: var(--card);
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 6px solid var(--primary);
-            margin: 30px 0;
-        }
-
-        /* ==================== FORMULARIOS MEJORADOS ==================== */
-        .formulario-contenedor {
-            max-width: 620px;
-            margin: 40px auto;
-            background-color: var(--card);
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid #333;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
-
-        .campo {
-            margin-bottom: 24px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 1.02rem;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #444;
-            background-color: #222;
-            color: white;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, textarea:focus {
-            border-color: var(--primary);
-            background-color: #2a2a2a;
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
-            outline: none;
-        }
-
-        .btn-enviar {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-enviar:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
-        }
-
-        .error-msg {
-            color: #ff5252;
-            font-size: 0.9rem;
-            margin-top: 6px;
-            min-height: 1.3em;
-        }
-
-        .success-msg {
-            color: #4ade80;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 1.05rem;
-        }
-
-        .char-counter {
-            font-size: 0.85rem;
-            color: #888;
-            text-align: right;
-            margin-top: 6px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #777;
-            border-top: 1px solid #333;
-            margin-top: 80px;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.3rem; }
-            nav ul { gap: 15px; }
-        }
-    </style>
+    <link href="style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
     <header>
         <h1>Cronología técnica de hitos del hardware móvil</h1>
         <p class="subtitle">Proyecto HTML5 + CSS3 + JavaScript • Unidad 2 - INACAP 2026</p>
-        
         <nav>
             <ul>
-                <li><a href="#hitos">Cronología</a></li>
-                <li><a href="#comparativa">Comparativa</a></li>
                 <li><a href="#registro">Registro</a></li>
                 <li><a href="#login">Login</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -253,32 +21,17 @@
     </header>
 
     <main>
-        <!-- Aquí va el contenido de tus secciones (hitos, tabla, etc.) -->
-        <!-- Mantengo tus secciones originales pero con mejor espaciado -->
-
-        <section id="hitos">
-            <h2>Línea de Tiempo del Hardware (1997 - 2000)</h2>
-            <!-- Tus artículos aquí (puedes pegar los que ya tenías) -->
-            <!-- ... (mantengo el mismo contenido que tenías) ... -->
-        </section>
-
-        <section id="comparativa">
-            <h2>Especificaciones Técnicas</h2>
-            <!-- Tu tabla y lista aquí -->
-        </section>
-
-        <!-- Formularios mejorados -->
         <section id="registro">
             <h2>Formulario de Registro</h2>
             <div class="formulario-contenedor">
                 <form id="formRegistro">
                     <div class="campo">
                         <label for="regUser">Usuario:</label>
-                        <input type="text" id="regUser" required placeholder="Nombre de usuario">
+                        <input type="text" id="regUser" required>
                     </div>
                     <div class="campo">
                         <label for="regEmail">Email:</label>
-                        <input type="email" id="regEmail" required placeholder="correo@ejemplo.com">
+                        <input type="email" id="regEmail" required>
                         <div id="errEmail" class="error-msg"></div>
                     </div>
                     <div class="campo">
@@ -341,9 +94,68 @@
         <p>&copy; 2026 - Iván Ignacio | Analista Programador - INACAP La Granja</p>
     </footer>
 
-    <!-- Aquí va el script que te di anteriormente (el de validación) -->
     <script>
-        // (Pega aquí el script completo que te entregué en el mensaje anterior)
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. REGISTRO (Validación Preventiva y Regex)
+            const formReg = document.getElementById('formRegistro');
+            formReg.addEventListener('submit', (e) => {
+                e.preventDefault(); // Requisito: preventDefault()
+                
+                // Limpiar mensajes previos
+                document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+
+                const email = document.getElementById('regEmail').value;
+                const pass = document.getElementById('regPass').value;
+                const passConf = document.getElementById('regPassConf').value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Requisito: Regex
+
+                let esValido = true;
+
+                if (!emailRegex.test(email)) {
+                    document.getElementById('errEmail').textContent = 'Formato de email inválido.';
+                    esValido = false;
+                }
+                if (pass.length < 8) {
+                    document.getElementById('errPass').textContent = 'La contraseña debe tener al menos 8 caracteres.';
+                    esValido = false;
+                }
+                if (pass !== passConf) {
+                    document.getElementById('errPassConf').textContent = 'Las contraseñas no coinciden.';
+                    esValido = false;
+                }
+
+                if (esValido) {
+                    alert('¡Registro exitoso!');
+                    formReg.reset();
+                }
+            });
+
+            // 2. LOGIN (Feedback en tiempo real)
+            const formLog = document.getElementById('formLogin');
+            formLog.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const feedback = document.getElementById('logFeedback');
+                feedback.innerHTML = '<p class="success-msg">¡Ingreso exitoso! Bienvenido.</p>';
+            });
+
+            // 3. CONTACTO (Contador y Limpieza)
+            const txtMensaje = document.getElementById('conMensaje');
+            const charCount = document.getElementById('charCount');
+
+            // Contador de caracteres en tiempo real
+            txtMensaje.addEventListener('input', () => {
+                charCount.textContent = `Caracteres: ${txtMensaje.value.length}`;
+            });
+
+            const formCon = document.getElementById('formContacto');
+            formCon.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Mensaje enviado. Limpiando campos...');
+                formCon.reset(); // Requisito: Limpiar automáticamente
+                charCount.textContent = 'Caracteres: 0';
+            });
+        });
     </script>
 </body>
 </html>
