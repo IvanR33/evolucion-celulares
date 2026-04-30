@@ -1,149 +1,63 @@
-/* script.js - Versión Final */
-
 document.addEventListener('DOMContentLoaded', () => {
 
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
 
-    // Navegación entre secciones
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-
-            // Quitar "active" de todos los links y secciones
             navLinks.forEach(l => l.classList.remove('active'));
             sections.forEach(s => s.classList.remove('active'));
-
-            // Activar el link clickeado
             link.classList.add('active');
-
-            // Mostrar la sección correspondiente
             const sectionId = link.getAttribute('data-section');
-            const targetSection = document.getElementById(sectionId);
-
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
+            document.getElementById(sectionId).classList.add('active');
         });
     });
 
-    // ==================== MODAL ====================
+    // Modal
     const modelos = {
-        startac: { titulo: "Motorola StarTAC", año: "1996", img: "Motorola-StarTAC.jpg", texto: "El primer teléfono plegable comercialmente exitoso." },
-        s10: { titulo: "Siemens S10", año: "1997", img: "Siemens-S10.jpg", texto: "Uno de los primeros teléfonos con pantalla a color." },
-        nokia5110: { titulo: "Nokia 5110", año: "1998", img: "Nokia-5110.jpg", texto: "Icono de los 90s, famoso por su durabilidad y el juego Snake." },
-        sph: { titulo: "Samsung SPH-M100", año: "1999", img: "Samsung-SPH-M100.jpg", texto: "Primer teléfono del mundo con reproductor MP3 nativo." },
-        kyocera: { titulo: "Kyocera VP-210", año: "1999", img: "Kyocera-VP-210.jpeg", texto: "Pionero en videollamadas con cámara integrada." },
-        nokia3310: { titulo: "Nokia 3310", año: "2000", img: "Nokia-3310.jpg", texto: "Legendario. Vendió más de 126 millones de unidades." },
-        ericsson: { titulo: "Ericsson R380s", año: "2000", img: "Ericsson-R380s_004.jpg", texto: "Considerado uno de los primeros smartphones de la historia." },
-        sl45i: { titulo: "Siemens SL45i", año: "2001", img: "Siemens-SL45i.jpg", texto: "Uno de los primeros con reproductor MP3 integrado." },
-        t68i: { titulo: "Sony Ericsson T68i", año: "2002", img: "Sony-Ericsson-T68i.jpg", texto: "Primer teléfono con Bluetooth y pantalla a color real." }
+        startac: { titulo: "Motorola StarTAC", año: "1996", img: "Motorola-StarTAC.jpg", texto: "El primer teléfono plegable exitoso." },
+        s10: { titulo: "Siemens S10", año: "1997", img: "Siemens-S10.jpg", texto: "Uno de los primeros con pantalla a color." },
+        nokia5110: { titulo: "Nokia 5110", año: "1998", img: "Nokia-5110.jpg", texto: "Famoso por Snake y su durabilidad." },
+        sph: { titulo: "Samsung SPH-M100", año: "1999", img: "Samsung-SPH-M100.jpg", texto: "Primer teléfono con MP3 nativo." },
+        kyocera: { titulo: "Kyocera VP-210", año: "1999", img: "Kyocera-VP-210.jpeg", texto: "Pionero en videollamadas." },
+        nokia3310: { titulo: "Nokia 3310", año: "2000", img: "Nokia-3310.jpg", texto: "El legendario Nokia 3310." },
+        ericsson: { titulo: "Ericsson R380s", año: "2000", img: "Ericsson-R380s_004.jpg", texto: "Uno de los primeros smartphones." },
+        sl45i: { titulo: "Siemens SL45i", año: "2001", img: "Siemens-SL45i.jpg", texto: "Reproductor MP3 integrado." },
+        t68i: { titulo: "Sony Ericsson T68i", año: "2002", img: "Sony-Ericsson-T68i.jpg", texto: "Bluetooth y pantalla a color." }
     };
 
     function abrirModal(id) {
         const modal = document.getElementById('modal');
         const body = document.getElementById('modal-body');
         const data = modelos[id];
-
         if (!data) return;
-
         body.innerHTML = `
-            <img src="${data.img}" alt="${data.titulo}" style="width:100%; border-radius:20px; margin-bottom:25px;">
-            <h2>${data.titulo} <span style="font-size:1.1rem; opacity:0.8;">(${data.año})</span></h2>
+            <img src="${data.img}" alt="${data.titulo}" style="width:100%; border-radius:18px; margin-bottom:20px;">
+            <h2>${data.titulo} (${data.año})</h2>
             <p>${data.texto}</p>
         `;
         modal.style.display = "flex";
     }
 
-    // Cerrar modal
     document.querySelector('.modal-close').addEventListener('click', () => {
         document.getElementById('modal').style.display = "none";
     });
 
     document.getElementById('modal').addEventListener('click', (e) => {
-        if (e.target.id === 'modal') {
-            document.getElementById('modal').style.display = "none";
-        }
+        if (e.target.id === 'modal') document.getElementById('modal').style.display = "none";
     });
 
-    // Abrir modal al hacer clic en las tarjetas
     document.querySelectorAll('.hito-card').forEach(card => {
         card.addEventListener('click', () => {
-            const modalId = card.getAttribute('data-modal');
-            abrirModal(modalId);
+            abrirModal(card.getAttribute('data-modal'));
         });
     });
 
-    // ==================== FORMULARIOS ====================
-
-    // Registro
-    const formRegistro = document.getElementById('formRegistro');
-    if (formRegistro) {
-        formRegistro.addEventListener('submit', (e) => {
-            e.preventDefault();
-            document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
-
-            const email = document.getElementById('regEmail').value.trim();
-            const pass = document.getElementById('regPass').value;
-            const passConf = document.getElementById('regPassConf').value;
-
-            let valid = true;
-
-            if (!email.includes('@')) {
-                document.getElementById('errEmail').textContent = 'Ingrese un email válido';
-                valid = false;
-            }
-            if (pass.length < 6) {
-                document.getElementById('errPass').textContent = 'La contraseña debe tener al menos 6 caracteres';
-                valid = false;
-            }
-            if (pass !== passConf) {
-                document.getElementById('errPassConf').textContent = 'Las contraseñas no coinciden';
-                valid = false;
-            }
-
-            if (valid) {
-                alert('¡Registro exitoso!');
-                formRegistro.reset();
-            }
-        });
-    }
-
-    // Login
-    const formLogin = document.getElementById('formLogin');
-    if (formLogin) {
-        formLogin.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const feedback = document.getElementById('logFeedback');
-            feedback.innerHTML = '<p class="success-msg" style="color:#39ff9e; text-align:center; font-weight:600;">¡Inicio de sesión exitoso!</p>';
-            
-            setTimeout(() => {
-                formLogin.reset();
-                feedback.innerHTML = '';
-            }, 2500);
-        });
-    }
-
-    // Contacto + contador de caracteres
-    const textarea = document.getElementById('conMensaje');
-    const charCount = document.getElementById('charCount');
-
-    if (textarea && charCount) {
-        textarea.addEventListener('input', () => {
-            charCount.textContent = `Caracteres: ${textarea.value.length}`;
-        });
-    }
-
-    const formContacto = document.getElementById('formContacto');
-    if (formContacto) {
-        formContacto.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('¡Mensaje enviado correctamente!');
-            formContacto.reset();
-            if (charCount) charCount.textContent = 'Caracteres: 0';
-        });
-    }
+    // Formularios básicos (puedes mejorarlos más en CSS)
+    document.getElementById('formRegistro')?.addEventListener('submit', (e) => { e.preventDefault(); alert('Registro exitoso (simulado)'); });
+    document.getElementById('formLogin')?.addEventListener('submit', (e) => { e.preventDefault(); alert('Login exitoso (simulado)'); });
+    document.getElementById('formContacto')?.addEventListener('submit', (e) => { e.preventDefault(); alert('Mensaje enviado (simulado)'); });
 
 });
-
 
