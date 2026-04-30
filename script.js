@@ -1,24 +1,23 @@
-/* script.js - Versión Final Sofisticada */
+/* script.js - Versión Final */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==================== NAVEGACIÓN ENTRE SECCIONES ====================
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
 
-    // Mostrar Hero por defecto al cargar
-    document.getElementById('hero').classList.add('active');
-
+    // Navegación entre secciones
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
 
-            // Quitar active de todo
+            // Quitar "active" de todos los links y secciones
             navLinks.forEach(l => l.classList.remove('active'));
             sections.forEach(s => s.classList.remove('active'));
 
-            // Activar el link y la sección correspondiente
+            // Activar el link clickeado
             link.classList.add('active');
+
+            // Mostrar la sección correspondiente
             const sectionId = link.getAttribute('data-section');
             const targetSection = document.getElementById(sectionId);
 
@@ -28,62 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ==================== MODAL PARA LOS CELULARES ====================
+    // ==================== MODAL ====================
     const modelos = {
-        startac: {
-            titulo: "Motorola StarTAC",
-            año: "1996",
-            img: "Motorola-StarTAC.jpg",
-            texto: "El primer teléfono plegable comercialmente exitoso. Revolucionó el diseño de los celulares."
-        },
-        s10: {
-            titulo: "Siemens S10",
-            año: "1997",
-            img: "Siemens S10.jpg",
-            texto: "Uno de los primeros teléfonos con pantalla a color."
-        },
-        nokia5110: {
-            titulo: "Nokia 5110",
-            año: "1998",
-            img: "Nokia-5110.jpg",
-            texto: "Icono de los años 90. Famoso por su durabilidad y el juego Snake."
-        },
-        sph: {
-            titulo: "Samsung SPH-M100",
-            año: "1999",
-            img: "Samsung SPH-M100.jpg",
-            texto: "El primer teléfono del mundo capaz de reproducir MP3 de forma nativa."
-        },
-        kyocera: {
-            titulo: "Kyocera VP-210",
-            año: "1999",
-            img: "Kyocera VP-210.jpeg",
-            texto: "Pionero en integrar cámara para videollamadas."
-        },
-        nokia3310: {
-            titulo: "Nokia 3310",
-            año: "2000",
-            img: "Nokia-3310.jpg",
-            texto: "El legendario Nokia 3310. Vendió más de 126 millones de unidades."
-        },
-        ericsson: {
-            titulo: "Ericsson R380s",
-            año: "2000",
-            img: "Ericsson_R380s_004.jpg",
-            texto: "Considerado el primer Smartphone oficial de la historia."
-        },
-        sl45i: {
-            titulo: "Siemens SL45i",
-            año: "2001",
-            img: "Siemens-SL45i.jpg",
-            texto: "Uno de los primeros teléfonos con reproductor MP3 integrado."
-        },
-        t68i: {
-            titulo: "Sony Ericsson T68i",
-            año: "2002",
-            img: "Sony-Ericsson-T68i.jpg",
-            texto: "Primer teléfono con Bluetooth y pantalla a color real."
-        }
+        startac: { titulo: "Motorola StarTAC", año: "1996", img: "Motorola-StarTAC.jpg", texto: "El primer teléfono plegable comercialmente exitoso." },
+        s10: { titulo: "Siemens S10", año: "1997", img: "Siemens-S10.jpg", texto: "Uno de los primeros teléfonos con pantalla a color." },
+        nokia5110: { titulo: "Nokia 5110", año: "1998", img: "Nokia-5110.jpg", texto: "Icono de los 90s, famoso por su durabilidad y el juego Snake." },
+        sph: { titulo: "Samsung SPH-M100", año: "1999", img: "Samsung-SPH-M100.jpg", texto: "Primer teléfono del mundo con reproductor MP3 nativo." },
+        kyocera: { titulo: "Kyocera VP-210", año: "1999", img: "Kyocera-VP-210.jpeg", texto: "Pionero en videollamadas con cámara integrada." },
+        nokia3310: { titulo: "Nokia 3310", año: "2000", img: "Nokia-3310.jpg", texto: "Legendario. Vendió más de 126 millones de unidades." },
+        ericsson: { titulo: "Ericsson R380s", año: "2000", img: "Ericsson-R380s_004.jpg", texto: "Considerado uno de los primeros smartphones de la historia." },
+        sl45i: { titulo: "Siemens SL45i", año: "2001", img: "Siemens-SL45i.jpg", texto: "Uno de los primeros con reproductor MP3 integrado." },
+        t68i: { titulo: "Sony Ericsson T68i", año: "2002", img: "Sony-Ericsson-T68i.jpg", texto: "Primer teléfono con Bluetooth y pantalla a color real." }
     };
 
     function abrirModal(id) {
@@ -94,14 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!data) return;
 
         body.innerHTML = `
-            <img src="${data.img}" alt="${data.titulo}">
+            <img src="${data.img}" alt="${data.titulo}" style="width:100%; border-radius:20px; margin-bottom:25px;">
             <h2>${data.titulo} <span style="font-size:1.1rem; opacity:0.8;">(${data.año})</span></h2>
             <p>${data.texto}</p>
         `;
         modal.style.display = "flex";
     }
 
-    // Eventos del modal
+    // Cerrar modal
     document.querySelector('.modal-close').addEventListener('click', () => {
         document.getElementById('modal').style.display = "none";
     });
@@ -112,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Abrir modal desde las tarjetas
+    // Abrir modal al hacer clic en las tarjetas
     document.querySelectorAll('.hito-card').forEach(card => {
         card.addEventListener('click', () => {
             const modalId = card.getAttribute('data-modal');
@@ -135,12 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let valid = true;
 
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                document.getElementById('errEmail').textContent = 'Formato de email inválido';
+            if (!email.includes('@')) {
+                document.getElementById('errEmail').textContent = 'Ingrese un email válido';
                 valid = false;
             }
-            if (pass.length < 8) {
-                document.getElementById('errPass').textContent = 'La contraseña debe tener mínimo 8 caracteres';
+            if (pass.length < 6) {
+                document.getElementById('errPass').textContent = 'La contraseña debe tener al menos 6 caracteres';
                 valid = false;
             }
             if (pass !== passConf) {
@@ -161,16 +115,16 @@ document.addEventListener('DOMContentLoaded', () => {
         formLogin.addEventListener('submit', (e) => {
             e.preventDefault();
             const feedback = document.getElementById('logFeedback');
-            feedback.innerHTML = '<p class="success-msg">¡Acceso exitoso! Bienvenido.</p>';
-
+            feedback.innerHTML = '<p class="success-msg" style="color:#39ff9e; text-align:center; font-weight:600;">¡Inicio de sesión exitoso!</p>';
+            
             setTimeout(() => {
                 formLogin.reset();
                 feedback.innerHTML = '';
-            }, 3000);
+            }, 2500);
         });
     }
 
-    // Contacto + Contador
+    // Contacto + contador de caracteres
     const textarea = document.getElementById('conMensaje');
     const charCount = document.getElementById('charCount');
 
@@ -191,6 +145,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-
 
 
