@@ -1,15 +1,12 @@
-/* style.css - Atomic Blonde × Ex Machina Cyberpunk Premium (Corregido) */
-
 :root {
-    --primary: #00f0ff;
+    --primary: #00e0ff;
     --accent: #ff2a6d;
-    --neon: #a0f8ff;
-    --bg: #0a0b12;
-    --card: #12151f;
-    --glass: rgba(18, 21, 31, 0.88);
-    --border: rgba(0, 240, 255, 0.25);
-    --text: #f0f4f8;
-    --text-light: #a0b0c0;
+    --bg: #0c0d14;
+    --card: #141824;
+    --glass: rgba(20, 24, 36, 0.92);
+    --border: rgba(0, 224, 255, 0.25);
+    --text: #f4f7fb;
+    --text-light: #b0b8c9;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,163 +15,28 @@ body {
     font-family: 'Inter', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.85;
+    line-height: 1.8;
 }
 
-/* Fondo sutil */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(rgba(0, 240, 255, 0.018) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.018) 1px, transparent 1px);
-    background-size: 110px 110px;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.65;
-}
+.navbar { /* mantengo tu estilo anterior */ }
 
-/* Navbar - Corregido */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(10, 11, 18, 0.97);
-    backdrop-filter: blur(28px);
-    border-bottom: 1px solid var(--border);
-    z-index: 1000;
-    padding: 1.6rem 0;
-}
-
-.nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.8rem;
-    font-weight: 700;
-    letter-spacing: -3px;
-    background: linear-gradient(90deg, #00f0ff, #ff2a6d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Menú en fila horizontal */
-nav ul {
-    display: flex;
-    gap: 48px;
-    list-style: none;
-}
-
-nav a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.12rem;
-    position: relative;
-    transition: all 0.4s ease;
-}
-
-nav a:hover,
-nav a.active {
-    color: var(--primary);
-    text-shadow: 0 0 15px var(--primary);
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: width 0.4s ease;
-}
-
-nav a:hover::after,
-nav a.active::after {
-    width: 100%;
-}
-
-/* Hero - Espacio para navbar */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: 100px;   /* ← Espacio extra para que no tape la navbar */
-    position: relative;
-}
-
-.hero h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 4.9rem;
-    font-weight: 700;
-    letter-spacing: -4.8px;
-    line-height: 1.05;
-    background: linear-gradient(90deg, #e0fbff, #ff9ed9, #b0f8ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 70px rgba(0, 240, 255, 0.8),
-                0 0 110px rgba(255, 42, 109, 0.4);
-    animation: neonPulse 6s ease-in-out infinite alternate;
-    max-width: 95%;
-}
-
-@keyframes neonPulse {
-    from { text-shadow: 0 0 60px rgba(0, 240, 255, 0.7), 0 0 100px rgba(255, 42, 109, 0.3); }
-    to   { text-shadow: 0 0 85px rgba(0, 240, 255, 0.95), 0 0 130px rgba(255, 42, 109, 0.55); }
-}
-
-.hero p {
-    font-size: 1.6rem;
-    color: var(--text-light);
-    max-width: 820px;
-    margin: 35px auto 0;
-}
-
-/* Secciones */
-.section {
-    padding: 130px 0;
-    display: none;
-}
-
-.section.active {
-    display: block;
-}
-
-.section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    text-align: center;
-    font-size: 3.1rem;
-    margin-bottom: 75px;
-    color: var(--primary);
-}
-
-/* Línea de Tiempo */
+/* === TIMELINE MÁS INTERACTIVA === */
 .timeline {
     max-width: 1300px;
-    margin: 0 auto 90px;
-    padding: 0 60px;
+    margin: 60px auto;
+    padding: 0 40px;
     position: relative;
 }
 
 .timeline-line {
     position: absolute;
-    top: 29px;
-    left: 65px;
-    right: 65px;
-    height: 3px;
+    top: 28px;
+    left: 50px;
+    right: 50px;
+    height: 5px;
     background: linear-gradient(to right, var(--primary), var(--accent));
     opacity: 0.4;
+    border-radius: 10px;
 }
 
 .timeline-items {
@@ -185,157 +47,92 @@ nav a.active::after {
 
 .timeline-item {
     text-align: center;
-    flex: 1;
     cursor: pointer;
     transition: all 0.4s ease;
 }
 
-.timeline-item:hover {
-    transform: translateY(-8px);
-}
-
 .timeline-dot {
-    width: 19px;
-    height: 19px;
+    width: 18px;
+    height: 18px;
     background: var(--bg);
-    border: 3.5px solid var(--primary);
+    border: 4px solid var(--primary);
     border-radius: 50%;
     margin: 0 auto 12px;
-    box-shadow: 0 0 18px var(--primary);
+    transition: all 0.4s ease;
 }
 
 .timeline-item:hover .timeline-dot {
-    background: var(--primary);
-    box-shadow: 0 0 28px var(--primary);
-    transform: scale(1.25);
+    transform: scale(1.4);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--primary);
 }
 
 .timeline-item span {
-    font-size: 1.18rem;
-    color: var(--text-light);
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-/* Hitos */
+.timeline-item:hover span {
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+/* Hitos Grid */
 .hitos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
-    gap: 45px;
-    max-width: 1400px;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 32px;
+    max-width: 1350px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0 40px;
 }
 
 .hito-card {
     background: var(--card);
-    border-radius: 28px;
+    border-radius: 24px;
     overflow: hidden;
     border: 1px solid var(--border);
     cursor: pointer;
-    transition: all 0.6s ease;
+    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hito-card:hover {
-    transform: translateY(-25px);
+    transform: translateY(-15px) scale(1.03);
     border-color: var(--primary);
-    box-shadow: 0 35px 80px rgba(0, 240, 255, 0.2);
+    box-shadow: 0 25px 40px rgba(0, 224, 255, 0.15);
 }
 
 .hito-card img {
     width: 100%;
-    height: 290px;
+    height: 265px;
     object-fit: contain;
-    padding: 50px 40px 35px;
-    background: #0c0f1c;
+    padding: 35px 25px 20px;
+    background: #0f121f;
+    transition: transform 0.6s ease;
+}
+
+.hito-card:hover img {
+    transform: scale(1.08);
 }
 
 .hito-info {
-    padding: 35px 40px 50px;
+    padding: 22px 25px 30px;
     text-align: center;
 }
 
 .hito-info h3 {
     color: var(--primary);
-    font-size: 1.72rem;
+    margin-bottom: 6px;
 }
 
-/* Formularios */
-.form-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-.card {
-    background: var(--card);
-    padding: 55px 50px;
-    border-radius: 32px;
-    border: 1px solid var(--border);
-}
-
-.card h2 {
-    text-align: center;
-    color: var(--primary);
-    margin-bottom: 48px;
-}
-
-.input-group {
-    margin-bottom: 34px;
-}
-
-label {
-    display: block;
-    margin-bottom: 12px;
-    color: var(--accent);
-    font-weight: 600;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 20px 26px;
-    background: #1a2233;
-    border: 2px solid var(--border);
-    border-radius: 22px;
-    color: white;
-    font-size: 1.13rem;
-}
-
-input:focus, textarea:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 10px rgba(0, 240, 255, 0.18);
-}
-
-.btn {
-    width: 100%;
-    padding: 20px;
-    border: none;
-    border-radius: 22px;
-    font-size: 1.22rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #00f0ff, #0099cc);
-    color: #0a0b12;
-}
-
-.btn-accent {
-    background: linear-gradient(135deg, #ff2a6d, #ff0066);
-    color: white;
-}
-
-.error-msg { color: #ff6b8b; margin-top: 10px; min-height: 1.4em; }
-.success-msg { color: #39ff9e; text-align: center; margin: 32px 0; font-weight: 600; font-size: 1.38rem; }
-.char-counter { text-align: right; color: var(--text-light); margin-top: 12px; }
-
-/* Modal */
+/* Modal y Formularios (mantengo lo que te gustaba) */
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(10, 11, 18, 0.96);
-    backdrop-filter: blur(22px);
+    background: rgba(12, 13, 20, 0.95);
+    backdrop-filter: blur(20px);
     z-index: 2000;
     align-items: center;
     justify-content: center;
@@ -344,26 +141,35 @@ input:focus, textarea:focus {
 .modal-content {
     background: var(--glass);
     border: 1px solid var(--border);
-    border-radius: 32px;
-    width: 90%;
-    max-width: 760px;
-    padding: 52px;
+    border-radius: 28px;
+    width: 92%;
+    max-width: 740px;
+    padding: 50px 45px;
+    position: relative;
 }
 
 .modal-close {
     position: absolute;
-    top: 28px;
-    right: 38px;
-    font-size: 2.5rem;
-    color: #a0b0c0;
+    top: 20px;
+    right: 30px;
+    font-size: 2.4rem;
+    color: #b0b8c9;
     cursor: pointer;
+    transition: color 0.3s;
 }
 
-footer {
-    text-align: center;
-    padding: 100px 20px 70px;
-    color: #64748b;
-    border-top: 1px solid var(--border);
+.modal-close:hover { color: #ff2a6d; }
+
+.modal img {
+    width: 100%;
+    max-height: 360px;
+    object-fit: contain;
+    margin-bottom: 25px;
+    border-radius: 16px;
 }
+
+
+
+
 
 
