@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronología del Hardware Móvil • Evolución 1996-2002</title>
+    <title>Cronología Hardware Móvil - Iván Ignacio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,150 +11,161 @@
 
     <header class="navbar">
         <div class="nav-container">
-            <div class="logo">CRONOLOGÍA MÓVIL</div>
+            <div class="logo">Cronología Móvil</div>
             <nav>
                 <ul>
-                    <li><a href="#hitos">Línea de Tiempo</a></li>
-                    <li><a href="#registro">Registro</a></li>
-                    <li><a href="#login">Login</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#hitos" class="nav-link" data-section="hitos">Línea de Tiempo</a></li>
+                    <li><a href="#registro" class="nav-link" data-section="registro">Registro</a></li>
+                    <li><a href="#login" class="nav-link" data-section="login">Login</a></li>
+                    <li><a href="#contacto" class="nav-link" data-section="contacto">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
+    <!-- HERO - Portada en todo su esplendor -->
+    <section id="hero" class="section hero active">
         <div class="hero-content">
             <h1>Evolución del Hardware Móvil</h1>
-            <p>De los primeros celulares al nacimiento del Smartphone (1996 — 2002)</p>
+            <p>De los primeros celulares a la era del smartphone • Unidad 2 - INACAP 2026</p>
         </div>
     </section>
 
+    <!-- HITOS -->
     <section id="hitos" class="section">
-        <h2 class="section-title">Línea de Tiempo Interactiva • 1996-2002</h2>
+        <h2 class="section-title">Línea de Tiempo 1996 — 2002</h2>
 
-        <!-- Timeline Mejorada e Interactiva -->
         <div class="timeline">
             <div class="timeline-line"></div>
             <div class="timeline-items">
-                <div class="timeline-item" data-year="1996"><div class="timeline-dot"></div><span>1996</span></div>
-                <div class="timeline-item" data-year="1997"><div class="timeline-dot"></div><span>1997</span></div>
-                <div class="timeline-item" data-year="1998"><div class="timeline-dot"></div><span>1998</span></div>
-                <div class="timeline-item" data-year="1999"><div class="timeline-dot"></div><span>1999</span></div>
-                <div class="timeline-item" data-year="2000"><div class="timeline-dot"></div><span>2000</span></div>
-                <div class="timeline-item" data-year="2001"><div class="timeline-dot"></div><span>2001</span></div>
-                <div class="timeline-item" data-year="2002"><div class="timeline-dot"></div><span>2002</span></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><span>1996</span></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><span>1997</span></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><span>1998</span></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><span>1999</span></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><span>2000</span></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><span>2001</span></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><span>2002</span></div>
             </div>
         </div>
 
-        <!-- Grid de 9 Celulares -->
         <div class="hitos-grid">
             <article class="hito-card" data-modal="startac">
                 <img src="Motorola-StarTAC.jpg" alt="Motorola StarTAC">
-                <div class="hito-info">
-                    <h3>Motorola StarTAC</h3>
-                    <p class="year">1996</p>
-                </div>
+                <div class="hito-info"><h3>Motorola StarTAC</h3><p>1996</p></div>
             </article>
-
             <article class="hito-card" data-modal="s10">
-                <img src="Siemens-S10.jpg" alt="Siemens S10">
-                <div class="hito-info">
-                    <h3>Siemens S10</h3>
-                    <p class="year">1997</p>
-                </div>
+                <img src="Siemens S10.jpg" alt="Siemens S10">
+                <div class="hito-info"><h3>Siemens S10</h3><p>1997</p></div>
             </article>
-
             <article class="hito-card" data-modal="nokia5110">
                 <img src="Nokia-5110.jpg" alt="Nokia 5110">
-                <div class="hito-info">
-                    <h3>Nokia 5110</h3>
-                    <p class="year">1998</p>
-                </div>
+                <div class="hito-info"><h3>Nokia 5110</h3><p>1998</p></div>
             </article>
-
             <article class="hito-card" data-modal="sph">
-                <img src="Samsung-SPH-M100.jpg" alt="Samsung SPH-M100">
-                <div class="hito-info">
-                    <h3>Samsung SPH-M100</h3>
-                    <p class="year">1999</p>
-                </div>
+                <img src="Samsung SPH-M100.jpg" alt="Samsung SPH-M100">
+                <div class="hito-info"><h3>Samsung SPH-M100</h3><p>1999</p></div>
             </article>
-
             <article class="hito-card" data-modal="kyocera">
-                <img src="Kyocera-VP-210.jpeg" alt="Kyocera VP-210">
-                <div class="hito-info">
-                    <h3>Kyocera VP-210</h3>
-                    <p class="year">1999</p>
-                </div>
+                <img src="Kyocera VP-210.jpeg" alt="Kyocera VP-210">
+                <div class="hito-info"><h3>Kyocera VP-210</h3><p>1999</p></div>
             </article>
-
             <article class="hito-card" data-modal="nokia3310">
                 <img src="Nokia-3310.jpg" alt="Nokia 3310">
-                <div class="hito-info">
-                    <h3>Nokia 3310</h3>
-                    <p class="year">2000</p>
-                </div>
+                <div class="hito-info"><h3>Nokia 3310</h3><p>2000</p></div>
             </article>
-
             <article class="hito-card" data-modal="ericsson">
-                <img src="Ericsson-R380s_004.jpg" alt="Ericsson R380s">
-                <div class="hito-info">
-                    <h3>Ericsson R380s</h3>
-                    <p class="year">2000</p>
-                </div>
+                <img src="Ericsson_R380s_004.jpg" alt="Ericsson R380s">
+                <div class="hito-info"><h3>Ericsson R380s</h3><p>2000</p></div>
             </article>
-
             <article class="hito-card" data-modal="sl45i">
                 <img src="Siemens-SL45i.jpg" alt="Siemens SL45i">
-                <div class="hito-info">
-                    <h3>Siemens SL45i</h3>
-                    <p class="year">2001</p>
-                </div>
+                <div class="hito-info"><h3>Siemens SL45i</h3><p>2001</p></div>
             </article>
-
             <article class="hito-card" data-modal="t68i">
                 <img src="Sony-Ericsson-T68i.jpg" alt="Sony Ericsson T68i">
-                <div class="hito-info">
-                    <h3>Sony Ericsson T68i</h3>
-                    <p class="year">2002</p>
-                </div>
+                <div class="hito-info"><h3>Sony Ericsson T68i</h3><p>2002</p></div>
             </article>
         </div>
     </section>
 
-    <!-- Formularios (mantengo tu estructura) -->
+    <!-- REGISTRO -->
     <section id="registro" class="section">
-        <div class="formulario-contenedor">
-            <h2>Formulario de Registro</h2>
-            <form id="formRegistro">
-                <!-- ... tus campos de registro ... -->
-                <button type="submit" class="btn-enviar">Crear Cuenta</button>
-            </form>
+        <div class="form-container">
+            <div class="card">
+                <h2>Formulario de Registro</h2>
+                <form id="formRegistro">
+                    <div class="input-group">
+                        <label for="regUser">Usuario</label>
+                        <input type="text" id="regUser" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" required>
+                        <div id="errEmail" class="error-msg"></div>
+                    </div>
+                    <div class="input-group">
+                        <label for="regPass">Contraseña</label>
+                        <input type="password" id="regPass" required>
+                        <div id="errPass" class="error-msg"></div>
+                    </div>
+                    <div class="input-group">
+                        <label for="regPassConf">Confirmar Contraseña</label>
+                        <input type="password" id="regPassConf" required>
+                        <div id="errPassConf" class="error-msg"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrarme</button>
+                </form>
+            </div>
         </div>
     </section>
 
+    <!-- LOGIN -->
     <section id="login" class="section">
-        <div class="formulario-contenedor">
-            <h2>Acceso de Usuario</h2>
-            <form id="formLogin">
-                <!-- ... tus campos de login ... -->
-                <button type="submit" class="btn-enviar">Ingresar</button>
-            </form>
+        <div class="form-container">
+            <div class="card">
+                <h2>Acceso de Usuario</h2>
+                <form id="formLogin">
+                    <div class="input-group">
+                        <label for="logEmail">Email</label>
+                        <input type="email" id="logEmail" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="logPass">Contraseña</label>
+                        <input type="password" id="logPass" required>
+                    </div>
+                    <div id="logFeedback"></div>
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                </form>
+            </div>
         </div>
     </section>
 
+    <!-- CONTACTO -->
     <section id="contacto" class="section">
-        <div class="formulario-contenedor">
-            <h2>Formulario de Contacto</h2>
-            <form id="formContacto">
-                <!-- ... tus campos de contacto ... -->
-                <button type="submit" class="btn-enviar">Enviar Mensaje</button>
-            </form>
+        <div class="form-container">
+            <div class="card">
+                <h2>Formulario de Contacto</h2>
+                <form id="formContacto">
+                    <div class="input-group">
+                        <label for="conNombre">Nombre</label>
+                        <input type="text" id="conNombre" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="conAsunto">Asunto</label>
+                        <input type="text" id="conAsunto" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="conMensaje">Mensaje</label>
+                        <textarea id="conMensaje" rows="5" required></textarea>
+                        <div id="charCount" class="char-counter">Caracteres: 0</div>
+                    </div>
+                    <button type="submit" class="btn btn-accent">Enviar Mensaje</button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <!-- Modal -->
+    <!-- MODAL -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="modal-close">✕</span>
@@ -163,7 +174,7 @@
     </div>
 
     <footer>
-        <p>© 2026 - Iván Ignacio | Analista Programador - INACAP</p>
+        <p>&copy; 2026 - Iván Ignacio | Analista Programador - INACAP La Granja</p>
     </footer>
 
     <script src="script.js"></script>
