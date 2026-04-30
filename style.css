@@ -1,171 +1,345 @@
-/* script.js - Versión Final con 9 celulares */
+/* style.css - Blade Runner Elegante | Atomic Blonde Cyberpunk Premium */
 
-document.addEventListener('DOMContentLoaded', () => {
+:root {
+    --primary: #00e0ff;
+    --accent: #ff2a6d;
+    --soft-neon: #d1f7ff;
+    --bg: #0c0d14;
+    --card: #141824;
+    --glass: rgba(20, 24, 36, 0.78);
+    --border: rgba(0, 224, 255, 0.22);
+    --text: #f4f7fb;
+    --text-light: #b0b8c9;
+}
 
-    // ==================== MODAL PARA LOS 9 CELULARES ====================
-    const modelos = {
-        startac: {
-            titulo: "Motorola StarTAC",
-            año: "1996",
-            img: "Motorola-StarTAC.jpg",
-            texto: "El primer teléfono plegable comercialmente exitoso. Revolucionó el diseño de los celulares con su formato compacto y ligero."
-        },
-        s10: {
-            titulo: "Siemens S10",
-            año: "1997",
-            img: "Siemens S10.jpg",
-            texto: "Uno de los primeros teléfonos con pantalla a color (aunque limitada a 4 colores). Marcó un hito en la visualización de información en móviles."
-        },
-        nokia5110: {
-            titulo: "Nokia 5110",
-            año: "1998",
-            img: "Nokia 5110.jpg",
-            texto: "Icono de los años 90. Famoso por su durabilidad, excelente batería y el legendario juego Snake."
-        },
-        sph: {
-            titulo: "Samsung SPH-M100",
-            año: "1999",
-            img: "Samsung SPH-M100.jpg",
-            texto: "El primer teléfono del mundo capaz de reproducir música en formato MP3 de forma nativa."
-        },
-        kyocera: {
-            titulo: "Kyocera VP-210",
-            año: "1999",
-            img: "Kyocera VP-210.jpeg",
-            texto: "Pionero en integrar cámara para videollamadas. Uno de los primeros pasos hacia las videollamadas modernas."
-        },
-        nokia3310: {
-            titulo: "Nokia 3310",
-            año: "2000",
-            img: "Nokia 3310.jpg",
-            texto: "El legendario 'indestructible'. Vendió más de 126 millones de unidades y popularizó el juego Snake en todo el mundo."
-        },
-        ericsson: {
-            titulo: "Ericsson R380s",
-            año: "2000",
-            img: "Ericsson_R380s_004.jpg",
-            texto: "Considerado el primer Smartphone oficial de la historia con pantalla táctil y Symbian OS."
-        },
-        sl45i: {
-            titulo: "Siemens SL45i",
-            año: "2001",
-            img: "Siemens SL45i.jpg",
-            texto: "Uno de los primeros teléfonos con reproductor MP3 integrado y ranura para Memory Stick."
-        },
-        t68i: {
-            titulo: "Sony Ericsson T68i",
-            año: "2002",
-            img: "Sony-Ericsson-T68i.jpg",
-            texto: "Primer teléfono con Bluetooth y pantalla a color real. Gran influencia en el diseño de celulares posteriores."
-        }
-    };
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    function abrirModal(id) {
-        const modal = document.getElementById('modal');
-        const body = document.getElementById('modal-body');
-        const data = modelos[id];
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    overflow-x: hidden;
+}
 
-        if (!data) return;
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+        linear-gradient(rgba(0, 224, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 224, 255, 0.025) 1px, transparent 1px);
+    background-size: 90px 90px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.6;
+}
 
-        body.innerHTML = `
-            <img src="${data.img}" alt="${data.titulo}">
-            <h2>${data.titulo} <span style="font-size:1.1rem; opacity:0.8;">(${data.año})</span></h2>
-            <p>${data.texto}</p>
-        `;
-        modal.style.display = "flex";
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(12, 13, 20, 0.95);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    padding: 1.6rem 0;
+}
+
+.nav-container {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.65rem;
+    font-weight: 700;
+    letter-spacing: -2.5px;
+    background: linear-gradient(90deg, #00e0ff, #ff2a6d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav ul {
+    display: flex;
+    gap: 52px;
+    list-style: none;
+}
+
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--primary);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    transition: width 0.5s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+/* Hero */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 90px;
+    position: relative;
+}
+
+.hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 5.1rem;
+    font-weight: 700;
+    letter-spacing: -4.2px;
+    background: linear-gradient(90deg, #e0f8ff, #ff9ed9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 70px rgba(0, 224, 255, 0.45);
+}
+
+.hero p {
+    font-size: 1.55rem;
+    color: var(--text-light);
+    max-width: 780px;
+    margin: 30px auto 0;
+}
+
+/* Secciones */
+.section {
+    padding: 140px 0;
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 80px;
+    color: var(--primary);
+}
+
+/* Hitos Grid */
+.hitos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 40px;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.hito-card {
+    background: var(--card);
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.hito-card:hover {
+    transform: translateY(-20px);
+    border-color: var(--primary);
+    box-shadow: 0 25px 60px rgba(0, 224, 255, 0.18);
+}
+
+.hito-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    padding: 45px 35px 30px;
+    background: #0f121c;
+}
+
+.hito-info {
+    padding: 32px 35px 45px;
+    text-align: center;
+}
+
+.hito-info h3 {
+    color: var(--primary);
+    font-size: 1.65rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 13, 20, 0.96);
+    backdrop-filter: blur(20px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 32px;
+    width: 90%;
+    max-width: 740px;
+    padding: 50px;
+    box-shadow: 0 0 80px rgba(0, 224, 255, 0.25);
+}
+
+.modal-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    font-size: 2.4rem;
+    color: #b0b8c9;
+    cursor: pointer;
+}
+
+.modal img {
+    width: 100%;
+    max-height: 360px;
+    object-fit: contain;
+    margin-bottom: 35px;
+    border-radius: 18px;
+}
+
+.modal h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+/* Formularios */
+.card {
+    background: var(--card);
+    padding: 52px 50px;
+    border-radius: 32px;
+    border: 1px solid var(--border);
+}
+
+.card h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 45px;
+}
+
+.input-group {
+    margin-bottom: 32px;
+}
+
+label {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 19px 26px;
+    background: #1c2333;
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    color: white;
+    font-size: 1.12rem;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 8px rgba(0, 224, 255, 0.15);
+}
+
+.btn {
+    width: 100%;
+    padding: 19px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.4s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00e0ff, #3b9eff);
+    color: #0c0d14;
+    box-shadow: 0 0 30px rgba(0, 224, 255, 0.5);
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, #ff2a6d, #ff0066);
+    color: white;
+}
+
+.error-msg {
+    color: #ff6b8b;
+    margin-top: 9px;
+    min-height: 1.4em;
+}
+
+.success-msg {
+    color: #39ff9e;
+    text-align: center;
+    margin: 30px 0;
+    font-weight: 600;
+    font-size: 1.35rem;
+}
+
+.char-counter {
+    text-align: right;
+    color: var(--text-light);
+    margin-top: 12px;
+}
+
+footer {
+    text-align: center;
+    padding: 100px 20px 70px;
+    color: #64748b;
+    border-top: 1px solid var(--border);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3.6rem; }
+    .nav-container { padding: 0 30px; }
+    nav ul { gap: 28px; }
+    .hitos-grid { 
+        grid-template-columns: 1fr; 
+        padding: 0 30px; 
     }
-
-    // Eventos del modal
-    document.querySelector('.modal-close').addEventListener('click', () => {
-        document.getElementById('modal').style.display = "none";
-    });
-
-    document.getElementById('modal').addEventListener('click', (e) => {
-        if (e.target.id === 'modal') {
-            document.getElementById('modal').style.display = "none";
-        }
-    });
-
-    // Click en las tarjetas
-    document.querySelectorAll('.hito-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const modalId = card.getAttribute('data-modal');
-            abrirModal(modalId);
-        });
-    });
-
-    // ==================== FORMULARIOS ====================
-
-    // Registro
-    const formRegistro = document.getElementById('formRegistro');
-    if (formRegistro) {
-        formRegistro.addEventListener('submit', (e) => {
-            e.preventDefault();
-            document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
-
-            const email = document.getElementById('regEmail').value.trim();
-            const pass = document.getElementById('regPass').value;
-            const passConf = document.getElementById('regPassConf').value;
-
-            let valid = true;
-
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                document.getElementById('errEmail').textContent = 'Formato de email inválido';
-                valid = false;
-            }
-            if (pass.length < 8) {
-                document.getElementById('errPass').textContent = 'La contraseña debe tener mínimo 8 caracteres';
-                valid = false;
-            }
-            if (pass !== passConf) {
-                document.getElementById('errPassConf').textContent = 'Las contraseñas no coinciden';
-                valid = false;
-            }
-
-            if (valid) {
-                alert('¡Registro exitoso! Los datos han sido validados correctamente.');
-                formRegistro.reset();
-            }
-        });
-    }
-
-    // Login
-    const formLogin = document.getElementById('formLogin');
-    if (formLogin) {
-        formLogin.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const feedback = document.getElementById('logFeedback');
-            feedback.innerHTML = '<p class="success-msg">¡Acceso exitoso! Bienvenido al sistema.</p>';
-
-            setTimeout(() => {
-                formLogin.reset();
-                feedback.innerHTML = '';
-            }, 3000);
-        });
-    }
-
-    // Contacto + Contador de caracteres
-    const textarea = document.getElementById('conMensaje');
-    const charCount = document.getElementById('charCount');
-
-    if (textarea && charCount) {
-        textarea.addEventListener('input', () => {
-            charCount.textContent = `Caracteres: ${textarea.value.length}`;
-        });
-    }
-
-    const formContacto = document.getElementById('formContacto');
-    if (formContacto) {
-        formContacto.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('¡Mensaje enviado correctamente!');
-            formContacto.reset();
-            if (charCount) charCount.textContent = 'Caracteres: 0';
-        });
-    }
-
-});
-
+}
 
 
 
