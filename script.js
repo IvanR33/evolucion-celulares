@@ -1,8 +1,8 @@
-/* script.js - Versión Final */
+/* script.js - Navegación + Modal + Formularios */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Navegación entre secciones
+    // ==================== NAVEGACIÓN ENTRE SECCIONES ====================
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
 
@@ -13,12 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
 
+            // Quitar "active" de todos los links y secciones
             navLinks.forEach(l => l.classList.remove('active'));
             sections.forEach(s => s.classList.remove('active'));
 
+            // Activar el link clickeado y su sección
             link.classList.add('active');
             const sectionId = link.getAttribute('data-section');
-            document.getElementById(sectionId).classList.add('active');
+            const targetSection = document.getElementById(sectionId);
+            
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
         });
     });
 
@@ -49,22 +55,26 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = "flex";
     }
 
+    // Eventos del modal
     document.querySelector('.modal-close').addEventListener('click', () => {
         document.getElementById('modal').style.display = "none";
     });
 
     document.getElementById('modal').addEventListener('click', (e) => {
-        if (e.target.id === 'modal') document.getElementById('modal').style.display = "none";
+        if (e.target.id === 'modal') {
+            document.getElementById('modal').style.display = "none";
+        }
     });
 
+    // Abrir modal desde tarjetas
     document.querySelectorAll('.hito-card').forEach(card => {
         card.addEventListener('click', () => {
-            const id = card.getAttribute('data-modal');
-            abrirModal(id);
+            const modalId = card.getAttribute('data-modal');
+            abrirModal(modalId);
         });
     });
 
-    // Formularios (validaciones básicas)
+    // ==================== FORMULARIOS (básicos) ====================
     const formRegistro = document.getElementById('formRegistro');
     if (formRegistro) {
         formRegistro.addEventListener('submit', (e) => {
@@ -78,7 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formLogin) {
         formLogin.addEventListener('submit', (e) => {
             e.preventDefault();
-            document.getElementById('logFeedback').innerHTML = '<p class="success-msg">¡Acceso exitoso!</p>';
+            document.getElementById('logFeedback').innerHTML = '<p class="success-msg">¡Acceso exitoso! Bienvenido.</p>';
+            setTimeout(() => {
+                formLogin.reset();
+                document.getElementById('logFeedback').innerHTML = '';
+            }, 2500);
         });
     }
 
@@ -94,10 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formContacto) {
         formContacto.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('¡Mensaje enviado!');
+            alert('¡Mensaje enviado correctamente!');
             formContacto.reset();
+            if (charCount) charCount.textContent = 'Caracteres: 0';
         });
     }
+
 });
 
 
