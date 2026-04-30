@@ -1,159 +1,59 @@
-/* script.js - Versión Final con 9 celulares */
-
 document.addEventListener('DOMContentLoaded', () => {
-
-    // ==================== MODAL - 9 CELULARES ====================
+    // Datos técnicos de los 9 modelos
     const modelos = {
-        "startac": {
-            titulo: "Motorola StarTAC",
-            año: "1996",
-            img: "Motorola-StarTAC.jpg",
-            texto: "El primer teléfono plegable comercialmente exitoso. Revolucionó el diseño de los celulares con su formato compacto."
-        },
-        "s10": {
-            titulo: "Siemens S10",
-            año: "1997",
-            img: "Siemens-S10.jpg",
-            texto: "Uno de los primeros teléfonos con pantalla a color. Gran avance en visualización de información en móviles."
-        },
-        "nokia5110": {
-            titulo: "Nokia 5110",
-            año: "1998",
-            img: "Nokia-5110.jpg",
-            texto: "Icono de los 90s. Famoso por su resistencia y el juego Snake."
-        },
-        "sph": {
-            titulo: "Samsung SPH-M100",
-            año: "1999",
-            img: "Samsung-SPH-M100.jpg",
-            texto: "Primer teléfono del mundo con reproductor MP3 nativo."
-        },
-        "kyocera": {
-            titulo: "Kyocera VP-210",
-            año: "1999",
-            img: "Kyocera-VP-210.jpeg",
-            texto: "Pionero en videollamadas con cámara integrada."
-        },
-        "nokia3310": {
-            titulo: "Nokia 3310",
-            año: "2000",
-            img: "Nokia-3310.jpg",
-            texto: "El legendario Nokia 3310. Vendió más de 126 millones de unidades."
-        },
-        "ericsson": {
-            titulo: "Ericsson R380s",
-            año: "2000",
-            img: "Ericsson-R380s_004.jpg",
-            texto: "Considerado el primer Smartphone oficial de la historia."
-        },
-        "sl45i": {
-            titulo: "Siemens SL45i",
-            año: "2001",
-            img: "Siemens-SL45i.jpg",
-            texto: "Uno de los primeros teléfonos con reproductor MP3 integrado."
-        },
-        "t68i": {
-            titulo: "Sony Ericsson T68i",
-            año: "2002",
-            img: "Sony-Ericsson-T68i.jpg",
-            texto: "Primer teléfono con Bluetooth y pantalla a color real."
+        startac: { t: "Motorola StarTAC", a: "1996", d: "El primer teléfono plegable del mundo. Su diseño compacto y ligero cambió la percepción de lo que debía ser un móvil." },
+        s10: { t: "Siemens S10", a: "1997", d: "Considerado el primer teléfono con pantalla a color (aunque solo mostraba 4 colores). Un hito en la interfaz de usuario." },
+        nokia5110: { t: "Nokia 5110", a: "1998", d: "El teléfono que popularizó el juego Snake. Destacó por su durabilidad y sus carcasas frontales intercambiables." },
+        sph: { t: "Samsung SPH-M100", a: "1999", d: "El primer teléfono móvil capaz de reproducir música en formato MP3 de forma nativa." },
+        kyocera: { t: "Kyocera VP-210", a: "1999", d: "Pionero en integrar una cámara frontal para videollamadas, adelantándose años a su época." },
+        nokia3310: { t: "Nokia 3310", a: "2000", d: "Un ícono de resistencia y fiabilidad. Vendió más de 126 millones de unidades en todo el mundo." },
+        ericsson: { t: "Ericsson R380s", a: "2000", d: "El primer dispositivo comercializado como 'Smartphone'. Utilizaba el sistema operativo Symbian." },
+        sl45i: { t: "Siemens SL45i", a: "2001", d: "Uno de los primeros móviles con memoria expandible mediante tarjetas MMC y soporte para Java." },
+        t68i: { t: "Sony Ericsson T68i", a: "2002", d: "El primer teléfono con Bluetooth de amplia distribución y uno de los primeros con pantalla de 256 colores." }
+    };
+
+    // Manejo de clic en las tarjetas
+    document.querySelectorAll('.hito-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const m = modelos[card.dataset.modal];
+            const body = document.getElementById('modal-body');
+            body.innerHTML = `
+                <h2 style="color: #00e0ff; margin-bottom: 10px;">${m.t}</h2>
+                <h3 style="color: #ff2a6d; margin-bottom: 20px;">Año: ${m.a}</h3>
+                <p style="font-size: 1.1rem; line-height: 1.6;">${m.d}</p>
+            `;
+            document.getElementById('modal').style.display = 'flex';
+        });
+    });
+
+    // Cerrar el modal
+    document.querySelector('.modal-close').onclick = () => {
+        document.getElementById('modal').style.display = 'none';
+    };
+
+    // Cerrar modal al hacer clic fuera del contenido
+    window.onclick = (event) => {
+        const modal = document.getElementById('modal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
         }
     };
 
-    function abrirModal(id) {
-        const modal = document.getElementById('modal');
-        const body = document.getElementById('modal-body');
-        const data = modelos[id];
-
-        if (!data) return;
-
-        body.innerHTML = `
-            <img src="${data.img}" alt="${data.titulo}">
-            <h2>${data.titulo} <span style="font-size:1.05rem; opacity:0.75;">(${data.año})</span></h2>
-            <p>${data.texto}</p>
-        `;
-        modal.style.display = "flex";
+    // Contador de caracteres para el mensaje
+    const tx = document.getElementById('conMensaje');
+    if (tx) {
+        tx.oninput = () => {
+            document.getElementById('charCount').innerText = `Caracteres: ${tx.value.length}`;
+        };
     }
 
-    // Eventos del modal
-    document.querySelector('.modal-close').addEventListener('click', () => {
-        document.getElementById('modal').style.display = "none";
-    });
-
-    document.getElementById('modal').addEventListener('click', (e) => {
-        if (e.target.id === 'modal') {
-            document.getElementById('modal').style.display = "none";
-        }
-    });
-
-    // Click en tarjetas
-    document.querySelectorAll('.hito-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const id = card.getAttribute('data-modal');
-            abrirModal(id);
-        });
-    });
-
-    // ==================== FORMULARIOS ====================
-    const formRegistro = document.getElementById('formRegistro');
-    if (formRegistro) {
-        formRegistro.addEventListener('submit', (e) => {
-            e.preventDefault();
-            document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
-
-            const email = document.getElementById('regEmail').value.trim();
-            const pass = document.getElementById('regPass').value;
-            const passConf = document.getElementById('regPassConf').value;
-
-            let valid = true;
-
-            if (!Validator.isValidEmail(email)) {
-                document.getElementById('errEmail').textContent = 'Formato de email inválido';
-                valid = false;
-            }
-            if (!Validator.isSecurePassword(pass)) {
-                document.getElementById('errPass').textContent = 'Mínimo 8 caracteres';
-                valid = false;
-            }
-            if (!Validator.passwordsMatch(pass, passConf)) {
-                document.getElementById('errPassConf').textContent = 'Las contraseñas no coinciden';
-                valid = false;
-            }
-
-            if (valid) {
-                alert('¡Registro exitoso!');
-                formRegistro.reset();
-            }
-        });
-    }
-
-    const formLogin = document.getElementById('formLogin');
-    if (formLogin) {
-        formLogin.addEventListener('submit', (e) => {
-            e.preventDefault();
-            document.getElementById('logFeedback').innerHTML = '<p class="success-msg">¡Acceso exitoso! Bienvenido.</p>';
-        });
-    }
-
-    const textarea = document.getElementById('conMensaje');
-    const charCount = document.getElementById('charCount');
-
-    if (textarea && charCount) {
-        textarea.addEventListener('input', () => {
-            charCount.textContent = `Caracteres: ${textarea.value.length}`;
-        });
-    }
-
-    const formContacto = document.getElementById('formContacto');
-    if (formContacto) {
-        formContacto.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Mensaje enviado correctamente');
-            formContacto.reset();
-            if (charCount) charCount.textContent = 'Caracteres: 0';
-        });
-    }
-
+    // Manejo del formulario
+    document.getElementById('formContacto').onsubmit = (e) => {
+        e.preventDefault();
+        alert("¡Gracias por tu mensaje! Nos pondremos en contacto pronto.");
+        e.target.reset();
+        document.getElementById('charCount').innerText = "Caracteres: 0";
+    };
 });
 
 
