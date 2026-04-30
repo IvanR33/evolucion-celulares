@@ -1,15 +1,15 @@
-/* style.css - Blade Runner Elegante | Atomic Blonde Cyberpunk Premium */
+/* style.css - FINAL | Atomic Blonde × Ex Machina × Blade Runner 2049 */
 
 :root {
-    --primary: #00e0ff;      /* Cyan Blade Runner */
-    --accent: #ff2a6d;       /* Rosa neón Atomic Blonde */
-    --soft-neon: #d1f7ff;
-    --bg: #0c0d14;
-    --card: #141824;
-    --glass: rgba(20, 24, 36, 0.78);
-    --border: rgba(0, 224, 255, 0.22);
-    --text: #f4f7fb;
-    --text-light: #b0b8c9;
+    --primary: #00f0ff;      /* Cyan frío y preciso */
+    --accent: #ff0066;       /* Rosa neón Atomic Blonde */
+    --soft: #c0f0ff;
+    --bg: #0b0c13;
+    --card: #131722;
+    --glass: rgba(19, 23, 34, 0.82);
+    --border: rgba(0, 240, 255, 0.20);
+    --text: #f1f5f9;
+    --text-light: #a8b3c2;
 }
 
 * {
@@ -22,41 +22,40 @@ body {
     font-family: 'Inter', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.85;
+    line-height: 1.8;
     overflow-x: hidden;
 }
 
-/* Fondo Blade Runner sutil */
+/* Fondo sutil estilo Ex Machina / Blade Runner */
 body::before {
     content: '';
     position: fixed;
     inset: 0;
     background: 
-        linear-gradient(rgba(0, 224, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 224, 255, 0.025) 1px, transparent 1px);
-    background-size: 90px 90px;
+        linear-gradient(rgba(0, 240, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.018) 1px, transparent 1px);
+    background-size: 100px 100px;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.6;
+    opacity: 0.65;
 }
 
-/* Navbar estilo Blade Runner */
+/* Navbar - Minimalista y frío */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(12, 13, 20, 0.95);
-    backdrop-filter: blur(24px);
+    background: rgba(11, 12, 19, 0.96);
+    backdrop-filter: blur(28px);
     border-bottom: 1px solid var(--border);
     z-index: 1000;
-    padding: 1.6rem 0;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    padding: 1.7rem 0;
 }
 
 .nav-container {
-    max-width: 1350px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,18 +63,17 @@ body::before {
 
 .logo {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.65rem;
+    font-size: 2.7rem;
     font-weight: 700;
-    letter-spacing: -2.5px;
-    background: linear-gradient(90deg, #00e0ff, #ff2a6d);
+    letter-spacing: -2.8px;
+    background: linear-gradient(90deg, #00f0ff, #ff0066);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px rgba(0, 224, 255, 0.4);
 }
 
 nav ul {
     display: flex;
-    gap: 52px;
+    gap: 55px;
     list-style: none;
 }
 
@@ -83,7 +81,7 @@ nav a {
     color: var(--text-light);
     text-decoration: none;
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1.12rem;
     transition: all 0.4s ease;
     position: relative;
 }
@@ -96,11 +94,11 @@ nav a.active {
 nav a::after {
     content: '';
     position: absolute;
-    bottom: -6px;
+    bottom: -7px;
     left: 0;
     width: 0;
     height: 1.5px;
-    background: linear-gradient(to right, var(--primary), var(--accent));
+    background: var(--accent);
     transition: width 0.5s ease;
 }
 
@@ -109,40 +107,40 @@ nav a.active::after {
     width: 100%;
 }
 
-/* Hero - Atmósfera Blade Runner */
+/* Hero - Atmósfera Ex Machina / Atomic Blonde */
 .hero {
-    min-height: 100vh;
+    min-height: 92vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 90px;
+    padding-top: 80px;
     position: relative;
 }
 
 .hero h1 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 5rem;
+    font-size: 5.1rem;
     font-weight: 700;
-    letter-spacing: -4px;
+    letter-spacing: -4.2px;
     line-height: 1.05;
-    background: linear-gradient(90deg, #e0f8ff, #ff9ed9, #d1f7ff);
+    background: linear-gradient(90deg, #e0fbff, #ff80b3, #a0f0ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 60px rgba(0, 224, 255, 0.45);
+    text-shadow: 0 0 70px rgba(0, 240, 255, 0.4);
 }
 
 .hero p {
-    font-size: 1.55rem;
+    font-size: 1.58rem;
     color: var(--text-light);
-    max-width: 780px;
-    margin: 30px auto 0;
+    max-width: 800px;
+    margin: 32px auto 0;
     font-weight: 400;
 }
 
 /* Secciones */
 .section {
-    padding: 160px 0;
+    padding: 105px 0;
     display: none;
 }
 
@@ -153,20 +151,20 @@ nav a.active::after {
 .section-title {
     font-family: 'Space Grotesk', sans-serif;
     text-align: center;
-    font-size: 3.1rem;
-    margin-bottom: 100px;
+    font-size: 3rem;
+    margin-bottom: 75px;
     color: var(--primary);
-    text-shadow: 0 0 25px rgba(0, 224, 255, 0.35);
+    letter-spacing: -1px;
 }
 
 /* Hitos */
 .hitos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 45px;
-    max-width: 1350px;
+    grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+    gap: 42px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0 70px;
 }
 
 .hito-card {
@@ -175,36 +173,36 @@ nav a.active::after {
     overflow: hidden;
     border: 1px solid var(--border);
     cursor: pointer;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .hito-card:hover {
-    transform: translateY(-20px);
+    transform: translateY(-22px);
     border-color: var(--primary);
-    box-shadow: 0 25px 60px rgba(0, 224, 255, 0.18);
+    box-shadow: 0 30px 70px rgba(0, 240, 255, 0.16);
 }
 
 .hito-card img {
     width: 100%;
-    height: 280px;
+    height: 285px;
     object-fit: contain;
-    padding: 45px 35px 30px;
-    background: #0f121c;
-    transition: transform 0.7s ease;
+    padding: 48px 40px 35px;
+    background: #0f121e;
+    transition: transform 0.8s ease;
 }
 
 .hito-card:hover img {
-    transform: scale(1.06);
+    transform: scale(1.07);
 }
 
 .hito-info {
-    padding: 32px 35px 45px;
+    padding: 35px 40px 48px;
     text-align: center;
 }
 
 .hito-info h3 {
     color: var(--primary);
-    font-size: 1.65rem;
+    font-size: 1.68rem;
 }
 
 /* Modal */
@@ -212,8 +210,8 @@ nav a.active::after {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(12, 13, 20, 0.96);
-    backdrop-filter: blur(20px);
+    background: rgba(11, 12, 19, 0.97);
+    backdrop-filter: blur(22px);
     z-index: 2000;
     align-items: center;
     justify-content: center;
@@ -223,19 +221,20 @@ nav a.active::after {
     background: var(--glass);
     border: 1px solid var(--border);
     border-radius: 32px;
-    width: 90%;
-    max-width: 740px;
-    padding: 50px;
-    box-shadow: 0 0 80px rgba(0, 224, 255, 0.25);
+    width: 92%;
+    max-width: 760px;
+    padding: 52px;
+    box-shadow: 0 0 90px rgba(0, 240, 255, 0.22);
 }
 
 .modal-close {
     position: absolute;
-    top: 25px;
-    right: 35px;
-    font-size: 2.4rem;
-    color: #b0b8c9;
+    top: 28px;
+    right: 38px;
+    font-size: 2.5rem;
+    color: #a8b3c2;
     cursor: pointer;
+    transition: color 0.3s;
 }
 
 .modal-close:hover {
@@ -244,37 +243,37 @@ nav a.active::after {
 
 .modal img {
     width: 100%;
-    max-height: 360px;
+    max-height: 370px;
     object-fit: contain;
-    margin-bottom: 35px;
-    border-radius: 18px;
-    box-shadow: 0 0 40px rgba(255, 42, 109, 0.15);
+    margin-bottom: 38px;
+    border-radius: 20px;
+    box-shadow: 0 0 45px rgba(255, 0, 102, 0.18);
 }
 
 .modal h2 {
     color: var(--primary);
-    margin-bottom: 20px;
-    font-size: 2.15rem;
+    margin-bottom: 22px;
+    font-size: 2.2rem;
 }
 
 /* Formularios */
 .card {
     background: var(--card);
-    padding: 55px 50px;
+    padding: 50px 52px;
     border-radius: 32px;
     border: 1px solid var(--border);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
 }
 
 .card h2 {
     text-align: center;
     color: var(--primary);
-    margin-bottom: 45px;
+    margin-bottom: 48px;
     font-size: 2.25rem;
 }
 
 .input-group {
-    margin-bottom: 32px;
+    margin-bottom: 34px;
 }
 
 label {
@@ -282,22 +281,23 @@ label {
     margin-bottom: 12px;
     color: var(--accent);
     font-weight: 600;
+    letter-spacing: 0.6px;
 }
 
 input, textarea {
     width: 100%;
-    padding: 19px 26px;
-    background: #1c2333;
+    padding: 20px 26px;
+    background: #1a2233;
     border: 2px solid var(--border);
     border-radius: 20px;
     color: white;
-    font-size: 1.12rem;
-    transition: all 0.4s ease;
+    font-size: 1.13rem;
+    transition: all 0.4s;
 }
 
 input:focus, textarea:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 8px rgba(0, 224, 255, 0.15);
+    box-shadow: 0 0 0 9px rgba(0, 240, 255, 0.15);
 }
 
 .btn {
@@ -305,34 +305,33 @@ input:focus, textarea:focus {
     padding: 19px;
     border: none;
     border-radius: 20px;
-    font-size: 1.2rem;
+    font-size: 1.22rem;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 10px;
     transition: all 0.4s ease;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #00e0ff, #3b9eff);
-    color: #0c0d14;
-    box-shadow: 0 0 30px rgba(0, 224, 255, 0.5);
+    background: linear-gradient(135deg, #00f0ff, #0099cc);
+    color: #0b0c13;
+    box-shadow: 0 0 35px rgba(0, 240, 255, 0.55);
 }
 
 .btn-primary:hover {
     transform: translateY(-4px);
-    box-shadow: 0 0 45px rgba(0, 224, 255, 0.7);
+    box-shadow: 0 0 50px rgba(0, 240, 255, 0.75);
 }
 
 .error-msg {
-    color: #ff6b8b;
-    margin-top: 9px;
+    color: #ff4d7a;
+    margin-top: 10px;
     min-height: 1.4em;
 }
 
 .success-msg {
-    color: #39ff9e;
+    color: #00ffaa;
     text-align: center;
-    margin: 30px 0;
+    margin: 32px 0;
     font-weight: 600;
     font-size: 1.35rem;
 }
@@ -341,11 +340,12 @@ input:focus, textarea:focus {
     text-align: right;
     color: var(--text-light);
     margin-top: 12px;
+    font-size: 0.97rem;
 }
 
 footer {
     text-align: center;
-    padding: 120px 20px 90px;
+    padding: 85px 20px 65px;
     color: #64748b;
     border-top: 1px solid var(--border);
 }
@@ -353,8 +353,8 @@ footer {
 /* Responsive */
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 3.6rem;
-        letter-spacing: -2.5px;
+        font-size: 3.7rem;
+        letter-spacing: -2.8px;
     }
     
     .nav-container {
@@ -362,7 +362,7 @@ footer {
     }
     
     nav ul {
-        gap: 28px;
+        gap: 30px;
     }
     
     .hitos-grid {
@@ -371,7 +371,7 @@ footer {
     }
     
     .section {
-        padding: 120px 0;
+        padding: 100px 0;
     }
 }
 
