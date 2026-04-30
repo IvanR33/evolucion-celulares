@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
 
+    // Mostrar Hero por defecto
     document.getElementById('hero').classList.add('active');
 
     navLinks.forEach(link => {
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Modal
+    // Modal para los celulares
     const modelos = {
         startac: { titulo: "Motorola StarTAC", año: "1996", img: "Motorola-StarTAC.jpg", texto: "El primer teléfono plegable comercialmente exitoso." },
         s10: { titulo: "Siemens S10", año: "1997", img: "Siemens S10.jpg", texto: "Uno de los primeros con pantalla a color." },
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Formularios básicos
+    // Formularios
     const formRegistro = document.getElementById('formRegistro');
     if (formRegistro) {
         formRegistro.addEventListener('submit', (e) => {
