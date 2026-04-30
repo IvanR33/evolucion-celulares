@@ -3,10 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hardware Móvil - Iván Ignacio</title>
-    <!-- Tipografía profesional -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Cronología Hardware Móvil - Iván Ignacio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ==================== ESTÉTICA PREMIUM - ELEGANTE Y SOFISTICADA ==================== */
+        :root {
+            --primary: #60a5fa;
+            --primary-dark: #3b82f6;
+            --accent: #34d399;
+            --dark: #0a0f1c;
+            --card: #111827;
+            --border: #374151;
+            --text: #f1f5f9;
+            --text-light: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Header Premium */
+        .navbar {
+            background: rgba(10, 15, 28, 0.98);
+            backdrop-filter: blur(12px);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.25);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 45px;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.08rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main */
+        .container {
+            max-width: 1200px;
+            margin: 70px auto;
+            padding: 0 40px;
+        }
+
+        h1 {
+            font-size: 3.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 12px;
+            letter-spacing: -1.5px;
+            background: linear-gradient(90deg, #e0f2fe, #bae6fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro p {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 720px;
+            margin: 0 auto 60px;
+        }
+
+        /* Grid de Hitos */
+        .hitos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 32px;
+        }
+
+        .hito-card {
+            background: var(--card);
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+        }
+
+        .hito-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 35px 70px -15px rgba(96, 165, 250, 0.3);
+            border-color: var(--primary);
+        }
+
+        .hito-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: contain;
+            padding: 30px 25px 20px;
+            background: #0a0f1c;
+            transition: transform 0.6s ease;
+        }
+
+        .hito-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .hito-info {
+            padding: 25px 30px 35px;
+            text-align: center;
+        }
+
+        .hito-info h3 {
+            color: var(--primary);
+            font-size: 1.45rem;
+            margin-bottom: 12px;
+        }
+
+        /* Formularios Elegantes */
+        .card {
+            background: var(--card);
+            padding: 3rem 2.8rem;
+            border-radius: 24px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(96, 165, 250, 0.4);
+        }
+
+        .grid-forms {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+
+        .input-group {
+            margin-bottom: 26px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 16px 20px;
+            background: #1f2937;
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            color: var(--text);
+            font-size: 1.08rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 6px rgba(96, 165, 250, 0.18);
+            outline: none;
+            background: #283549;
+        }
+
+        .btn {
+            padding: 17px 30px;
+            border: none;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 1.12rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.4s ease;
+            margin-top: 12px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(96, 165, 250, 0.45);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), #10b981);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(52, 211, 153, 0.45);
+        }
+
+        /* Validaciones */
+        .error-msg {
+            color: #f87171;
+            font-size: 0.97rem;
+            margin-top: 8px;
+            min-height: 1.5em;
+        }
+
+        .success-msg {
+            color: var(--accent);
+            font-weight: 600;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.15rem;
+        }
+
+        .char-counter {
+            text-align: right;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 8px;
+        }
+
+        /* Footer */
+        .main-footer {
+            text-align: center;
+            padding: 60px 20px 50px;
+            color: #64748b;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-forms {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2.7rem;
+            }
+            .navbar .container {
+                padding: 0 25px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -25,13 +316,12 @@
     </header>
 
     <main class="container">
-        <!-- SECCIÓN DE HITOS (CON TUS IMÁGENES LOCALES) -->
+        <!-- Sección Hitos -->
         <section id="cronologia" class="intro">
-            <h1>Evolución del Hardware</h1>
-            <p>Unidad 2 - Analista Programador • INACAP 2026</p>
+            <h1>Evolución del Hardware Móvil</h1>
+            <p>Unidad 2 • Analista Programador - INACAP 2026</p>
             
             <div class="hitos-grid">
-                <!-- Hito 1 -->
                 <article class="hito-card">
                     <img src="Samsung SPH-M100.jpg" alt="Samsung SPH-M100">
                     <div class="hito-info">
@@ -40,39 +330,35 @@
                     </div>
                 </article>
 
-                <!-- Hito 2 -->
                 <article class="hito-card">
                     <img src="Ericsson_R380s_004.jpg" alt="Ericsson R380s">
                     <div class="hito-info">
                         <h3>Ericsson R380s</h3>
-                        <p>Primer dispositivo comercializado como 'Smartphone'.</p>
+                        <p>Primer dispositivo comercializado como Smartphone.</p>
                     </div>
                 </article>
 
-                <!-- Hito 3 -->
                 <article class="hito-card">
                     <img src="Kyocera VP-210.jpeg" alt="Kyocera VP-210">
                     <div class="hito-info">
                         <h3>Kyocera VP-210</h3>
-                        <p>Líder en la integración de cámaras frontales.</p>
+                        <p>Líder en la integración de cámaras para videollamadas.</p>
                     </div>
                 </article>
 
-                <!-- Hito 4 -->
                 <article class="hito-card">
                     <img src="Siemens S10.jpg" alt="Siemens S10">
                     <div class="hito-info">
                         <h3>Siemens S10</h3>
-                        <p>El primer celular con pantalla a color (1998).</p>
+                        <p>El primer celular con pantalla a color (1997-98).</p>
                     </div>
                 </article>
             </div>
         </section>
 
-        <hr class="divider">
-
-        <!-- SECCIÓN FORMULARIOS -->
+        <!-- Formularios -->
         <div class="grid-forms">
+            <!-- Registro -->
             <section id="registro" class="card">
                 <h2>Crear Cuenta</h2>
                 <form id="formRegistro">
@@ -87,19 +373,20 @@
                     </div>
                     <div class="input-group">
                         <label>Contraseña</label>
-                        <input type="password" id="regPass" placeholder="Mín. 8 caracteres" required>
+                        <input type="password" id="regPass" placeholder="Mínimo 8 caracteres" required>
                         <div id="errPass" class="error-msg"></div>
                     </div>
                     <div class="input-group">
-                        <label>Confirmar</label>
-                        <input type="password" id="regPassConf" placeholder="Repite tu clave" required>
+                        <label>Confirmar Contraseña</label>
+                        <input type="password" id="regPassConf" placeholder="Repite tu contraseña" required>
                         <div id="errPassConf" class="error-msg"></div>
                     </div>
                     <button type="submit" class="btn btn-primary">Registrarme</button>
                 </form>
             </section>
 
-            <section id="login" class="card dark-card">
+            <!-- Login -->
+            <section id="login" class="card">
                 <h2>Acceso Clientes</h2>
                 <form id="formLogin">
                     <div class="input-group">
@@ -116,6 +403,7 @@
             </section>
         </div>
 
+        <!-- Contacto -->
         <section id="contacto" class="card">
             <h2>Soporte Técnico</h2>
             <form id="formContacto">
@@ -125,7 +413,7 @@
                 </div>
                 <div class="input-group">
                     <label>Mensaje</label>
-                    <textarea id="conMensaje" rows="4" required></textarea>
+                    <textarea id="conMensaje" rows="5" required></textarea>
                     <div id="charCount" class="char-counter">Caracteres: 0</div>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar Reporte</button>
@@ -134,9 +422,91 @@
     </main>
 
     <footer class="main-footer">
-        <p>&copy; 2026 Iván Ignacio Jiménez Reyes | INACAP La Granja</p>
+        <p>&copy; 2026 Iván Ignacio Jiménez Reyes | Analista Programador - INACAP La Granja</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        /* ==================== JAVASCRIPT - VALIDACIÓN ==================== */
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Validaciones
+            const Validator = {
+                isValidEmail: (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
+                isSecurePassword: (pass) => pass.length >= 8,
+                passwordsMatch: (p1, p2) => p1 === p2
+            };
+
+            // Formulario Registro
+            const formRegistro = document.getElementById('formRegistro');
+            if (formRegistro) {
+                formRegistro.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+
+                    const email = document.getElementById('regEmail').value.trim();
+                    const pass = document.getElementById('regPass').value;
+                    const passConf = document.getElementById('regPassConf').value;
+
+                    let esValido = true;
+
+                    if (!Validator.isValidEmail(email)) {
+                        document.getElementById('errEmail').textContent = 'Formato de email inválido';
+                        esValido = false;
+                    }
+                    if (!Validator.isSecurePassword(pass)) {
+                        document.getElementById('errPass').textContent = 'La contraseña debe tener mínimo 8 caracteres';
+                        esValido = false;
+                    }
+                    if (!Validator.passwordsMatch(pass, passConf)) {
+                        document.getElementById('errPassConf').textContent = 'Las contraseñas no coinciden';
+                        esValido = false;
+                    }
+
+                    if (esValido) {
+                        alert('¡Registro exitoso! Datos validados correctamente.');
+                        formRegistro.reset();
+                    }
+                });
+            }
+
+            // Formulario Login
+            const formLogin = document.getElementById('formLogin');
+            if (formLogin) {
+                formLogin.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const feedback = document.getElementById('logFeedback');
+                    feedback.innerHTML = `<p class="success-msg">Acceso concedido. Bienvenido al sistema.</p>`;
+
+                    setTimeout(() => {
+                        formLogin.reset();
+                        feedback.innerHTML = '';
+                    }, 2800);
+                });
+            }
+
+            // Formulario Contacto - Contador en tiempo real
+            const textarea = document.getElementById('conMensaje');
+            const charCount = document.getElementById('charCount');
+
+            if (textarea && charCount) {
+                textarea.addEventListener('input', () => {
+                    const length = textarea.value.length;
+                    charCount.textContent = `Caracteres: ${length}`;
+                    charCount.style.color = length > 180 ? '#f87171' : '#cbd5e1';
+                });
+            }
+
+            const formContacto = document.getElementById('formContacto');
+            if (formContacto) {
+                formContacto.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const nombre = document.getElementById('conNombre').value.trim();
+                    alert(`¡Reporte enviado correctamente!\nGracias ${nombre || 'usuario'}.`);
+                    formContacto.reset();
+                    if (charCount) charCount.textContent = 'Caracteres: 0';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
