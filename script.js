@@ -1,51 +1,74 @@
-// script.js - Funcionalidad completa para el proyecto
+/* script.js - Validación de Formularios + Modal para Línea de Tiempo */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==================== NAVEGACIÓN ENTRE SECCIONES ====================
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.section');
+    // ==================== VALIDACIONES ====================
+    const Validator = {
+        isValidEmail: (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
+        isSecurePassword: (pass) => pass.length >= 8,
+        passwordsMatch: (p1, p2) => p1 === p2,
+        sanitize: (str) => {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+    };
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            // Remover clase active de todos los links y secciones
-            navLinks.forEach(l => l.classList.remove('active'));
-            sections.forEach(s => s.classList.remove('active'));
-
-            // Activar el link y la sección correspondiente
-            link.classList.add('active');
-            const sectionId = link.getAttribute('data-section');
-            document.getElementById(sectionId).classList.add('active');
-        });
-    });
-
-    // ==================== MODAL PARA HITOS ====================
+    // ==================== MODAL PARA HITOS (9 celulares) ====================
     const modelos = {
+        startac: {
+            titulo: "Motorola StarTAC",
+            año: "1996",
+            img: "Motorola StarTAC.jpg",
+            texto: "El primer teléfono plegable comercialmente exitoso. Revolucionó el diseño de los celulares con su formato compacto y ligero."
+        },
         s10: {
             titulo: "Siemens S10",
             año: "1997",
             img: "Siemens S10.jpg",
-            texto: "Fue uno de los primeros teléfonos móviles en incorporar una pantalla a color, aunque limitada a solo 4 colores (rojo, verde, azul y blanco). Representó un gran avance en la visualización de información en dispositivos portátiles."
+            texto: "Uno de los primeros teléfonos con pantalla a color (aunque limitada a 4 colores). Marcó un hito en la visualización de información en móviles."
+        },
+        nokia5110: {
+            titulo: "Nokia 5110",
+            año: "1998",
+            img: "Nokia 5110.jpg",
+            texto: "Icono de los años 90. Conocido por su durabilidad, batería de larga duración y el famoso juego Snake."
         },
         sph: {
             titulo: "Samsung SPH-M100",
             año: "1999",
             img: "Samsung SPH-M100.jpg",
-            texto: "El primer teléfono del mundo capaz de reproducir archivos MP3 de forma nativa. Marcó el comienzo de la era multimedia en los teléfonos celulares."
+            texto: "El primer teléfono del mundo capaz de reproducir música en formato MP3 de forma nativa. Inicio de la era multimedia."
         },
         kyocera: {
             titulo: "Kyocera VP-210",
             año: "1999",
             img: "Kyocera VP-210.jpeg",
-            texto: "Pionero en la integración de cámara para videollamadas. Fue uno de los primeros dispositivos que permitió transmitir video en tiempo real."
+            texto: "Pionero mundial en integrar cámara para videollamadas. Uno de los primeros pasos hacia las videollamadas modernas."
+        },
+        nokia3310: {
+            titulo: "Nokia 3310",
+            año: "2000",
+            img: "Nokia 3310.jpg",
+            texto: "El legendario 'indestructible'. Vendió más de 126 millones de unidades y popularizó el juego Snake en todo el mundo."
         },
         ericsson: {
             titulo: "Ericsson R380s",
             año: "2000",
             img: "Ericsson_R380s_004.jpg",
-            texto: "Reconocido como el primer Smartphone oficial de la historia. Incluía pantalla táctil y sistema operativo Symbian."
+            texto: "Considerado oficialmente el primer Smartphone de la historia. Incluía pantalla táctil y sistema operativo Symbian."
+        },
+        sl45i: {
+            titulo: "Siemens SL45i",
+            año: "2001",
+            img: "Siemens SL45i.jpg",
+            texto: "Uno de los primeros teléfonos con reproductor MP3 integrado y ranura para Memory Stick. Gran avance en multimedia."
+        },
+        t68i: {
+            titulo: "Sony Ericsson T68i",
+            año: "2002",
+            img: "Sony Ericsson T68i.jpg",
+            texto: "Primer teléfono con Bluetooth y pantalla a color real. Diseño premium y gran influencia en los celulares de la siguiente generación."
         }
     };
 
@@ -53,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('modal');
         const body = document.getElementById('modal-body');
         const data = modelos[id];
+
+        if (!data) return;
 
         body.innerHTML = `
             <img src="${data.img}" alt="${data.titulo}">
@@ -62,16 +87,22 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = "flex";
     }
 
-    // Eventos del modal
-    document.querySelector('.modal-close').addEventListener('click', () => {
-        document.getElementById('modal').style.display = "none";
-    });
-
-    document.getElementById('modal').addEventListener('click', (e) => {
-        if (e.target.id === 'modal') {
+    // Eventos del Modal
+    const modalClose = document.querySelector('.modal-close');
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
             document.getElementById('modal').style.display = "none";
-        }
-    });
+        });
+    }
+
+    const modalElement = document.getElementById('modal');
+    if (modalElement) {
+        modalElement.addEventListener('click', (e) => {
+            if (e.target === modalElement) {
+                modalElement.style.display = "none";
+            }
+        });
+    }
 
     // Click en las tarjetas de hitos
     document.querySelectorAll('.hito-card').forEach(card => {
@@ -81,66 +112,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ==================== VALIDACIÓN DE FORMULARIOS ====================
+    // ==================== FORMULARIOS ====================
 
-    // Formulario de Registro
+    // Registro
     const formRegistro = document.getElementById('formRegistro');
     if (formRegistro) {
         formRegistro.addEventListener('submit', (e) => {
             e.preventDefault();
-
-            // Limpiar errores previos
             document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
 
             const email = document.getElementById('regEmail').value.trim();
             const pass = document.getElementById('regPass').value;
             const passConf = document.getElementById('regPassConf').value;
 
-            let valid = true;
+            let esValido = true;
 
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            if (!Validator.isValidEmail(email)) {
                 document.getElementById('errEmail').textContent = 'Formato de email inválido';
-                valid = false;
+                esValido = false;
             }
-            if (pass.length < 8) {
+            if (!Validator.isSecurePassword(pass)) {
                 document.getElementById('errPass').textContent = 'La contraseña debe tener mínimo 8 caracteres';
-                valid = false;
+                esValido = false;
             }
-            if (pass !== passConf) {
+            if (!Validator.passwordsMatch(pass, passConf)) {
                 document.getElementById('errPassConf').textContent = 'Las contraseñas no coinciden';
-                valid = false;
+                esValido = false;
             }
 
-            if (valid) {
-                alert('¡Registro exitoso! Los datos han sido validados correctamente.');
+            if (esValido) {
+                alert('¡Registro exitoso! Datos validados correctamente.');
                 formRegistro.reset();
             }
         });
     }
 
-    // Formulario de Login
+    // Login
     const formLogin = document.getElementById('formLogin');
     if (formLogin) {
         formLogin.addEventListener('submit', (e) => {
             e.preventDefault();
             const feedback = document.getElementById('logFeedback');
-            feedback.innerHTML = '<p class="success-msg">¡Acceso exitoso! Bienvenido al sistema.</p>';
+            feedback.innerHTML = `<p class="success-msg">¡Acceso concedido! Bienvenido al sistema.</p>`;
 
-            // Limpiar después de 3 segundos
             setTimeout(() => {
                 formLogin.reset();
                 feedback.innerHTML = '';
-            }, 3000);
+            }, 2800);
         });
     }
 
-    // Formulario de Contacto + Contador de caracteres
+    // Contacto con contador
     const textarea = document.getElementById('conMensaje');
     const charCount = document.getElementById('charCount');
 
     if (textarea && charCount) {
         textarea.addEventListener('input', () => {
-            charCount.textContent = `Caracteres: ${textarea.value.length}`;
+            const length = textarea.value.length;
+            charCount.textContent = `Caracteres: ${length}`;
+            charCount.style.color = length > 150 ? '#f87171' : '#b0b8c9';
         });
     }
 
@@ -148,7 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formContacto) {
         formContacto.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('¡Mensaje enviado correctamente!');
+            const nombre = document.getElementById('conNombre').value.trim();
+            const nombreSeguro = Validator.sanitize(nombre);
+
+            alert(`¡Mensaje enviado correctamente!\nGracias ${nombreSeguro || 'usuario'}.`);
             formContacto.reset();
             if (charCount) charCount.textContent = 'Caracteres: 0';
         });
