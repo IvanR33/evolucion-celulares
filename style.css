@@ -1,9 +1,8 @@
-/* style.css - Blade Runner Elegante | Atomic Blonde Cyberpunk Premium (Versión Mejorada) */
+/* style.css - Blade Runner Elegante | Atomic Blonde Cyberpunk Premium (Ajustado) */
 
 :root {
     --primary: #00e0ff;
     --accent: #ff2a6d;
-    --soft-neon: #d1f7ff;
     --bg: #0c0d14;
     --card: #141824;
     --glass: rgba(20, 24, 36, 0.82);
@@ -12,32 +11,13 @@
     --text-light: #b0b8c9;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Inter', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.85;
-    overflow-x: hidden;
-}
-
-/* Fondo sutil */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: 
-        linear-gradient(rgba(0, 224, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 224, 255, 0.025) 1px, transparent 1px);
-    background-size: 90px 90px;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.5;
 }
 
 /* Navbar */
@@ -46,16 +26,16 @@ body::before {
     top: 0;
     width: 100%;
     background: rgba(12, 13, 20, 0.96);
-    backdrop-filter: blur(24px);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     z-index: 1000;
-    padding: 1.6rem 0;
+    padding: 1.5rem 0;
 }
 
 .nav-container {
     max-width: 1350px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,9 +43,9 @@ body::before {
 
 .logo {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.65rem;
+    font-size: 2.55rem;
     font-weight: 700;
-    letter-spacing: -2.5px;
+    letter-spacing: -2px;
     background: linear-gradient(90deg, #00e0ff, #ff2a6d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -73,7 +53,7 @@ body::before {
 
 nav ul {
     display: flex;
-    gap: 52px;
+    gap: 48px;
     list-style: none;
 }
 
@@ -82,29 +62,10 @@ nav a {
     text-decoration: none;
     font-weight: 500;
     font-size: 1.1rem;
-    transition: all 0.4s ease;
-    position: relative;
 }
 
-nav a:hover,
-nav a.active {
+nav a:hover, nav a.active {
     color: var(--primary);
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(to right, var(--primary), var(--accent));
-    transition: width 0.5s ease;
-}
-
-nav a:hover::after,
-nav a.active::after {
-    width: 100%;
 }
 
 /* Hero */
@@ -114,59 +75,41 @@ nav a.active::after {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 90px;
-    position: relative;
+    padding-top: 80px;
 }
 
 .hero h1 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 4.8rem;
+    font-size: 4.6rem;
     font-weight: 700;
-    letter-spacing: -4px;
-    line-height: 1.05;
+    letter-spacing: -3.5px;
     background: linear-gradient(90deg, #e0f8ff, #ff9ed9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 50px rgba(0, 224, 255, 0.5);
 }
 
 .hero p {
     font-size: 1.5rem;
     color: var(--text-light);
-    max-width: 780px;
-    margin: 30px auto 0;
-}
-
-/* Secciones */
-.section {
-    padding: 140px 0;
-}
-
-.section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 80px;
-    color: var(--primary);
-    text-shadow: 0 0 25px rgba(0, 224, 255, 0.4);
+    max-width: 760px;
+    margin: 25px auto 0;
 }
 
 /* Timeline */
 .timeline {
-    max-width: 1200px;
-    margin: 0 auto 80px;
-    position: relative;
+    max-width: 1250px;
+    margin: 0 auto 70px;
     padding: 0 40px;
 }
 
 .timeline-line {
     position: absolute;
-    top: 28px;
-    left: 50px;
-    right: 50px;
-    height: 3px;
+    top: 26px;
+    left: 60px;
+    right: 60px;
+    height: 4px;
     background: linear-gradient(to right, var(--primary), var(--accent));
-    opacity: 0.4;
+    opacity: 0.35;
 }
 
 .timeline-items {
@@ -181,31 +124,24 @@ nav a.active::after {
 }
 
 .timeline-dot {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background: var(--bg);
     border: 3px solid var(--primary);
     border-radius: 50%;
-    margin: 0 auto 8px;
-    box-shadow: 0 0 12px var(--primary);
+    margin: 0 auto 10px;
 }
 
 .timeline-item span {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--text-light);
-    font-weight: 500;
 }
 
-.timeline-item.active .timeline-dot {
-    background: var(--primary);
-    box-shadow: 0 0 20px var(--primary);
-}
-
-/* Hitos Grid */
+/* Hitos */
 .hitos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
     max-width: 1350px;
     margin: 0 auto;
     padding: 0 50px;
@@ -221,7 +157,7 @@ nav a.active::after {
 }
 
 .hito-card:hover {
-    transform: translateY(-15px);
+    transform: translateY(-12px);
     border-color: var(--primary);
 }
 
@@ -240,7 +176,7 @@ nav a.active::after {
 
 .hito-info h3 {
     color: var(--primary);
-    font-size: 1.55rem;
+    font-size: 1.5rem;
 }
 
 /* Modal */
@@ -248,7 +184,7 @@ nav a.active::after {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(12, 13, 20, 0.95);
+    background: rgba(12, 13, 20, 0.94);
     backdrop-filter: blur(15px);
     z-index: 2000;
     align-items: center;
@@ -262,7 +198,6 @@ nav a.active::after {
     width: 90%;
     max-width: 720px;
     padding: 45px;
-    position: relative;
 }
 
 .modal-close {
@@ -290,7 +225,7 @@ nav a.active::after {
 /* Formularios */
 .formulario-contenedor {
     max-width: 700px;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 0 20px;
 }
 
@@ -307,7 +242,6 @@ nav a.active::after {
     margin-bottom: 40px;
 }
 
-/* Resto de estilos de formularios (mantengo los tuyos) */
 .campo { margin-bottom: 25px; }
 
 label {
@@ -324,12 +258,6 @@ input, textarea {
     border: 2px solid var(--border);
     border-radius: 16px;
     color: white;
-    font-size: 1.05rem;
-}
-
-input:focus, textarea:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 6px rgba(0, 224, 255, 0.15);
 }
 
 .btn-enviar {
@@ -353,5 +281,6 @@ footer {
     padding: 100px 20px 80px;
     color: #64748b;
 }
+
 
 
