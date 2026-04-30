@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEON ARCHIVE • Hardware Móvil</title>
+    <title>Cronología Hardware Móvil - Iván Ignacio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-cyan: #67e8f9;
-            --neon-purple: #c084fc;
-            --neon-pink: #f472b6;
-            --bg: #0a0a12;
-            --card: rgba(17, 20, 40, 0.85);
-            --glass: rgba(15, 23, 42, 0.78);
-            --border: rgba(103, 232, 249, 0.35);
+            --primary: #60a5fa;
+            --accent: #34d399;
+            --bg: #05070f;
+            --card: #0f1729;
+            --glass: rgba(15, 23, 41, 0.82);
+            --border: rgba(96, 165, 250, 0.3);
+            --text: #f1f5f9;
+            --text-light: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,12 +22,8 @@
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
-            color: #e0f2fe;
-            line-height: 1.75;
-            background-image: 
-                linear-gradient(rgba(103, 232, 249, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(103, 232, 249, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+            color: var(--text);
+            line-height: 1.8;
         }
 
         /* Navbar */
@@ -34,17 +31,17 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 18, 0.92);
-            backdrop-filter: blur(20px);
+            background: rgba(5, 7, 15, 0.95);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
-            padding: 1.2rem 0;
+            padding: 1.3rem 0;
         }
 
         .nav-container {
-            max-width: 1350px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 60px;
+            padding: 0 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -52,31 +49,26 @@
 
         .logo {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.6rem;
+            font-size: 2.4rem;
             font-weight: 700;
-            letter-spacing: -2px;
+            letter-spacing: -1.5px;
             color: white;
-            text-shadow: 0 0 20px var(--neon-cyan);
         }
 
         nav ul {
             display: flex;
-            gap: 55px;
+            gap: 50px;
             list-style: none;
         }
 
         nav a {
-            color: #a5b4fc;
+            color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.12rem;
-            transition: all 0.3s;
+            font-size: 1.1rem;
         }
 
-        nav a:hover {
-            color: var(--neon-cyan);
-            text-shadow: 0 0 15px var(--neon-cyan);
-        }
+        nav a:hover { color: var(--primary); }
 
         /* Hero */
         .hero {
@@ -85,39 +77,29 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(103, 232, 249, 0.12), transparent 70%);
-            z-index: -1;
+            padding-top: 80px;
         }
 
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 5rem;
+            font-size: 4.2rem;
             font-weight: 700;
             line-height: 1.05;
             margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-cyan));
+            background: linear-gradient(90deg, #bae6fd, #c4b5fd);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 40px rgba(103, 232, 249, 0.6);
-            letter-spacing: -4px;
+            letter-spacing: -3px;
         }
 
         .hero p {
-            font-size: 1.55rem;
-            color: #c4d0ff;
-            max-width: 780px;
+            font-size: 1.45rem;
+            color: var(--text-light);
+            max-width: 720px;
             margin: 0 auto;
         }
 
-        /* Hitos */
+        /* Secciones */
         .section {
             padding: 140px 0;
         }
@@ -125,48 +107,51 @@
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
             text-align: center;
-            font-size: 3.1rem;
-            margin-bottom: 90px;
-            color: var(--neon-cyan);
-            text-shadow: 0 0 20px rgba(103, 232, 249, 0.5);
+            font-size: 2.8rem;
+            margin-bottom: 80px;
+            color: var(--primary);
         }
 
+        /* Hitos */
         .hitos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
-            gap: 45px;
-            max-width: 1350px;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 40px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 60px;
+            padding: 0 50px;
         }
 
         .hito-card {
-            background: var(--glass);
-            backdrop-filter: blur(18px);
+            background: var(--card);
             border-radius: 24px;
-            border: 1px solid var(--border);
             overflow: hidden;
+            border: 1px solid var(--border);
             cursor: pointer;
-            transition: all 0.6s ease;
+            transition: all 0.5s ease;
         }
 
         .hito-card:hover {
-            transform: translateY(-20px) scale(1.02);
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 60px -10px var(--neon-cyan);
+            transform: translateY(-15px);
+            border-color: var(--primary);
         }
 
         .hito-card img {
             width: 100%;
-            height: 290px;
+            height: 270px;
             object-fit: contain;
-            padding: 45px 35px 30px;
+            padding: 40px 30px 25px;
             background: #0a0e1c;
-            transition: transform 0.8s ease;
         }
 
-        .hito-card:hover img {
-            transform: scale(1.08);
+        .hito-info {
+            padding: 25px 30px 35px;
+            text-align: center;
+        }
+
+        .hito-info h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
         }
 
         /* Modal */
@@ -175,7 +160,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(5, 7, 15, 0.92);
+            background: rgba(5, 7, 15, 0.9);
             backdrop-filter: blur(12px);
             z-index: 2000;
             align-items: center;
@@ -184,138 +169,123 @@
 
         .modal-content {
             background: var(--glass);
-            backdrop-filter: blur(25px);
-            border: 2px solid var(--border);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
             border-radius: 28px;
             width: 90%;
-            max-width: 720px;
-            padding: 45px;
+            max-width: 700px;
+            padding: 40px;
             position: relative;
-            box-shadow: 0 0 80px -20px var(--neon-cyan);
         }
 
         .modal-close {
             position: absolute;
             top: 20px;
             right: 30px;
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #94a3b8;
             cursor: pointer;
         }
 
         .modal img {
             width: 100%;
-            max-height: 340px;
+            max-height: 320px;
             object-fit: contain;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border-radius: 16px;
-            border: 1px solid rgba(103, 232, 249, 0.3);
         }
 
         .modal h2 {
-            color: var(--neon-cyan);
-            font-size: 2.2rem;
+            color: var(--primary);
             margin-bottom: 15px;
-            text-shadow: 0 0 15px rgba(103, 232, 249, 0.7);
         }
 
-        .modal p {
-            color: #c4d0ff;
-            line-height: 1.85;
-            font-size: 1.1rem;
-        }
-
-        /* Formularios */
-        .forms-container {
-            max-width: 1350px;
+        /* Formularios - Sección organizada */
+        .forms-section {
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 60px 140px;
+            padding: 0 50px 120px;
+        }
+
+        .forms-title {
+            text-align: center;
+            font-size: 2.6rem;
+            color: var(--primary);
+            margin-bottom: 80px;
         }
 
         .grid-forms {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
+            margin-bottom: 80px;
         }
 
         .card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            padding: 52px 48px;
-            border-radius: 28px;
+            background: var(--card);
+            padding: 48px 45px;
+            border-radius: 26px;
             border: 1px solid var(--border);
         }
 
         .card h2 {
             text-align: center;
-            color: var(--neon-purple);
-            margin-bottom: 40px;
-            font-size: 2.1rem;
+            color: var(--primary);
+            margin-bottom: 35px;
         }
 
-        .input-group { margin-bottom: 30px; }
+        .input-group { margin-bottom: 28px; }
 
         label {
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: var(--accent);
             font-weight: 600;
         }
 
         input, textarea {
             width: 100%;
-            padding: 20px 24px;
-            background: rgba(26, 32, 52, 0.9);
+            padding: 18px 22px;
+            background: #1a2338;
             border: 2px solid var(--border);
-            border-radius: 20px;
+            border-radius: 18px;
             color: white;
-            font-size: 1.12rem;
+            font-size: 1.1rem;
         }
 
         input:focus, textarea:focus {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 0 8px rgba(103, 232, 249, 0.25);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 7px rgba(96, 165, 250, 0.2);
         }
 
         .btn {
             width: 100%;
-            padding: 20px;
+            padding: 18px;
             border: none;
-            border-radius: 20px;
-            font-size: 1.18rem;
+            border-radius: 18px;
+            font-size: 1.15rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.4s ease;
+            margin-top: 15px;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--neon-cyan), #22d3ee);
-            color: #0a0a12;
-        }
+        .btn-primary { background: linear-gradient(135deg, var(--primary), #3b82f6); color: white; }
+        .btn-accent { background: linear-gradient(135deg, var(--accent), #10b981); color: white; }
 
-        .btn-accent {
-            background: linear-gradient(135deg, var(--neon-purple), #d8b4fe);
-            color: #0a0a12;
-        }
-
-        .btn:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 0 50px -10px var(--neon-cyan);
-        }
-
-        .error-msg { color: #fda4af; margin-top: 10px; }
-        .success-msg { color: var(--accent); text-align: center; margin: 25px 0; font-size: 1.3rem; font-weight: 600; }
-        .char-counter { text-align: right; color: #a5b4fc; margin-top: 10px; }
+        .error-msg { color: #fda4af; margin-top: 8px; }
+        .success-msg { color: #34d399; text-align: center; margin: 25px 0; font-weight: 600; font-size: 1.25rem; }
+        .char-counter { text-align: right; color: var(--text-light); margin-top: 10px; }
 
         footer {
             text-align: center;
-            padding: 120px 20px 80px;
+            padding: 100px 20px 70px;
             color: #64748b;
+            border-top: 1px solid var(--border);
         }
 
         @media (max-width: 768px) {
             .grid-forms { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3.4rem; }
+            .hero h1 { font-size: 3rem; }
         }
     </style>
 </head>
@@ -323,13 +293,11 @@
 
     <header class="navbar">
         <div class="nav-container">
-            <div class="logo">NEON <span>ARCHIVE</span></div>
+            <div class="logo">Cronología Móvil</div>
             <nav>
                 <ul>
                     <li><a href="#hitos">Hitos</a></li>
-                    <li><a href="#registro">Registro</a></li>
-                    <li><a href="#login">Acceso</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#formularios">Formularios</a></li>
                 </ul>
             </nav>
         </div>
@@ -337,13 +305,13 @@
 
     <section class="hero">
         <div>
-            <h1>NEON ARCHIVE</h1>
-            <p>Crónica digital de la revolución del hardware móvil (1997-2000)</p>
+            <h1>Evolución del Hardware Móvil</h1>
+            <p>Unidad 2 • Analista Programador - INACAP 2026</p>
         </div>
     </section>
 
     <section id="hitos" class="section">
-        <h2 class="section-title">Hitos que iluminaron el futuro</h2>
+        <h2 class="section-title">Hitos Históricos (1997 - 2000)</h2>
         <div class="hitos-grid">
             <article class="hito-card" data-modal="s10">
                 <img src="Siemens S10.jpg" alt="Siemens S10">
@@ -372,100 +340,87 @@
         </div>
     </div>
 
-    <!-- Formularios -->
-    <div class="forms-container">
-        <div class="grid-forms">
-            <div class="card" id="registro">
-                <h2>Registro de Usuario</h2>
-                <form id="formRegistro">
-                    <div class="input-group">
-                        <label>Usuario</label>
-                        <input type="text" id="regUser" required>
-                    </div>
-                    <div class="input-group">
-                        <label>Email</label>
-                        <input type="email" id="regEmail" required>
-                        <div id="errEmail" class="error-msg"></div>
-                    </div>
-                    <div class="input-group">
-                        <label>Contraseña</label>
-                        <input type="password" id="regPass" required>
-                        <div id="errPass" class="error-msg"></div>
-                    </div>
-                    <div class="input-group">
-                        <label>Confirmar Contraseña</label>
-                        <input type="password" id="regPassConf" required>
-                        <div id="errPassConf" class="error-msg"></div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Registrarme</button>
-                </form>
+    <!-- Sección de Formularios - Más profesional -->
+    <section id="formularios" class="section">
+        <h2 class="forms-title">Acceso y Soporte</h2>
+        
+        <div class="forms-container">
+            <div class="grid-forms">
+                <!-- Registro -->
+                <div class="card" id="registro">
+                    <h2>Formulario de Registro</h2>
+                    <form id="formRegistro">
+                        <div class="input-group">
+                            <label>Usuario</label>
+                            <input type="text" id="regUser" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" id="regEmail" required>
+                            <div id="errEmail" class="error-msg"></div>
+                        </div>
+                        <div class="input-group">
+                            <label>Contraseña</label>
+                            <input type="password" id="regPass" required>
+                            <div id="errPass" class="error-msg"></div>
+                        </div>
+                        <div class="input-group">
+                            <label>Confirmar Contraseña</label>
+                            <input type="password" id="regPassConf" required>
+                            <div id="errPassConf" class="error-msg"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrarme</button>
+                    </form>
+                </div>
+
+                <!-- Login -->
+                <div class="card" id="login">
+                    <h2>Formulario de Login</h2>
+                    <form id="formLogin">
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" id="logEmail" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Contraseña</label>
+                            <input type="password" id="logPass" required>
+                        </div>
+                        <div id="logFeedback"></div>
+                        <button type="submit" class="btn btn-accent">Ingresar</button>
+                    </form>
+                </div>
             </div>
 
-            <div class="card" id="login">
-                <h2>Acceso al Sistema</h2>
-                <form id="formLogin">
+            <!-- Contacto (debajo, más destacado) -->
+            <div class="card" id="contacto">
+                <h2>Formulario de Contacto</h2>
+                <form id="formContacto">
                     <div class="input-group">
-                        <label>Email</label>
-                        <input type="email" id="logEmail" required>
+                        <label>Nombre</label>
+                        <input type="text" id="conNombre" required>
                     </div>
                     <div class="input-group">
-                        <label>Contraseña</label>
-                        <input type="password" id="logPass" required>
+                        <label>Mensaje</label>
+                        <textarea id="conMensaje" rows="5" required></textarea>
+                        <div id="charCount" class="char-counter">Caracteres: 0</div>
                     </div>
-                    <div id="logFeedback"></div>
-                    <button type="submit" class="btn btn-accent">Ingresar</button>
+                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
                 </form>
             </div>
         </div>
-
-        <div class="card" id="contacto" style="margin-top: 60px;">
-            <h2>Soporte Técnico</h2>
-            <form id="formContacto">
-                <div class="input-group">
-                    <label>Nombre</label>
-                    <input type="text" id="conNombre" required>
-                </div>
-                <div class="input-group">
-                    <label>Mensaje</label>
-                    <textarea id="conMensaje" rows="6" required></textarea>
-                    <div id="charCount" class="char-counter">Caracteres: 0</div>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-            </form>
-        </div>
-    </div>
+    </section>
 
     <footer>
         <p>&copy; 2026 Iván Ignacio Jiménez Reyes • Analista Programador - INACAP La Granja</p>
     </footer>
 
     <script>
-        // Datos completos con imágenes
+        // Datos de los modelos
         const modelos = {
-            s10: {
-                titulo: "Siemens S10",
-                año: "1997",
-                img: "Siemens S10.jpg",
-                texto: "Fue uno de los primeros teléfonos móviles en incorporar una pantalla a color, aunque limitada solo a 4 colores. Representó un importante avance en la visualización de información en dispositivos portátiles."
-            },
-            sph: {
-                titulo: "Samsung SPH-M100",
-                año: "1999",
-                img: "Samsung SPH-M100.jpg",
-                texto: "El primer teléfono del mundo capaz de reproducir archivos MP3 de forma nativa. Marcó el comienzo de la era multimedia en los teléfonos celulares."
-            },
-            kyocera: {
-                titulo: "Kyocera VP-210",
-                año: "1999",
-                img: "Kyocera VP-210.jpeg",
-                texto: "Pionero en la integración de cámara para videollamadas. Fue uno de los primeros dispositivos que permitió transmitir video en tiempo real."
-            },
-            ericsson: {
-                titulo: "Ericsson R380s",
-                año: "2000",
-                img: "Ericsson_R380s_004.jpg",
-                texto: "Reconocido como el primer Smartphone oficial de la historia. Incluía pantalla táctil y sistema operativo Symbian."
-            }
+            s10: { titulo: "Siemens S10", año: "1997", img: "Siemens S10.jpg", texto: "Fue uno de los primeros teléfonos móviles en incorporar una pantalla a color..." },
+            sph: { titulo: "Samsung SPH-M100", año: "1999", img: "Samsung SPH-M100.jpg", texto: "El primer teléfono del mundo capaz de reproducir archivos MP3 de forma nativa..." },
+            kyocera: { titulo: "Kyocera VP-210", año: "1999", img: "Kyocera VP-210.jpeg", texto: "Pionero en la integración de cámara para videollamadas..." },
+            ericsson: { titulo: "Ericsson R380s", año: "2000", img: "Ericsson_R380s_004.jpg", texto: "Reconocido como el primer Smartphone oficial de la historia..." }
         };
 
         function abrirModal(id) {
@@ -482,49 +437,32 @@
         }
 
         // Eventos del modal
-        document.querySelector('.modal-close').addEventListener('click', () => {
-            document.getElementById('modal').style.display = "none";
-        });
-
+        document.querySelector('.modal-close').addEventListener('click', () => document.getElementById('modal').style.display = "none");
         document.getElementById('modal').addEventListener('click', (e) => {
-            if (e.target.id === 'modal') {
-                document.getElementById('modal').style.display = "none";
-            }
+            if (e.target.id === 'modal') document.getElementById('modal').style.display = "none";
         });
 
-        // Click en las tarjetas
         document.querySelectorAll('.hito-card').forEach(card => {
             card.addEventListener('click', () => {
-                const modalId = card.getAttribute('data-modal');
-                abrirModal(modalId);
+                const id = card.getAttribute('data-modal');
+                abrirModal(id);
             });
         });
 
         // Formularios
         document.addEventListener('DOMContentLoaded', () => {
-
             // Registro
             document.getElementById('formRegistro').addEventListener('submit', (e) => {
                 e.preventDefault();
                 document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
-
                 const email = document.getElementById('regEmail').value.trim();
                 const pass = document.getElementById('regPass').value;
                 const passConf = document.getElementById('regPassConf').value;
 
                 let valid = true;
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    document.getElementById('errEmail').textContent = 'Formato de email inválido';
-                    valid = false;
-                }
-                if (pass.length < 8) {
-                    document.getElementById('errPass').textContent = 'Mínimo 8 caracteres';
-                    valid = false;
-                }
-                if (pass !== passConf) {
-                    document.getElementById('errPassConf').textContent = 'Las contraseñas no coinciden';
-                    valid = false;
-                }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('errEmail').textContent = 'Email inválido'; valid = false; }
+                if (pass.length < 8) { document.getElementById('errPass').textContent = 'Mínimo 8 caracteres'; valid = false; }
+                if (pass !== passConf) { document.getElementById('errPassConf').textContent = 'Contraseñas no coinciden'; valid = false; }
 
                 if (valid) {
                     alert('¡Registro exitoso!');
@@ -535,17 +473,13 @@
             // Login
             document.getElementById('formLogin').addEventListener('submit', (e) => {
                 e.preventDefault();
-                document.getElementById('logFeedback').innerHTML = 
-                    '<p class="success-msg">¡Acceso exitoso! Bienvenido.</p>';
+                document.getElementById('logFeedback').innerHTML = '<p class="success-msg">¡Acceso exitoso! Bienvenido.</p>';
             });
 
-            // Contador de caracteres
+            // Contacto
             const textarea = document.getElementById('conMensaje');
             const charCount = document.getElementById('charCount');
-
-            textarea.addEventListener('input', () => {
-                charCount.textContent = `Caracteres: ${textarea.value.length}`;
-            });
+            textarea.addEventListener('input', () => charCount.textContent = `Caracteres: ${textarea.value.length}`);
 
             document.getElementById('formContacto').addEventListener('submit', (e) => {
                 e.preventDefault();
