@@ -1,38 +1,31 @@
-/* style.css - Blade Runner Elegante | Atomic Blonde Cyberpunk Premium */
+/* style.css - Cyberpunk Elegante Profesional */
 
 :root {
     --primary: #00e0ff;
     --accent: #ff2a6d;
-    --soft-neon: #d1f7ff;
     --bg: #0c0d14;
     --card: #141824;
-    --glass: rgba(20, 24, 36, 0.78);
-    --border: rgba(0, 224, 255, 0.22);
+    --glass: rgba(20, 24, 36, 0.82);
+    --border: rgba(0, 224, 255, 0.25);
     --text: #f4f7fb;
     --text-light: #b0b8c9;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Inter', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.85;
-    overflow-x: hidden;
 }
 
 body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: 
-        linear-gradient(rgba(0, 224, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 224, 255, 0.025) 1px, transparent 1px);
+    background: linear-gradient(rgba(0, 224, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 224, 255, 0.025) 1px, transparent 1px);
     background-size: 90px 90px;
     pointer-events: none;
     z-index: -1;
@@ -42,8 +35,7 @@ body::before {
 /* Navbar */
 .navbar {
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 0; width: 100%;
     background: rgba(12, 13, 20, 0.95);
     backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border);
@@ -81,14 +73,10 @@ nav a {
     text-decoration: none;
     font-weight: 500;
     font-size: 1.1rem;
-    transition: all 0.4s ease;
     position: relative;
 }
 
-nav a:hover,
-nav a.active {
-    color: var(--primary);
-}
+nav a:hover, nav a.active { color: var(--primary); }
 
 nav a::after {
     content: '';
@@ -96,15 +84,12 @@ nav a::after {
     bottom: -6px;
     left: 0;
     width: 0;
-    height: 1.5px;
-    background: linear-gradient(to right, var(--primary), var(--accent));
-    transition: width 0.5s ease;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.4s;
 }
 
-nav a:hover::after,
-nav a.active::after {
-    width: 100%;
-}
+nav a:hover::after, nav a.active::after { width: 100%; }
 
 /* Hero */
 .hero {
@@ -114,7 +99,6 @@ nav a.active::after {
     justify-content: center;
     text-align: center;
     padding-top: 90px;
-    position: relative;
 }
 
 .hero h1 {
@@ -125,7 +109,6 @@ nav a.active::after {
     background: linear-gradient(90deg, #e0f8ff, #ff9ed9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 70px rgba(0, 224, 255, 0.45);
 }
 
 .hero p {
@@ -153,7 +136,7 @@ nav a.active::after {
     color: var(--primary);
 }
 
-/* Hitos Grid */
+/* Hitos */
 .hitos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -215,7 +198,6 @@ nav a.active::after {
     width: 90%;
     max-width: 740px;
     padding: 50px;
-    box-shadow: 0 0 80px rgba(0, 224, 255, 0.25);
 }
 
 .modal-close {
@@ -235,12 +217,13 @@ nav a.active::after {
     border-radius: 18px;
 }
 
-.modal h2 {
-    color: var(--primary);
-    margin-bottom: 20px;
+/* Formularios */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
-/* Formularios */
 .card {
     background: var(--card);
     padding: 52px 50px;
@@ -288,14 +271,11 @@ input:focus, textarea:focus {
     font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 10px;
-    transition: all 0.4s ease;
 }
 
 .btn-primary {
     background: linear-gradient(135deg, #00e0ff, #3b9eff);
     color: #0c0d14;
-    box-shadow: 0 0 30px rgba(0, 224, 255, 0.5);
 }
 
 .btn-accent {
@@ -303,25 +283,9 @@ input:focus, textarea:focus {
     color: white;
 }
 
-.error-msg {
-    color: #ff6b8b;
-    margin-top: 9px;
-    min-height: 1.4em;
-}
-
-.success-msg {
-    color: #39ff9e;
-    text-align: center;
-    margin: 30px 0;
-    font-weight: 600;
-    font-size: 1.35rem;
-}
-
-.char-counter {
-    text-align: right;
-    color: var(--text-light);
-    margin-top: 12px;
-}
+.error-msg { color: #ff6b8b; margin-top: 9px; min-height: 1.4em; }
+.success-msg { color: #39ff9e; text-align: center; margin: 30px 0; font-weight: 600; font-size: 1.35rem; }
+.char-counter { text-align: right; color: var(--text-light); margin-top: 12px; }
 
 footer {
     text-align: center;
@@ -329,17 +293,5 @@ footer {
     color: #64748b;
     border-top: 1px solid var(--border);
 }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 3.6rem; }
-    .nav-container { padding: 0 30px; }
-    nav ul { gap: 28px; }
-    .hitos-grid { 
-        grid-template-columns: 1fr; 
-        padding: 0 30px; 
-    }
-}
-
 
 
