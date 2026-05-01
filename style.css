@@ -1,15 +1,15 @@
-/* style.css - Atomic Blonde × Ex Machina | Cyberpunk Sofisticado Minimal (Final) */
+/* style.css - Atomic Blonde × Ex Machina | Cyberpunk Premium Final */
 
 :root {
-    --primary: #00f5ff;      /* Neon Cyan fuerte pero elegante */
-    --accent: #ff2a7a;       /* Rosa Atomic Blonde vibrante */
-    --neon-glow: #7ffff5;
+    --primary: #00f5ff;
+    --accent: #ff2a7a;
+    --neon-glow: #7ffeff;
     --bg: #08090f;
     --card: #0f1322;
     --glass: rgba(15, 19, 34, 0.94);
     --border: rgba(0, 245, 255, 0.22);
     --text: #f0f6fc;
-    --text-light: #9ca9c8;
+    --text-light: #9ba9c8;
 }
 
 * {
@@ -25,7 +25,7 @@ body {
     line-height: 1.92;
 }
 
-/* Fondo sutil pero con carácter */
+/* Fondo sutil */
 body::before {
     content: '';
     position: fixed;
@@ -35,10 +35,10 @@ body::before {
     background-size: 120px 120px;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.65;
+    opacity: 0.6;
 }
 
-/* Navbar elegante */
+/* Navbar */
 .navbar {
     position: fixed;
     top: 0;
@@ -69,10 +69,9 @@ body::before {
     -webkit-text-fill-color: transparent;
 }
 
-/* Menú horizontal */
 nav ul {
     display: flex;
-    gap: 56px;
+    gap: 55px;
     list-style: none;
 }
 
@@ -90,7 +89,7 @@ nav a.active {
     text-shadow: 0 0 16px rgba(0, 245, 255, 0.7);
 }
 
-/* HERO - Fuerte presencia Atomic Blonde */
+/* HERO */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -103,21 +102,21 @@ nav a.active {
 
 .hero h1 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 5.75rem;
+    font-size: 5.7rem;
     font-weight: 700;
-    letter-spacing: -5.6px;
+    letter-spacing: -5.5px;
     line-height: 1.02;
     background: linear-gradient(90deg, #d8faff, #ff9ed9, #a8faff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 85px rgba(0, 245, 255, 0.85),
-                0 0 145px rgba(255, 42, 122, 0.5);
-    animation: neonAtomic 7.5s ease-in-out infinite alternate;
+    text-shadow: 0 0 90px rgba(0, 245, 255, 0.85),
+                0 0 150px rgba(255, 42, 122, 0.45);
+    animation: neonPulse 7s ease-in-out infinite alternate;
 }
 
-@keyframes neonAtomic {
+@keyframes neonPulse {
     from { text-shadow: 0 0 70px rgba(0, 245, 255, 0.8), 0 0 125px rgba(255, 42, 122, 0.4); }
-    to   { text-shadow: 0 0 100px rgba(0, 245, 255, 1), 0 0 170px rgba(255, 42, 122, 0.6); }
+    to   { text-shadow: 0 0 105px rgba(0, 245, 255, 1), 0 0 170px rgba(255, 42, 122, 0.6); }
 }
 
 .hero p {
@@ -146,7 +145,7 @@ nav a.active {
     letter-spacing: -1.6px;
 }
 
-/* Línea de Tiempo - Decorativa y elegante */
+/* ==================== LÍNEA DE TIEMPO ==================== */
 .timeline {
     max-width: 1380px;
     margin: 0 auto 100px;
@@ -161,7 +160,7 @@ nav a.active {
     right: 70px;
     height: 3px;
     background: linear-gradient(to right, var(--primary), var(--accent));
-    opacity: 0.4;
+    opacity: 0.42;
 }
 
 .timeline-items {
@@ -178,7 +177,7 @@ nav a.active {
 }
 
 .timeline-item:hover {
-    transform: translateY(-7px);
+    transform: translateY(-8px);
 }
 
 .timeline-dot {
@@ -219,7 +218,7 @@ nav a.active {
     overflow: hidden;
     border: 1px solid var(--border);
     cursor: pointer;
-    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.7s ease;
 }
 
 .hito-card:hover {
@@ -247,7 +246,7 @@ nav a.active {
     font-weight: 600;
 }
 
-/* Formularios y Modal (mantengo elegante y moderno) */
+/* Formularios y Modal */
 .form-container {
     max-width: 820px;
     margin: 0 auto;
@@ -302,21 +301,16 @@ input:focus, textarea:focus {
     font-size: 1.24rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.4s ease;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #00e5ff, #0099cc);
+    background: linear-gradient(135deg, #00f5ff, #0099cc);
     color: #0a0b12;
 }
 
 .btn-accent {
-    background: linear-gradient(135deg, #ff2a6d, #e0004d);
+    background: linear-gradient(135deg, #ff2a7a, #e0004d);
     color: white;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
 }
 
 .error-msg { color: #ff6b8b; margin-top: 10px; min-height: 1.4em; }
@@ -367,13 +361,6 @@ footer {
     color: #64748b;
     border-top: 1px solid var(--border);
 }
-
-
-
-
-
-
-
 
 
 
