@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cronología interactiva de la evolución del hardware móvil 1996-2002">
-    <meta property="og:title" content="Evolución del Hardware Móvil - Iván Ignacio">
-    <meta property="og:description" content="De los primeros celulares a la era del smartphone">
+    <meta name="description" content="Cronología interactiva de la evolución del hardware móvil">
     <title>Cronología Hardware Móvil - Iván Ignacio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -40,20 +38,88 @@
         <section id="hitos" class="section">
             <h2 class="section-title">Línea de Tiempo 1996 — 2002</h2>
 
-            <!-- TIMELINE NEON -->
             <div class="timeline-neon">
                 <div class="timeline-container" id="timeline"></div>
                 <div class="timeline-line"></div>
             </div>
 
-            <!-- GRID DINÁMICO -->
             <div class="hitos-grid" id="hitos-grid"></div>
         </section>
 
         <!-- ==================== TUS FORMULARIOS ==================== -->
-        <!-- Pega aquí tus tres secciones (Registro, Login, Contacto) tal como las tenías -->
-        <!-- Solo cambia el contenedor si quieres, pero por ahora déjalas iguales -->
+        <section id="registro" class="section">
+            <div class="form-container">
+                <div class="card">
+                    <h2>Formulario de Registro</h2>
+                    <form id="formRegistro">
+                        <div class="input-group">
+                            <label for="regUser">Usuario</label>
+                            <input type="text" id="regUser" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="regEmail">Email</label>
+                            <input type="email" id="regEmail" required>
+                            <div id="errEmail" class="error-msg"></div>
+                        </div>
+                        <div class="input-group">
+                            <label for="regPass">Contraseña</label>
+                            <input type="password" id="regPass" required>
+                            <div id="errPass" class="error-msg"></div>
+                        </div>
+                        <div class="input-group">
+                            <label for="regPassConf">Confirmar Contraseña</label>
+                            <input type="password" id="regPassConf" required>
+                            <div id="errPassConf" class="error-msg"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrarme</button>
+                    </form>
+                </div>
+            </div>
+        </section>
 
+        <section id="login" class="section">
+            <div class="form-container">
+                <div class="card">
+                    <h2>Acceso de Usuario</h2>
+                    <form id="formLogin">
+                        <div class="input-group">
+                            <label for="logEmail">Email</label>
+                            <input type="email" id="logEmail" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="logPass">Contraseña</label>
+                            <input type="password" id="logPass" required>
+                        </div>
+                        <div id="logFeedback"></div>
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="section">
+            <div class="form-container">
+                <div class="card">
+                    <h2>Formulario de Contacto</h2>
+                    <form id="formContacto">
+                        <div class="input-group">
+                            <label for="conNombre">Nombre</label>
+                            <input type="text" id="conNombre" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="conAsunto">Asunto</label>
+                            <input type="text" id="conAsunto" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="conMensaje">Mensaje</label>
+                            <textarea id="conMensaje" rows="5" required></textarea>
+                            <div id="charCount" class="char-counter">Caracteres: 0</div>
+                        </div>
+                        <button type="submit" class="btn btn-accent">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- MODAL -->
