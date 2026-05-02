@@ -1,17 +1,11 @@
-<script>
-// script.js - Versión Profesional (fuerza de recarga)
-
 document.addEventListener('DOMContentLoaded', () => {
-    'use strict';
 
-    console.log('%c🚀 Script profesional cargado correctamente', 'color:#00f5ff; font-size:14px; font-weight:bold');
-
-    // Navegación
+    // Navegación entre secciones
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
 
-    const heroSection = document.getElementById('hero');
-    if (heroSection) heroSection.classList.add('active');
+    // Mostrar Hero por defecto
+    document.getElementById('hero').classList.add('active');
 
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -22,17 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             link.classList.add('active');
             const sectionId = link.getAttribute('data-section');
-            const target = document.getElementById(sectionId);
-            if (target) target.classList.add('active');
+            document.getElementById(sectionId).classList.add('active');
         });
     });
 
-    // ==================== MODAL (mejorado) ====================
-    const modal = document.getElementById('modal');
-    const modalBody = document.getElementById('modal-body');
-    const modalClose = document.querySelector('.modal-close');
-
-    const modelos = { /* ... mantengo exactamente el mismo objeto que tenías ... */
+    // ==================== MODAL ====================
+    const modelos = {
         startac: { titulo: "Motorola StarTAC", año: "1996", img: "Motorola-StarTAC.jpg", texto: "El primer teléfono plegable comercialmente exitoso." },
         s10: { titulo: "Siemens S10", año: "1997", img: "Siemens S10.jpg", texto: "Uno de los primeros con pantalla a color." },
         nokia5110: { titulo: "Nokia 5110", año: "1998", img: "Nokia-5110.jpg", texto: "Icono de los 90s famoso por Snake." },
@@ -45,43 +34,68 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function abrirModal(id) {
+        const modal = document.getElementById('modal');
+        const body = document.getElementById('modal-body');
         const data = modelos[id];
         if (!data) return;
 
-        modalBody.innerHTML = `
-            <img src="${data.img}" alt="${data.titulo}" loading="lazy">
-            <h2>${data.titulo} <span>(${data.año})</span></h2>
+        body.innerHTML = `
+            <img src="${data.img}" alt="${data.titulo}">
+            <h2>${data.titulo} <span style="font-size:1.1rem; opacity:0.8;">(${data.año})</span></h2>
             <p>${data.texto}</p>
         `;
         modal.style.display = "flex";
     }
 
-    modalClose?.addEventListener('click', () => modal.style.display = "none");
-    modal?.addEventListener('click', (e) => {
-        if (e.target === modal) modal.style.display = "none";
+    document.querySelector('.modal-close').addEventListener('click', () => {
+        document.getElementById('modal').style.display = "none";
+    });
+
+    document.getElementById('modal').addEventListener('click', (e) => {
+        if (e.target.id === 'modal') document.getElementById('modal').style.display = "none";
     });
 
     document.querySelectorAll('.hito-card').forEach(card => {
         card.addEventListener('click', () => {
             const id = card.getAttribute('data-modal');
-            if (id) abrirModal(id);
+            abrirModal(id);
         });
     });
 
-    // Formularios (con console para verificar que funciona)
+    // Formularios (validaciones básicas)
     const formRegistro = document.getElementById('formRegistro');
     if (formRegistro) {
         formRegistro.addEventListener('submit', (e) => {
             e.preventDefault();
-            console.log('Registro enviado');
             alert('¡Registro exitoso!');
             formRegistro.reset();
         });
     }
 
-    // Resto de formularios igual...
-    console.log('%c✅ Todo listo - Prueba haciendo clic en las tarjetas', 'color:#ff2a7a');
+    const formLogin = document.getElementById('formLogin');
+    if (formLogin) {
+        formLogin.addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('logFeedback').innerHTML = '<p class="success-msg">¡Acceso exitoso!</p>';
+        });
+    }
+
+    const textarea = document.getElementById('conMensaje');
+    const charCount = document.getElementById('charCount');
+    if (textarea && charCount) {
+        textarea.addEventListener('input', () => {
+            charCount.textContent = `Caracteres: ${textarea.value.length}`;
+        });
+    }
+
+    const formContacto = document.getElementById('formContacto');
+    if (formContacto) {
+        formContacto.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Mensaje enviado!');
+            formContacto.reset();
+        });
+    }
 });
-</script>
 
 
