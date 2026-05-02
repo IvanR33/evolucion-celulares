@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cronología interactiva de la evolución del hardware móvil">
     <title>Cronología Hardware Móvil - Iván Ignacio</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,119 +11,78 @@
 
     <header class="navbar">
         <div class="nav-container">
-            <div class="logo">CRONOLOGÍA <span style="color:var(--primary)">MÓVIL</span></div>
+            <div class="logo">CRONOLOGÍA MÓVIL</div>
             <nav>
                 <ul>
-                    <li><a href="#hitos" class="nav-link" data-section="hitos">Línea de Tiempo</a></li>
-                    <li><a href="#registro" class="nav-link" data-section="registro">Registro</a></li>
-                    <li><a href="#login" class="nav-link" data-section="login">Login</a></li>
-                    <li><a href="#contacto" class="nav-link" data-section="contacto">Contacto</a></li>
+                    <li><a href="#hitos" class="nav-link">Línea de Tiempo</a></li>
+                    <li><a href="#registro" class="nav-link">Registro</a></li>
+                    <li><a href="#login" class="nav-link">Login</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <!-- HERO -->
-        <section id="hero" class="section hero active">
-            <div class="hero-content">
-                <h1>Evolución del<br>Hardware Móvil</h1>
-                <p class="hero-subtitle">De los primeros celulares a la era del smartphone • Unidad 2 - INACAP 2026</p>
+    <!-- HERO -->
+    <section id="hero" class="section hero active">
+        <div class="hero-content">
+            <h1>Evolución del Hardware Móvil</h1>
+            <p>De los primeros celulares a la era del smartphone • Unidad 2 - INACAP 2026</p>
+        </div>
+    </section>
+
+    <!-- HITOS -->
+    <section id="hitos" class="section">
+        <h2 class="section-title">Línea de Tiempo 1996 — 2002</h2>
+        <div class="timeline-neon">
+            <div class="timeline-container" id="timeline"></div>
+            <div class="timeline-line"></div>
+        </div>
+        <div class="hitos-grid" id="hitos-grid"></div>
+    </section>
+
+    <!-- REGISTRO -->
+    <section id="registro" class="section">
+        <div class="form-container">
+            <div class="card">
+                <h2>Formulario de Registro</h2>
+                <form id="formRegistro">
+                    <div class="input-group"><label for="regUser">Usuario</label><input type="text" id="regUser" required></div>
+                    <div class="input-group"><label for="regEmail">Email</label><input type="email" id="regEmail" required></div>
+                    <button type="submit" class="btn btn-primary">Registrarme</button>
+                </form>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- HITOS -->
-        <section id="hitos" class="section">
-            <h2 class="section-title">Línea de Tiempo 1996 — 2002</h2>
-
-            <div class="timeline-neon">
-                <div class="timeline-container" id="timeline"></div>
-                <div class="timeline-line"></div>
+    <!-- LOGIN -->
+    <section id="login" class="section">
+        <div class="form-container">
+            <div class="card">
+                <h2>Acceso de Usuario</h2>
+                <form id="formLogin">
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                </form>
             </div>
+        </div>
+    </section>
 
-            <div class="hitos-grid" id="hitos-grid"></div>
-        </section>
-
-        <!-- ==================== TUS FORMULARIOS ==================== -->
-        <section id="registro" class="section">
-            <div class="form-container">
-                <div class="card">
-                    <h2>Formulario de Registro</h2>
-                    <form id="formRegistro">
-                        <div class="input-group">
-                            <label for="regUser">Usuario</label>
-                            <input type="text" id="regUser" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="regEmail">Email</label>
-                            <input type="email" id="regEmail" required>
-                            <div id="errEmail" class="error-msg"></div>
-                        </div>
-                        <div class="input-group">
-                            <label for="regPass">Contraseña</label>
-                            <input type="password" id="regPass" required>
-                            <div id="errPass" class="error-msg"></div>
-                        </div>
-                        <div class="input-group">
-                            <label for="regPassConf">Confirmar Contraseña</label>
-                            <input type="password" id="regPassConf" required>
-                            <div id="errPassConf" class="error-msg"></div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Registrarme</button>
-                    </form>
-                </div>
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+        <div class="form-container">
+            <div class="card">
+                <h2>Formulario de Contacto</h2>
+                <form id="formContacto">
+                    <button type="submit" class="btn btn-accent">Enviar Mensaje</button>
+                </form>
             </div>
-        </section>
-
-        <section id="login" class="section">
-            <div class="form-container">
-                <div class="card">
-                    <h2>Acceso de Usuario</h2>
-                    <form id="formLogin">
-                        <div class="input-group">
-                            <label for="logEmail">Email</label>
-                            <input type="email" id="logEmail" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="logPass">Contraseña</label>
-                            <input type="password" id="logPass" required>
-                        </div>
-                        <div id="logFeedback"></div>
-                        <button type="submit" class="btn btn-primary">Ingresar</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <section id="contacto" class="section">
-            <div class="form-container">
-                <div class="card">
-                    <h2>Formulario de Contacto</h2>
-                    <form id="formContacto">
-                        <div class="input-group">
-                            <label for="conNombre">Nombre</label>
-                            <input type="text" id="conNombre" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="conAsunto">Asunto</label>
-                            <input type="text" id="conAsunto" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="conMensaje">Mensaje</label>
-                            <textarea id="conMensaje" rows="5" required></textarea>
-                            <div id="charCount" class="char-counter">Caracteres: 0</div>
-                        </div>
-                        <button type="submit" class="btn btn-accent">Enviar Mensaje</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- MODAL -->
-    <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="modal-close" aria-label="Cerrar modal">✕</span>
+            <span class="modal-close">✕</span>
             <div id="modal-body"></div>
         </div>
     </div>
