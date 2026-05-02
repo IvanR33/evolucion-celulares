@@ -130,14 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-Ahora haz esto:Reemplaza tu index.html con el que te di antes.
-Reemplaza tu script.js con este de arriba.
-Abre la página y dime qué ves.
 
-Si te da error o se pone blanco, dime exactamente qué error ves en la consola (presiona F12 → Console).¿Listo? Reemplaza y avísame cómo quedó.
-
-Agrega más celulares históricos
-
-Incluye historia de smartphones
 
 
