@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==================== DATOS CENTRALIZADOS ====================
+    // ==================== DATOS DE CELULARES ====================
     const celulares = [
         { id: "startac", titulo: "Motorola StarTAC", año: "1996", img: "Motorola-StarTAC.jpg", texto: "El primer teléfono plegable comercialmente exitoso." },
         { id: "s10", titulo: "Siemens S10", año: "1997", img: "Siemens S10.jpg", texto: "Uno de los primeros con pantalla a color." },
@@ -13,31 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "t68i", titulo: "Sony Ericsson T68i", año: "2002", img: "Sony-Ericsson-T68i.jpg", texto: "Primer teléfono con Bluetooth y pantalla a color." }
     ];
 
-    // ==================== RENDER GRID ====================
-    function renderCelulares(filteredCelulares) {
+    // ==================== RENDER CELULARES ====================
+    function renderCelulares(filtered = celulares) {
         const grid = document.getElementById('hitos-grid');
         grid.innerHTML = '';
 
-        filteredCelulares.forEach(cel => {
-            const cardHTML = `
-                <article class="hito-card" data-modal="${cel.id}">
-                    <img src="${cel.img}" alt="${cel.titulo} - ${cel.año}" loading="lazy">
-                    <div class="hito-info">
-                        <h3>${cel.titulo}</h3>
-                        <p>${cel.año}</p>
-                    </div>
-                </article>
+        filtered.forEach(cel => {
+            const card = document.createElement('article');
+            card.className = 'hito-card';
+            card.setAttribute('data-modal', cel.id);
+            card.innerHTML = `
+                <img src="${cel.img}" alt="${cel.titulo} - ${cel.año}" loading="lazy">
+                <div class="hito-info">
+                    <h3>${cel.titulo}</h3>
+                    <p>${cel.año}</p>
+                </div>
             `;
-            grid.innerHTML += cardHTML;
-        });
-
-        // Agregar eventos a las nuevas cards
-        document.querySelectorAll('.hito-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const id = card.getAttribute('data-modal');
-                const cel = celulares.find(c => c.id === id);
-                if (cel) abrirModal(cel);
-            });
+            card.addEventListener('click', () => abrirModal(cel));
+            grid.appendChild(card);
         });
     }
 
@@ -61,23 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.id === 'modal') document.getElementById('modal').style.display = "none";
     });
 
-    // ==================== TIMELINE INTERACTIVA ====================
+    // ==================== TIMELINE ====================
     function crearTimeline() {
         const container = document.getElementById('timeline');
-        const uniqueYears = [...new Set(celulares.map(c => c.año))];
+        const years = [...new Set(celulares.map(c => c.año))];
 
-        uniqueYears.forEach(year => {
+        years.forEach(year => {
             const item = document.createElement('div');
             item.className = 'timeline-item';
-            item.innerHTML = `
-                <div class="timeline-dot"></div>
-                <span class="timeline-year">${year}</span>
-            `;
+            item.innerHTML = `<div class="timeline-dot"></div><span class="timeline-year">${year}</span>`;
 
             item.addEventListener('click', () => {
                 document.querySelectorAll('.timeline-item').forEach(i => i.classList.remove('active'));
                 item.classList.add('active');
-
                 const filtered = celulares.filter(c => c.año === year);
                 renderCelulares(filtered);
             });
@@ -86,25 +75,69 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==================== NAVEGACIÓN SPA ====================
-    document.querySelectorAll('.nav-link').forEach(link => {
+    // ==================== NAVEGACIÓN ====================
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-
+            navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
-            const section = document.getElementById(link.getAttribute('data-section'));
-            if (section) section.classList.add('active');
+
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            const sectionId = link.getAttribute('data-section');
+            document.getElementById(sectionId).classList.add('active');
         });
     });
 
+    // ==================== FORMULARIOS (Tus originales) ====================
+    const formRegistro = document.getElementById('formRegistro');
+    if (formRegistro) {
+        formRegistro.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Registro exitoso!');
+            formRegistro.reset();
+        });
+    }
+
+    const formLogin = document.getElementById('formLogin');
+    if (formLogin) {
+        formLogin.addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('logFeedback').innerHTML = '<p class="success-msg">¡Acceso exitoso!</p>';
+        });
+    }
+
+    const textarea = document.getElementById('conMensaje');
+    const charCount = document.getElementById('charCount');
+    if (textarea && charCount) {
+        textarea.addEventListener('input', () => {
+            charCount.textContent = `Caracteres: ${textarea.value.length}`;
+        });
+    }
+
+    const formContacto = document.getElementById('formContacto');
+    if (formContacto) {
+        formContacto.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Mensaje enviado!');
+            formContacto.reset();
+        });
+    }
+
     // ==================== INICIALIZACIÓN ====================
     crearTimeline();
-    renderCelulares(celulares); // Carga todos al inicio
+    renderCelulares(); // Muestra todos al cargar
 
-    // ==================== FORMULARIOS (mantén tu código original aquí) ====================
-    // Pega aquí todo tu código de formularios (registro, login, contacto, contador de caracteres, etc.)
 });
+
+Ahora haz esto:Reemplaza tu index.html con el que te di antes.
+Reemplaza tu script.js con este de arriba.
+Abre la página y dime qué ves.
+
+Si te da error o se pone blanco, dime exactamente qué error ves en la consola (presiona F12 → Console).¿Listo? Reemplaza y avísame cómo quedó.
+
+Agrega más celulares históricos
+
+Incluye historia de smartphones
+
 
