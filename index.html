@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Cronología Hardware Móvil - Iván Ignacio</title>
+
     <meta name="description" content="Evolución del hardware móvil desde 1996 hasta 2002">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -19,7 +19,6 @@
 
         <nav>
             <ul>
-                <li><a href="#hero" class="nav-link active" data-section="hero">Inicio</a></li>
                 <li><a href="#hitos" class="nav-link" data-section="hitos">Línea de Tiempo</a></li>
                 <li><a href="#registro" class="nav-link" data-section="registro">Registro</a></li>
                 <li><a href="#login" class="nav-link" data-section="login">Login</a></li>
@@ -29,160 +28,68 @@
     </div>
 </header>
 
-<!-- HERO -->
 <section id="hero" class="section hero active">
     <div class="hero-content">
         <h1>Evolución del Hardware Móvil</h1>
-        <p>De los primeros celulares a la era del smartphone • Unidad 2 - INACAP 2026</p>
+        <p>De los primeros celulares a la era del smartphone • Unidad 2</p>
     </div>
 </section>
 
-<!-- HITOS -->
 <section id="hitos" class="section">
     <h2 class="section-title">Línea de Tiempo 1996 — 2002</h2>
 
     <div class="hitos-grid">
 
         <article class="hito-card" data-modal="startac">
-            <img src="Motorola-StarTAC.jpg" alt="Motorola StarTAC">
+            <img src="Motorola-StarTAC.jpg">
             <div class="hito-info"><h3>Motorola StarTAC</h3><p>1996</p></div>
         </article>
 
         <article class="hito-card" data-modal="s10">
-            <img src="Siemens S10.jpg" alt="Siemens S10">
+            <img src="Siemens S10.jpg">
             <div class="hito-info"><h3>Siemens S10</h3><p>1997</p></div>
         </article>
 
         <article class="hito-card" data-modal="nokia5110">
-            <img src="Nokia-5110.jpg" alt="Nokia 5110">
+            <img src="Nokia-5110.jpg">
             <div class="hito-info"><h3>Nokia 5110</h3><p>1998</p></div>
         </article>
 
         <article class="hito-card" data-modal="sph">
-            <img src="Samsung SPH-M100.jpg" alt="Samsung SPH-M100">
+            <img src="Samsung SPH-M100.jpg">
             <div class="hito-info"><h3>Samsung SPH-M100</h3><p>1999</p></div>
         </article>
 
         <article class="hito-card" data-modal="kyocera">
-            <img src="Kyocera VP-210.jpeg" alt="Kyocera VP-210">
+            <img src="Kyocera VP-210.jpeg">
             <div class="hito-info"><h3>Kyocera VP-210</h3><p>1999</p></div>
         </article>
 
         <article class="hito-card" data-modal="nokia3310">
-            <img src="Nokia-3310.jpg" alt="Nokia 3310">
+            <img src="Nokia-3310.jpg">
             <div class="hito-info"><h3>Nokia 3310</h3><p>2000</p></div>
         </article>
 
         <article class="hito-card" data-modal="ericsson">
-            <img src="Ericsson_R380s_004.jpg" alt="Ericsson R380s">
+            <img src="Ericsson_R380s_004.jpg">
             <div class="hito-info"><h3>Ericsson R380s</h3><p>2000</p></div>
         </article>
 
         <article class="hito-card" data-modal="sl45i">
-            <img src="Siemens-SL45i.jpg" alt="Siemens SL45i">
+            <img src="Siemens-SL45i.jpg">
             <div class="hito-info"><h3>Siemens SL45i</h3><p>2001</p></div>
         </article>
 
         <article class="hito-card" data-modal="t68i">
-            <img src="Sony-Ericsson-T68i.jpg" alt="Sony Ericsson T68i">
+            <img src="Sony-Ericsson-T68i.jpg">
             <div class="hito-info"><h3>Sony Ericsson T68i</h3><p>2002</p></div>
         </article>
 
     </div>
 </section>
 
-<!-- REGISTRO -->
-<section id="registro" class="section">
-    <div class="form-container">
-        <div class="card">
-            <h2>Formulario de Registro</h2>
-
-            <form id="formRegistro">
-                <div class="input-group">
-                    <label for="regUser">Usuario</label>
-                    <input type="text" id="regUser" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="regEmail">Email</label>
-                    <input type="email" id="regEmail" required>
-                    <div id="errEmail" class="error-msg"></div>
-                </div>
-
-                <div class="input-group">
-                    <label for="regPass">Contraseña</label>
-                    <input type="password" id="regPass" required>
-                    <div id="errPass" class="error-msg"></div>
-                </div>
-
-                <div class="input-group">
-                    <label for="regPassConf">Confirmar Contraseña</label>
-                    <input type="password" id="regPassConf" required>
-                    <div id="errPassConf" class="error-msg"></div>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Registrarme</button>
-            </form>
-        </div>
-    </div>
-</section>
-
-<!-- LOGIN -->
-<section id="login" class="section">
-    <div class="form-container">
-        <div class="card">
-            <h2>Acceso de Usuario</h2>
-
-            <form id="formLogin">
-                <div class="input-group">
-                    <label for="logEmail">Email</label>
-                    <input type="email" id="logEmail" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="logPass">Contraseña</label>
-                    <input type="password" id="logPass" required>
-                </div>
-
-                <div id="logFeedback"></div>
-
-                <button type="submit" class="btn btn-primary">Ingresar</button>
-            </form>
-        </div>
-    </div>
-</section>
-
-<!-- CONTACTO -->
-<section id="contacto" class="section">
-    <div class="form-container">
-        <div class="card">
-            <h2>Formulario de Contacto</h2>
-
-            <form id="formContacto">
-                <div class="input-group">
-                    <label for="conNombre">Nombre</label>
-                    <input type="text" id="conNombre" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="conAsunto">Asunto</label>
-                    <input type="text" id="conAsunto" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="conMensaje">Mensaje</label>
-                    <textarea id="conMensaje" rows="5" required></textarea>
-                    <div id="charCount" class="char-counter">Caracteres: 0</div>
-                </div>
-
-                <button type="submit" class="btn btn-accent">Enviar Mensaje</button>
-            </form>
-        </div>
-    </div>
-</section>
-
 <!-- MODAL -->
-<div id="modal" class="modal" role="dialog" aria-hidden="true">
+<div id="modal" class="modal">
     <div class="modal-content">
         <span class="modal-close">✕</span>
         <div id="modal-body"></div>
@@ -190,7 +97,7 @@
 </div>
 
 <footer>
-    <p>&copy; 2026 - Iván Ignacio | Analista Programador - INACAP La Granja</p>
+    <p>&copy; 2026 - Iván Ignacio</p>
 </footer>
 
 <script src="script.js" defer></script>
