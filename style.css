@@ -22,6 +22,7 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.9;
+    overflow-x: hidden;
 }
 
 /* GRID FONDO */
@@ -35,34 +36,39 @@ body::before {
     z-index: -1;
 }
 
-/* NAV */
+/* NAVBAR */
 .navbar {
     position: fixed;
+    top: 0;
     width: 100%;
-    background: rgba(9, 11, 20, 0.85);
-    backdrop-filter: blur(18px);
+    background: rgba(9, 11, 20, 0.95);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     z-index: 1000;
+    padding: 1.5rem 0;
 }
 
 .nav-container {
     max-width: 1400px;
-    margin: auto;
-    padding: 1.2rem 40px;
+    margin: 0 auto;
+    padding: 0 60px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
     background: linear-gradient(90deg, white, var(--primary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+/* NAV */
 nav ul {
     display: flex;
-    gap: 30px;
+    gap: 40px;
     list-style: none;
 }
 
@@ -84,6 +90,7 @@ nav a.active {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding-top: 100px;
 }
 
 .hero h1 {
@@ -92,46 +99,80 @@ nav a.active {
 
 /* SECCIONES */
 .section {
-    padding: 120px 20px;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 0.6s;
+    padding: 140px 0;
+    display: none;
 }
 
 .section.active {
-    opacity: 1;
-    transform: translateY(0);
+    display: block;
+}
+
+/* TITULOS */
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 80px;
+    color: var(--primary);
 }
 
 /* GRID */
 .hitos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+    align-items: stretch;
 }
 
+/* 🔥 TARJETAS (ARREGLADAS) */
 .hito-card {
     background: var(--card);
-    border-radius: 20px;
-    transition: transform 0.4s, box-shadow 0.4s;
+    border-radius: 25px;
+    overflow: hidden; /* CLAVE */
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
+    transition: 0.4s;
 }
 
 .hito-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-10px);
     box-shadow: var(--neon);
 }
 
-/* MODAL PRO */
+/* 🔴 IMÁGENES (SOLUCIÓN DEFINITIVA) */
+.hito-card img {
+    width: 100%;
+    height: 220px; /* ALTURA FIJA */
+    object-fit: contain; /* NO deforma */
+    display: block;
+    background: #0c1123;
+    padding: 20px;
+}
+
+/* INFO */
+.hito-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.hito-info h3 {
+    color: #a0e8ff;
+    font-size: 1.4rem;
+}
+
+/* MODAL */
 .modal {
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.9);
-    display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    pointer-events: none;
     transition: 0.3s;
 }
 
@@ -144,65 +185,15 @@ nav a.active {
     background: var(--glass);
     padding: 40px;
     border-radius: 20px;
-    animation: fadeUp 0.4s ease;
 }
 
-@keyframes fadeUp {
-    from { transform: translateY(40px); opacity:0; }
-    to { transform: translateY(0); opacity:1; }
-}
-
-/* FORM */
-input, textarea {
+.modal img {
     width: 100%;
-    padding: 15px;
-    background: #161f34;
-    border: 1px solid var(--border);
-    color: white;
-    border-radius: 10px;
+    max-height: 300px;
+    object-fit: contain;
 }
 
-.btn {
-    padding: 15px;
-    width: 100%;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background: var(--primary);
-}
-
-.btn-accent {
-    background: var(--accent);
-}
-/* MODAL FIX */
-.modal {
-    display: flex;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.modal.active {
-    opacity: 1;
-    pointer-events: all;
-}
-
-/* EFECTO CYBER SUTIL */
-.hito-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, transparent, rgba(0,230,255,0.15), transparent);
-    opacity: 0;
-    transition: 0.5s;
-}
-
-.hito-card:hover::after {
-    opacity: 1;
-}
-
-/* BOTONES MÁS PRO */
+/* BOTONES */
 .btn-primary:hover {
     box-shadow: 0 0 20px #00e6ff;
 }
@@ -210,19 +201,12 @@ input, textarea {
 .btn-accent:hover {
     box-shadow: 0 0 20px #ff2a6d;
 }
-* ARREGLO DEFINITIVO GRID IMÁGENES */
-.hito-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 
-.hito-card img {
-    width: 100%;
-    height: 260px; /* CLAVE */
-    object-fit: contain; /* mantiene proporción */
-    background: #0c1123; /* fondo uniforme */
-    padding: 20px;
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 80px;
+    color: #64748b;
 }
 
 
