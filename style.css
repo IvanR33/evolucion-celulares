@@ -210,6 +210,20 @@ input, textarea {
 .btn-accent:hover {
     box-shadow: 0 0 20px #ff2a6d;
 }
+* ARREGLO DEFINITIVO GRID IMÁGENES */
+.hito-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hito-card img {
+    width: 100%;
+    height: 260px; /* CLAVE */
+    object-fit: contain; /* mantiene proporción */
+    background: #0c1123; /* fondo uniforme */
+    padding: 20px;
+}
 
 
 
