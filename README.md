@@ -5,7 +5,7 @@
 
 Cronología técnica interactiva que detalla los hitos del hardware móvil. Este proyecto evoluciona de una maqueta estática a una aplicación dinámica mediante la manipulación del DOM y lógica de programación en JavaScript.
 
-## 🚀 Tecnologías y Conceptos Aplicados
+##  Tecnologías y Conceptos Aplicados
 
 * **HTML5 & CSS3:** Estructura semántica avanzada y diseño Cyberpunk con variables CSS, efectos de resplandor neón y maquetación profesional.
 * **JavaScript (Vanilla):** * Gestión dinámica de secciones (Single Page Application) para navegación sin recarga.
@@ -13,7 +13,7 @@ Cronología técnica interactiva que detalla los hitos del hardware móvil. Este
     * Manejo de eventos de formulario y botones.
 * **Estructuras de Datos:** Uso de **Objetos y Arreglos** para centralizar y organizar de manera eficiente la información técnica de los hitos móviles.
 
-## 🤖 Registro de Consultas IA (Indicador de Evaluación N°7)
+##  Registro de Consultas IA (Indicador de Evaluación N°7)
 
 En cumplimiento con la pauta de evaluación, se documenta el apoyo de herramientas de IA durante el proceso:
 
