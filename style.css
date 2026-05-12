@@ -27,7 +27,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Fondo grid sutil pero elegante */
 body::before {
     content: '';
     position: fixed;
@@ -126,31 +125,77 @@ nav a:hover::after, nav a.active::after { width: 100%; }
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: var(--neon);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .hero p {
     font-size: 1.72rem;
     color: var(--text-light);
     max-width: 830px;
-    margin: 0 auto 50px;
+    margin: 0 auto 45px;
+}
+
+/* ==================== LÍNEA DE TIEMPO ==================== */
+.timeline {
+    position: relative;
+    max-width: 920px;
+    margin: 30px auto 50px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 28px;
+    left: 50px;
+    right: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary), #ff2a6d, var(--primary), transparent);
+    box-shadow: var(--neon);
+}
+
+.timeline-item {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+}
+
+.timeline-dot {
+    width: 58px;
+    height: 58px;
+    background: var(--bg);
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    box-shadow: var(--neon);
+}
+
+.timeline-content .year {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.timeline-content p {
+    color: var(--text-light);
+    font-size: 1.05rem;
 }
 
 /* ==================== CARRUSEL ==================== */
 .carousel {
     max-width: 780px;
-    margin: 40px auto 0;
+    margin: 30px auto 0;
     position: relative;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6),
-                var(--neon);
+    box-shadow: 0 25px 70px rgba(0,0,0,0.6), var(--neon);
 }
 
 .carousel-container {
     position: relative;
     height: 380px;
-    display: flex;
 }
 
 .carousel-slide {
@@ -160,34 +205,27 @@ nav a:hover::after, nav a.active::after { width: 100%; }
     object-fit: contain;
     background: #0c1123;
     opacity: 0;
-    transition: opacity 0.8s ease;
+    transition: opacity 0.7s ease;
     border-radius: 24px;
 }
 
 .carousel-slide.active {
     opacity: 1;
-    z-index: 2;
 }
 
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(9, 11, 20, 0.9);
+    background: rgba(9, 11, 20, 0.85);
     color: var(--primary);
     border: none;
-    width: 50px;
-    height: 50px;
-    font-size: 1.6rem;
+    width: 52px;
+    height: 52px;
+    font-size: 1.7rem;
     cursor: pointer;
-    z-index: 10;
     border-radius: 50%;
-    box-shadow: var(--neon);
-}
-
-.carousel-btn:hover {
-    background: var(--primary);
-    color: #0a0b14;
+    z-index: 10;
 }
 
 .prev { left: 15px; }
@@ -200,17 +238,15 @@ nav a:hover::after, nav a.active::after { width: 100%; }
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
-    z-index: 10;
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 13px;
+    height: 13px;
     background: rgba(0, 230, 255, 0.3);
     border: 2px solid var(--primary);
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.3s;
 }
 
 .dot.active {
@@ -218,7 +254,7 @@ nav a:hover::after, nav a.active::after { width: 100%; }
     box-shadow: var(--neon);
 }
 
-/* ==================== EL RESTO (todo como antes) ==================== */
+/* ==================== SECCIONES, HITOS, MODAL Y FORMULARIOS (Originales) ==================== */
 .section {
     padding: 180px 0;
     display: none;
@@ -268,12 +304,6 @@ nav a:hover::after, nav a.active::after { width: 100%; }
     object-fit: contain;
     padding: 55px 45px 40px;
     background: #0c1123;
-    transition: all 0.85s ease;
-}
-
-.hito-card:hover img {
-    transform: scale(1.11);
-    filter: brightness(1.08);
 }
 
 .hito-info {
@@ -285,15 +315,87 @@ nav a:hover::after, nav a.active::after { width: 100%; }
     color: #a0e8ff;
     font-size: 1.8rem;
     font-weight: 600;
-    text-shadow: 0 0 20px rgba(0, 230, 255, 0.5);
 }
 
-/* Modal, Formularios y Footer sin cambios */
-.modal, .modal-content, .form-container, .card, footer, .btn, input, textarea {
-    /* Mantienen exactamente tus estilos originales */
+/* Modal y Formularios */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 10, 20, 0.98);
+    backdrop-filter: blur(30px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
 }
 
-/* (El resto de tu CSS original de modal, formularios y footer va aquí sin cambios) */
+.form-container {
+    max-width: 830px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.card {
+    background: var(--card);
+    padding: 65px 60px;
+    border-radius: 32px;
+    border: 1px solid var(--border);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+.card h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 55px;
+}
+
+.input-group {
+    margin-bottom: 38px;
+}
+
+label {
+    display: block;
+    margin-bottom: 14px;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 22px 32px;
+    background: #161f34;
+    border: 2px solid var(--border);
+    border-radius: 22px;
+    color: white;
+    font-size: 1.14rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 21px;
+    border: none;
+    border-radius: 22px;
+    font-size: 1.23rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00e6ff, #0099cc);
+    color: #0a0b14;
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, #ff2a6d, #e00052);
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 130px 20px 90px;
+    color: #64748b;
+    border-top: 1px solid var(--border);
+}
 
 
 
