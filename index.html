@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyberpunk Mobile History</title>
+    <title>Cyberpunk Mobile History | NextGen</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -25,7 +25,7 @@
         <section id="hero" class="section active">
             <div class="hero">
                 <h1>MÓVIL ÉPOCA</h1>
-                <p>Explora la evolución tecnológica que cambió el mundo.</p>
+                <p>La evolución tecnológica que definió el presente.</p>
                 
                 <div class="carousel-container">
                     <button id="prevBtn" class="btn-nav">❮</button>
@@ -42,46 +42,35 @@
         <section id="hitos" class="section">
             <h2 class="section-title">Hitos Tecnológicos</h2>
             <div class="hitos-grid">
-                <div class="hito-card" data-modal="startac">
-                    <img src="Motorola-StarTAC.jpg" alt="StarTAC">
-                    <div class="hito-info"><h3>Motorola StarTAC</h3></div>
-                </div>
-                <div class="hito-card" data-modal="nokia3310">
-                    <img src="Nokia-3310.jpg" alt="Nokia 3310">
-                    <div class="hito-info"><h3>Nokia 3310</h3></div>
-                </div>
-                <div class="hito-card" data-modal="kyocera">
-                    <img src="Kyocera VP-210.jpeg" alt="Kyocera">
-                    <div class="hito-info"><h3>Kyocera VP-210</h3></div>
-                </div>
+                <div class="hito-card" data-modal="startac"><img src="Motorola-StarTAC.jpg"><h3>Motorola StarTAC</h3></div>
+                <div class="hito-card" data-modal="s10"><img src="Siemens S10.jpg"><h3>Siemens S10</h3></div>
+                <div class="hito-card" data-modal="nokia5110"><img src="Nokia-5110.jpg"><h3>Nokia 5110</h3></div>
+                <div class="hito-card" data-modal="sph"><img src="Samsung SPH-M100.jpg"><h3>Samsung SPH-M100</h3></div>
+                <div class="hito-card" data-modal="kyocera"><img src="Kyocera VP-210.jpeg"><h3>Kyocera VP-210</h3></div>
+                <div class="hito-card" data-modal="nokia3310"><img src="Nokia-3310.jpg"><h3>Nokia 3310</h3></div>
+                <div class="hito-card" data-modal="ericsson"><img src="Ericsson_R380s_004.jpg"><h3>Ericsson R380s</h3></div>
+                <div class="hito-card" data-modal="sl45i"><img src="Siemens-SL45i.jpg"><h3>Siemens SL45i</h3></div>
+                <div class="hito-card" data-modal="t68i"><img src="Sony-Ericsson-T68i.jpg"><h3>Sony Ericsson T68i</h3></div>
             </div>
         </section>
 
         <section id="registro" class="section">
             <div class="form-container">
                 <div class="card">
-                    <h2>Inscripción de Usuario</h2>
+                    <h2>Inscripción</h2>
                     <form id="formRegistro">
-                        <div class="input-group">
-                            <label for="regNombre">Nombre Completo</label>
-                            <input type="text" id="regNombre" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="regEmail">Correo Electrónico</label>
-                            <input type="email" id="regEmail" required>
-                        </div>
+                        <label for="regNombre">Nombre:</label>
+                        <input type="text" id="regNombre" required>
+                        <label for="regEmail">Email:</label>
+                        <input type="email" id="regEmail" required>
                         <button type="submit" class="btn btn-primary">Registrar</button>
                     </form>
                 </div>
-                
-                <div class="card" style="margin-top: 30px;">
+                <div class="card" style="margin-top:20px">
                     <h2>Login</h2>
                     <form id="formLogin">
-                        <div class="input-group">
-                            <label for="logEmail">Email</label>
-                            <input type="email" id="logEmail" required>
-                        </div>
-                        <div id="logFeedback"></div>
+                        <label for="logEmail">Email:</label>
+                        <input type="email" id="logEmail" required>
                         <button type="submit" class="btn btn-accent">Entrar</button>
                     </form>
                 </div>
@@ -93,19 +82,13 @@
                 <div class="card">
                     <h2>Contacto</h2>
                     <form id="formContacto">
-                        <div class="input-group">
-                            <label for="conNombre">Nombre</label>
-                            <input type="text" id="conNombre" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="conEmail">Email</label>
-                            <input type="email" id="conEmail" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="conMensaje">Mensaje</label>
-                            <textarea id="conMensaje" rows="4" required></textarea>
-                            <p id="charCount" class="char-counter">Caracteres: 0</p>
-                        </div>
+                        <label for="conNombre">Nombre:</label>
+                        <input type="text" id="conNombre" required>
+                        <label for="conEmail">Email:</label>
+                        <input type="email" id="conEmail" required>
+                        <label for="conMensaje">Mensaje:</label>
+                        <textarea id="conMensaje" required></textarea>
+                        <p id="charCount" class="char-counter">Caracteres: 0</p>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
                 </div>
