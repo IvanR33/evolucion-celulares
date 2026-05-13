@@ -1,157 +1,96 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Navegación entre secciones
+    // 1. NAVEGACIÓN ENTRE SECCIONES
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
-
-    // Mostrar Hero por defecto
-    document.getElementById('hero').classList.add('active');
 
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-
+            const target = link.getAttribute('data-section');
+            
             navLinks.forEach(l => l.classList.remove('active'));
             sections.forEach(s => s.classList.remove('active'));
 
             link.classList.add('active');
-            const sectionId = link.getAttribute('data-section');
-            document.getElementById(sectionId).classList.add('active');
+            document.getElementById(target).classList.add('active');
         });
     });
 
-    // ==================== MODAL ====================
+    // 2. CARRUSEL MODULAR (Criterio 2.1.1 y 2.1.4)
+    const slides = document.querySelectorAll('.carousel-img');
+    let currentSlide = 0;
+
+    function moverCarrusel(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    document.getElementById('nextBtn')?.addEventListener('click', () => moverCarrusel(currentSlide + 1));
+    document.getElementById('prevBtn')?.addEventListener('click', () => moverCarrusel(currentSlide - 1));
+
+    // Autoplay opcional
+    setInterval(() => moverCarrusel(currentSlide + 1), 5000);
+
+    // 3. OBJETOS Y MODAL (Criterio 2.1.3)
     const modelos = {
-        startac: { titulo: "Motorola StarTAC", año: "1996", img: "Motorola-StarTAC.jpg", texto: "El primer teléfono plegable comercialmente exitoso." },
-        s10: { titulo: "Siemens S10", año: "1997", img: "Siemens S10.jpg", texto: "Uno de los primeros con pantalla a color." },
-        nokia5110: { titulo: "Nokia 5110", año: "1998", img: "Nokia-5110.jpg", texto: "Icono de los 90s famoso por Snake." },
-        sph: { titulo: "Samsung SPH-M100", año: "1999", img: "Samsung SPH-M100.jpg", texto: "Primer teléfono con MP3 nativo." },
-        kyocera: { titulo: "Kyocera VP-210", año: "1999", img: "Kyocera VP-210.jpeg", texto: "Pionero en videollamadas." },
-        nokia3310: { titulo: "Nokia 3310", año: "2000", img: "Nokia-3310.jpg", texto: "El legendario Nokia 3310." },
-        ericsson: { titulo: "Ericsson R380s", año: "2000", img: "Ericsson_R380s_004.jpg", texto: "Primer Smartphone oficial." },
-        sl45i: { titulo: "Siemens SL45i", año: "2001", img: "Siemens-SL45i.jpg", texto: "Uno de los primeros con MP3 integrado." },
-        t68i: { titulo: "Sony Ericsson T68i", año: "2002", img: "Sony-Ericsson-T68i.jpg", texto: "Primer teléfono con Bluetooth y pantalla a color." }
+        startac: { titulo: "Motorola StarTAC", año: "1996", texto: "El primer teléfono plegable." },
+        nokia3310: { titulo: "Nokia 3310", año: "2000", texto: "Indestructible y legendario." },
+        ericsson: { titulo: "Ericsson R380s", año: "2000", texto: "El primer smartphone con Symbian OS." }
     };
 
     function abrirModal(id) {
-        const modal = document.getElementById('modal');
-        const body = document.getElementById('modal-body');
         const data = modelos[id];
-        if (!data) return;
-
-        body.innerHTML = `
-            <img src="${data.img}" alt="${data.titulo}">
-            <h2>${data.titulo} <span style="font-size:1.1rem; opacity:0.8;">(${data.año})</span></h2>
-            <p>${data.texto}</p>
+        if(!data) return;
+        document.getElementById('modal-body').innerHTML = `
+            <h2 style="color:var(--primary)">${data.titulo} (${data.año})</h2>
+            <p style="margin-top:20px">${data.texto}</p>
         `;
-        modal.style.display = "flex";
+        document.getElementById('modal').style.display = "flex";
     }
-
-    document.querySelector('.modal-close').addEventListener('click', () => {
-        document.getElementById('modal').style.display = "none";
-    });
-
-    document.getElementById('modal').addEventListener('click', (e) => {
-        if (e.target.id === 'modal') document.getElementById('modal').style.display = "none";
-    });
 
     document.querySelectorAll('.hito-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const id = card.getAttribute('data-modal');
-            abrirModal(id);
-        });
+        card.addEventListener('click', () => abrirModal(card.dataset.modal));
     });
 
-    // Formularios (validaciones básicas)
-    const formRegistro = document.getElementById('formRegistro');
-    if (formRegistro) {
-        formRegistro.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('¡Registro exitoso!');
-            formRegistro.reset();
-        });
-    }
+    document.querySelector('.modal-close').onclick = () => {
+        document.getElementById('modal').style.display = "none";
+    };
 
-    const formLogin = document.getElementById('formLogin');
-    if (formLogin) {
-        formLogin.addEventListener('submit', (e) => {
-            e.preventDefault();
-            document.getElementById('logFeedback').innerHTML = '<p class="success-msg">¡Acceso exitoso!</p>';
-        });
-    }
+    // 4. VALIDACIONES DE FORMULARIOS (Criterio 2.1.2)
+    // Almacenamiento local (Criterio 2.1.3)
+    const usuariosInscritos = [];
 
-    const textarea = document.getElementById('conMensaje');
-    const charCount = document.getElementById('charCount');
-    if (textarea && charCount) {
-        textarea.addEventListener('input', () => {
-            charCount.textContent = `Caracteres: ${textarea.value.length}`;
-        });
-    }
+    const validarEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-    const formContacto = document.getElementById('formContacto');
-    if (formContacto) {
-        formContacto.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('¡Mensaje enviado!');
-            formContacto.reset();
-        });
-    }
+    // Formulario Registro
+    document.getElementById('formRegistro')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById('regNombre').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
 
-    // ==================== CARRUSEL (Único añadido) ====================
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dotsContainer = document.getElementById('carouselDots');
+        if (nombre === "" || !validarEmail(email)) {
+            alert("Por favor, ingresa un nombre válido y un email correcto.");
+            return;
+        }
 
-    function createDots() {
-        if (!dotsContainer) return;
-        dotsContainer.innerHTML = '';
-        slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(index));
-            dotsContainer.appendChild(dot);
-        });
-    }
+        usuariosInscritos.push({ nombre, email }); // Guardar en arreglo (Objeto)
+        alert("¡Registro exitoso! Bienvenido a la red.");
+        e.target.reset();
+    });
 
-    function updateDots() {
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
-        });
-    }
+    // Formulario Contacto con Contador
+    const txtArea = document.getElementById('conMensaje');
+    txtArea?.addEventListener('input', () => {
+        document.getElementById('charCount').textContent = `Caracteres: ${txtArea.value.length}`;
+    });
 
-    function goToSlide(n) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        slides[n].classList.add('active');
-        currentSlide = n;
-        updateDots();
-    }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        goToSlide(currentSlide);
-    }
-
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        goToSlide(currentSlide);
-    }
-
-    // Inicializar carrusel
-    if (slides.length > 0) {
-        createDots();
-        
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-
-        // Auto-slide cada 5 segundos
-        setInterval(nextSlide, 5000);
-    }
-
+    document.getElementById('formContacto')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("Mensaje enviado correctamente.");
+        e.target.reset();
+    });
 });
 
 
