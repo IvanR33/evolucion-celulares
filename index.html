@@ -24,19 +24,17 @@
     <main>
         <section id="hero" class="section active">
             <div class="hero">
-                <div>
-                    <h1>MÓVIL ÉPOCA</h1>
-                    <p>Explora la evolución tecnológica que cambió el mundo.</p>
-                    
-                    <div class="carousel-container">
-                        <button id="prevBtn" class="btn-nav">❮</button>
-                        <div class="carousel-track">
-                            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800" class="carousel-img active" alt="Evolución 1">
-                            <img src="https://images.unsplash.com/photo-1520923179274-0aca916ec94b?auto=format&fit=crop&w=800" class="carousel-img" alt="Evolución 2">
-                            <img src="https://images.unsplash.com/photo-1556656793-062ff9874543?auto=format&fit=crop&w=800" class="carousel-img" alt="Evolución 3">
-                        </div>
-                        <button id="nextBtn" class="btn-nav">❯</button>
+                <h1>MÓVIL ÉPOCA</h1>
+                <p>Explora la evolución tecnológica que cambió el mundo.</p>
+                
+                <div class="carousel-container">
+                    <button id="prevBtn" class="btn-nav">❮</button>
+                    <div class="carousel-track">
+                        <img src="Motorola-StarTAC.jpg" class="carousel-img active" alt="Motorola StarTAC">
+                        <img src="Nokia-3310.jpg" class="carousel-img" alt="Nokia 3310">
+                        <img src="Sony-Ericsson-T68i.jpg" class="carousel-img" alt="Sony Ericsson T68i">
                     </div>
+                    <button id="nextBtn" class="btn-nav">❯</button>
                 </div>
             </div>
         </section>
@@ -52,9 +50,9 @@
                     <img src="Nokia-3310.jpg" alt="Nokia 3310">
                     <div class="hito-info"><h3>Nokia 3310</h3></div>
                 </div>
-                <div class="hito-card" data-modal="ericsson">
-                    <img src="Ericsson_R380s_004.jpg" alt="Ericsson">
-                    <div class="hito-info"><h3>Ericsson R380s</h3></div>
+                <div class="hito-card" data-modal="kyocera">
+                    <img src="Kyocera VP-210.jpeg" alt="Kyocera">
+                    <div class="hito-info"><h3>Kyocera VP-210</h3></div>
                 </div>
             </div>
         </section>
@@ -62,29 +60,29 @@
         <section id="registro" class="section">
             <div class="form-container">
                 <div class="card">
-                    <h2>Inscripción</h2>
+                    <h2>Inscripción de Usuario</h2>
                     <form id="formRegistro">
                         <div class="input-group">
                             <label for="regNombre">Nombre Completo</label>
-                            <input type="text" id="regNombre" placeholder="Tu nombre">
+                            <input type="text" id="regNombre" required>
                         </div>
                         <div class="input-group">
-                            <label for="regEmail">Email</label>
-                            <input type="email" id="regEmail" placeholder="correo@ejemplo.com">
+                            <label for="regEmail">Correo Electrónico</label>
+                            <input type="email" id="regEmail" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Registrar</button>
                     </form>
                 </div>
-
-                <div class="card" style="margin-top: 50px;">
+                
+                <div class="card" style="margin-top: 30px;">
                     <h2>Login</h2>
                     <form id="formLogin">
                         <div class="input-group">
                             <label for="logEmail">Email</label>
-                            <input type="email" id="logEmail">
+                            <input type="email" id="logEmail" required>
                         </div>
                         <div id="logFeedback"></div>
-                        <button type="submit" class="btn btn-accent">Acceder</button>
+                        <button type="submit" class="btn btn-accent">Entrar</button>
                     </form>
                 </div>
             </div>
@@ -93,22 +91,22 @@
         <section id="contacto" class="section">
             <div class="form-container">
                 <div class="card">
-                    <h2>Contáctanos</h2>
+                    <h2>Contacto</h2>
                     <form id="formContacto">
                         <div class="input-group">
                             <label for="conNombre">Nombre</label>
-                            <input type="text" id="conNombre">
+                            <input type="text" id="conNombre" required>
                         </div>
                         <div class="input-group">
                             <label for="conEmail">Email</label>
-                            <input type="email" id="conEmail">
+                            <input type="email" id="conEmail" required>
                         </div>
                         <div class="input-group">
                             <label for="conMensaje">Mensaje</label>
-                            <textarea id="conMensaje" rows="5"></textarea>
+                            <textarea id="conMensaje" rows="4" required></textarea>
                             <p id="charCount" class="char-counter">Caracteres: 0</p>
                         </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
                 </div>
             </div>
@@ -121,10 +119,6 @@
             <div id="modal-body"></div>
         </div>
     </div>
-
-    <footer>
-        <p>&copy; 2026 NEXTGEN Tech - Ex Machina Design</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>
