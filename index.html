@@ -1,13 +1,113 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ventas</title>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Mobile History | NextGen (React)</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body { background-color: #0a0a0a; color: #fff; font-family: sans-serif; margin: 0; }
+        nav { display: flex; justify-content: space-between; padding: 20px; border-bottom: 2px solid #00ffcc; background-color: #111; }
+        .logo { color: #00ffcc; font-weight: bold; fontSize: 20px; }
+        .nav-btn { background: none; border: none; color: #fff; margin-left: 15px; cursor: pointer; font-size: 16px; }
+        .nav-btn.active { color: #00ffcc; text-shadow: 0 0 5px #00ffcc; }
+        .container { padding: 40px; max-width: 500px; margin: 0 auto; text-align: center; }
+        .form-card { background: #121212; padding: 30px; border-radius: 8px; border: 1px solid #ff007f; text-align: left; box-shadow: 0 0 15px #ff007f; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; color: #00ffcc; margin-bottom: 5px; }
+        .input-group input { width: 100%; padding: 10px; background: #222; border: 1px solid #444; color: #fff; box-sizing: border-box; }
+        .error-msg { color: #ff0055; font-size: 14px; margin-top: 10px; text-shadow: 0 0 5px #ff0055; }
+        .success-msg { color: #00ffcc; font-size: 14px; margin-top: 10px; text-shadow: 0 0 5px #00ffcc; }
+        .btn-submit { width: 100%; padding: 12px; mt: 15px; background: transparent; border: 2px solid #ff007f; color: #ff007f; font-weight: bold; cursor: pointer; }
+        .btn-submit:hover { background: #ff007f; color: #000; }
+    </style>
+</head>
+<body>
+
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+    <script type="text/babel">
+        function App() {
+            // Estados de React para manejar la navegación y el formulario
+            const [seccion, setSeccion] = React.useState('inicio');
+            const [nombre, setNombre] = React.useState('');
+            const [email, setEmail] = React.useState('');
+            const [password, setPassword] = React.useState('');
+            const [errorPassword, setErrorPassword] = React.useState('');
+            const [mensajeExito, setMensajeExito] = React.useState('');
+
+            // Validación de seguridad para la evaluación de INACAP
+            const manejarRegistro = (e) => {
+                e.preventDefault();
+                setErrorPassword('');
+                setMensajeExito('');
+
+                // Mínimo 8 caracteres, 1 mayúscula, 1 número y 1 símbolo
+                const regexSegura = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+
+                if (!regexSegura.test(password)) {
+                    setErrorPassword('⚠️ Seguridad insuficiente. La contraseña requiere al menos 8 caracteres, una mayúscula, un número y un símbolo.');
+                    return;
+                }
+
+                setMensajeExito('🔒 ¡Acceso seguro validado! El nodo cumple con los requisitos del sistema de React.');
+                setNombre('');
+                setEmail('');
+                setPassword('');
+            };
+
+            return (
+                <div>
+                    <nav>
+                        <div className="logo">NEXTGEN (REACT)</div>
+                        <div>
+                            <button className={`nav-btn ${seccion === 'inicio' ? 'active' : ''}`} onClick={() => setSeccion('inicio')}>Inicio</button>
+                            <button className={`nav-btn ${seccion === 'registro' ? 'active' : ''}`} onClick={() => setSeccion('registro')}>Inscripción Segura</button>
+                        </div>
+                    </nav>
+
+                    <main className="container">
+                        {seccion === 'inicio' && (
+                            <div>
+                                <h1 style={{color: '#00ffcc'}}>MÓVIL ÉPOCA</h1>
+                                <p>Evolución del hardware móvil controlada mediante componentes de estado dinámicos de React.</p>
+                            </div>
+                        )}
+
+                        {seccion === 'registro' && (
+                            <div className="form-card">
+                                <h2 style={{color: '#ff007f', marginTop: 0}}>🔑 Registro de Usuario</h2>
+                                <form onSubmit={manejarRegistro}>
+                                    <div className="input-group">
+                                        <label>Nombre:</label>
+                                        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+                                    </div>
+                                    <div className="input-group">
+                                        <label>Email:</label>
+                                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                                    </div>
+                                    <div className="input-group">
+                                        <label>Contraseña Cyberpunk:</label>
+                                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Ej: N3on*2026" Republicano required />
+                                    </div>
+
+                                    {errorPassword && <p className="error-msg">{errorPassword}</p>}
+                                    {mensajeExito && <p className="success-msg">{mensajeExito}</p>}
+
+                                    <button type="submit" className="btn-submit">Registrar Nodo</button>
+                                </form>
+                            </div>
+                        )}
+                    </main>
+                </div>
+            );
+        }
+
+        // Renderizado oficial en el DOM con React 18
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
 </html>
