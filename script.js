@@ -1,102 +1,305 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // === 1. NAVEGACIÓN ENTRE SECCIONES ===
-    const links = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.section');
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura React | Catálogo Hardware Móvil</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body { background-color: #0a0a0a; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* CABECERA.JSX COMPONENT STYLES */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 2px solid #00ffcc; background-color: #111; box-shadow: 0 2px 10px rgba(0,255,204,0.1); }
+        .logo { color: #00ffcc; font-weight: bold; font-size: 22px; text-shadow: 0 0 5px #00ffcc; }
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-btn { background: none; border: none; color: #fff; cursor: pointer; font-size: 15px; padding: 8px 12px; transition: 0.3s; border-radius: 4px; }
+        .nav-btn.active { color: #00ffcc; background: rgba(0, 255, 204, 0.1); border: 1px solid #00ffcc; font-weight: bold; }
+        
+        .main-content { flex: 1; padding: 30px 20px; max-width: 1200px; margin: 0 auto; width: -webkit-fill-available; }
+        
+        /* PRODUCTOS / CATÁLOGO STYLES */
+        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 20px; }
+        .product-card { background: #121212; border: 1px solid #222; border-radius: 8px; padding: 20px; text-align: center; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-card:hover { border-color: #00ffcc; box-shadow: 0 0 10px rgba(0,255,204,0.2); }
+        .phone-thumb { width: 100%; height: 160px; object-fit: contain; background: #1a1a1a; padding: 10px; border-radius: 6px; box-sizing: border-box; }
+        .prod-tag { font-size: 12px; color: #00ffcc; background: rgba(0,255,204,0.1); padding: 3px 8px; border-radius: 12px; align-self: center; margin: 10px 0; border: 1px solid rgba(0,255,204,0.2); }
+        .price-tag { font-size: 18px; color: #ff007f; font-weight: bold; margin: 10px 0; }
+        .btn-action { background: transparent; border: 1px solid #00ffcc; color: #00ffcc; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.3s; width: 100%; }
+        .btn-action:hover { background: #00ffcc; color: #000; }
 
-    links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetSection = link.getAttribute('data-section');
+        /* ADMIN / CRUD COMPONENT STYLES */
+        .admin-box { background: #111; padding: 25px; border-radius: 8px; border: 1px solid #ff007f; box-shadow: 0 0 15px rgba(255,0,127,0.1); }
+        .admin-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #141414; }
+        .admin-table th, .admin-table td { padding: 12px; text-align: left; border-bottom: 1px solid #222; }
+        .admin-table th { color: #ff007f; border-bottom: 2px solid #ff007f; }
+        .btn-delete { background: rgba(255,0,85,0.1); border: 1px solid #ff0055; color: #ff0055; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+        .btn-delete:hover { background: #ff0055; color: #fff; }
 
-            // Quitar clase activa a todos los links y secciones
-            links.forEach(l => l.classList.remove('active'));
-            sections.forEach(s => s.classList.remove('active'));
+        /* CARRITO COMPONENT STYLES (Modificado para soportar fotos) */
+        .cart-box { background: #111; padding: 25px; border-radius: 8px; border: 1px solid #00ffcc; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #222; gap: 15px; }
+        .cart-item-info { display: flex; align-items: center; gap: 15px; }
+        .cart-thumb { width: 50px; height: 50px; object-fit: contain; background: #1a1a1a; border-radius: 4px; border: 1px solid #333; padding: 2px; }
+        .cart-total { font-size: 20px; text-align: right; margin-top: 20px; color: #00ffcc; font-weight: bold; }
 
-            // Activar el link actual y su sección correspondiente
-            link.classList.add('active');
-            document.getElementById(targetSection).classList.add('active');
-        });
-    });
+        /* FORMULARIO PRODUCTO STYLES */
+        .form-inline { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) auto; gap: 10px; margin-bottom: 20px; background: #161616; padding: 15px; border-radius: 6px; border: 1px dashed #ff007f; }
+        .form-inline input, .form-inline select { padding: 10px; background: #222; border: 1px solid #333; color: #fff; border-radius: 4px; }
+        .btn-add { background: #ff007f; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-add:hover { background: #cc0066; }
 
-    // === 2. CARRUSEL DE IMÁGENES (HERO) ===
-    const track = document.querySelectorAll('.carousel-img');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    let currentIndex = 0;
+        /* FOOTER MANDATORIO */
+        footer { background: #0d0d0d; text-align: center; padding: 15px 20px; border-top: 1px solid #222; font-size: 14px; color: #888; margin-top: auto; line-height: 1.6; }
+        .footer-highlight { color: #00ffcc; font-weight: bold; }
+        .footer-prof { color: #ff007f; font-weight: bold; }
+        .footer-sec { color: #ffff00; font-weight: bold; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
 
-    function showImage(index) {
-        track.forEach(img => img.classList.remove('active'));
-        track[index].classList.add('active');
-    }
+    <div id="root"></div>
 
-    if(prevBtn && nextBtn && track.length > 0) {
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex === 0) ? track.length - 1 : currentIndex - 1;
-            showImage(currentIndex);
-        });
+    <script type="text/babel">
+        // CREACIÓN DEL CONTEXTO GLOBAL (Equivalente a AppContext.jsx)
+        const AppContext = React.createContext();
 
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex === track.length - 1) ? 0 : currentIndex + 1;
-            showImage(currentIndex);
-        });
-    }
+        function AppProvider({ children }) {
+            // Estado global de productos inicializado con pesos chilenos y tus imágenes del repositorio
+            const [products, setProducts] = React.useState([
+                { id: '1', name: 'Nokia 3310', description: 'Ícono legendario de la resistencia industrial GSM.', price: 29990, category: 'Clásicos', image: 'Nokia-3310.jpg' },
+                { id: '2', name: 'Motorola StarTAC', description: 'Primer teléfono con diseño clamshell de tapa.', price: 45990, category: 'Clásicos', image: 'Motorola-StarTAC.jpg' },
+                { id: '3', name: 'Kyocera VP-210', description: 'Primer teléfono comercial con cámara integrada.', price: 89990, category: 'Cámaras', image: 'Kyocera VP-210.jpeg' },
+                { id: '4', name: 'Siemens S10', description: 'Hito técnico con la primera pantalla a color básica.', price: 39990, category: 'Wearables', image: 'Siemens S10.jpg' },
+                { id: '5', name: 'Samsung SPH-M100', description: 'Primer celular capaz de reproducir archivos MP3.', price: 54990, category: 'Accesorios', image: 'Samsung SPH-M100.jpg' }
+            ]);
 
-    // === 3. CONTADOR DE CARACTERES (CONTACTO) ===
-    const mensajeTextarea = document.getElementById('conMensaje');
-    const charCount = document.getElementById('charCount');
+            const [cart, setCart] = React.useState([]);
+            const [currentSection, setCurrentSection] = React.useState('catalogo');
 
-    if(mensajeTextarea && charCount) {
-        mensajeTextarea.addEventListener('input', () => {
-            const totalLetters = mensajeTextarea.value.length;
-            charCount.textContent = `Caracteres: ${totalLetters}`;
-        });
-    }
+            const addProduct = (newProd) => {
+                setProducts([...products, { ...newProd, id: Date.now().toString() }]);
+            };
 
-    // === 4. MODALES (VENTANAS DE HITOS) ===
-    const modal = document.getElementById('modal');
-    const modalBody = document.getElementById('modal-body');
-    const modalClose = document.querySelector('.modal-close');
-    const cards = document.querySelectorAll('.hito-card');
+            const deleteProduct = (id) => {
+                setProducts(products.filter(p => p.id !== id));
+                setCart(cart.filter(item => item.id !== id));
+            };
 
-    // Información cyberpunk de los teléfonos para mostrar en el modal
-    const infoHitos = {
-        startac: { title: "Motorola StarTAC (1996)", desc: "El primer teléfono con diseño de concha (clamshell), revolucionando el tamaño y la portabilidad móvil." },
-        s10: { title: "Siemens S10 (1998)", desc: "Hito histórico por ser el primer dispositivo móvil con una pantalla a color (4 colores disponibles)." },
-        nokia5110: { title: "Nokia 5110 (1998)", desc: "Famoso por su resistencia extrema, carcasas intercambiables y por popularizar el juego de la serpiente (Snake)." },
-        sph: { title: "Samsung SPH-M100 (2000)", desc: "El pionero absoluto en reproducir música en formato MP3 directamente desde el dispositivo." },
-        kyocera: { title: "Kyocera VP-210 (1999)", desc: "El verdadero primer teléfono comercial de la historia con una cámara integrada para videollamadas." },
-        nokia3310: { title: "Nokia 3310 (2000)", desc: "Un ícono de la cultura pop global, recordado como un teléfono virtualmente indestructible." },
-        ericsson: { title: "Ericsson R380s (2000)", desc: "El primer dispositivo en ser comercializado oficialmente bajo el término 'Smartphone' con sistema Symbian." },
-        sl45i: { title: "Siemens SL45i (2001)", desc: "Primer teléfono con memoria externa expandible mediante tarjeta multimedia y soporte Java." },
-        t68i: { title: "Sony Ericsson T68i (2002)", desc: "Conectividad total mediante Bluetooth, pantalla a color avanzada y mensajería multimedia (MMS)." }
-    };
+            const addToCart = (product) => {
+                const exist = cart.find(item => item.id === product.id);
+                if (exist) {
+                    setCart(cart.map(item => item.id === product.id ? { ...exist, qty: exist.qty + 1 } : item));
+                } else {
+                    setCart([...cart, { ...product, qty: 1 }]);
+                }
+            };
 
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            const hitoKey = card.getAttribute('data-modal');
-            const data = infoHitos[hitoKey];
-
-            if(data) {
-                modalBody.innerHTML = `
-                    <h2>${data.title}</h2>
-                    <p style="margin-top:15px; line-height:1.6;">${data.desc}</p>
-                `;
-                modal.style.display = 'block';
-            }
-        });
-    });
-
-    if(modalClose) {
-        modalClose.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-    }
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
+            return (
+                <AppContext.Provider value={{ products, addProduct, deleteProduct, cart, addToCart, currentSection, setCurrentSection }}>
+                    {children}
+                </AppContext.Provider>
+            );
         }
-    });
-});
+
+        // COMPONENTE: CABECERA.JSX
+        function Cabecera() {
+            const { currentSection, setCurrentSection, cart } = React.useContext(AppContext);
+            const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+
+            return (
+                <header>
+                    <div className="logo">MÓVIL LAB ARCHITECTURE</div>
+                    <div className="nav-menu">
+                        <button className={`nav-btn ${currentSection === 'catalogo' ? 'active' : ''}`} onClick={() => setCurrentSection('catalogo')}>📱 Catálogo</button>
+                        <button className={`nav-btn ${currentSection === 'admin' ? 'active' : ''}`} onClick={() => setCurrentSection('admin')}>⚙️ Panel Admin (CRUD)</button>
+                        <button className={`nav-btn ${currentSection === 'carrito' ? 'active' : ''}`} onClick={() => setCurrentSection('carrito')}>🛒 Carrito ({totalItems})</button>
+                    </div>
+                </header>
+            );
+        }
+
+        // COMPONENTE: FORMULARIOPRODUCTO.JSX
+        function FormularioProducto() {
+            const { addProduct } = React.useContext(AppContext);
+            const [name, setName] = React.useState('');
+            const [description, setDescription] = React.useState('');
+            const [price, setPrice] = React.useState('');
+            const [category, setCategory] = React.useState('Clásicos');
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (!name || !price) return;
+                addProduct({ name, description, price: Number(price), category, image: 'https://via.placeholder.com/120?text=Hardware' });
+                setName('');
+                setDescription('');
+                setPrice('');
+            };
+
+            return (
+                <form className="form-inline" onSubmit={handleSubmit}>
+                    <input type="text" placeholder="Nombre Dispositivo" value={name} onChange={e => setName(e.target.value)} required />
+                    <input type="text" placeholder="Descripción Técnica" value={description} onChange={e => setDescription(e.target.value)} />
+                    <input type="number" placeholder="Precio en CLP" value={price} onChange={e => setPrice(e.target.value)} required />
+                    <select value={category} onChange={e => setCategory(e.target.value)}>
+                        <option value="Clásicos">Clásicos</option>
+                        <option value="Cámaras">Cámaras</option>
+                        <option value="Wearables">Wearables</option>
+                        <option value="Accesorios">Accesorios</option>
+                    </select>
+                    <button type="submit" className="btn-add">➕ Insertar Hito</button>
+                </form>
+            );
+        }
+
+        // COMPONENTE: ADMINCRUD.JSX
+        function AdminCrud() {
+            const { products, deleteProduct } = React.useContext(AppContext);
+
+            return (
+                <div className="admin-box">
+                    <h2 style={{color: '#ff007f', marginTop: 0}}>Gestión de Inventario Histórico</h2>
+                    <FormularioProducto />
+                    <table className="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Modelo</th>
+                                <th>Categoría</th>
+                                <th>Precio (CLP)</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {products.map(p => (
+                                <tr key={p.id}>
+                                    <td>{p.id}</td>
+                                    <td>{p.name}</td>
+                                    <td><span style={{color: '#00ffcc'}}>{p.category}</span></td>
+                                    <td>${p.price.toLocaleString('es-CL')} CLP</td>
+                                    <td>
+                                        <button className="btn-delete" onClick={() => deleteProduct(p.id)}>Eliminar</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+
+        // COMPONENTE: CARRITO.JSX (Con soporte de fotos dinámicas y pesos chilenos)
+        function Carrito() {
+            const { cart } = React.useContext(AppContext);
+            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+            return (
+                <div className="cart-box">
+                    <h2 style={{color: '#00ffcc', marginTop: 0}}>Dispositivos en Cotización</h2>
+                    {cart.length === 0 ? (
+                        <p style={{color: '#aaa'}}>El carrito técnico está vacío.</p>
+                    ) : (
+                        <div>
+                            {cart.map(item => (
+                                <div className="cart-item" key={item.id}>
+                                    <div className="cart-item-info">
+                                        {/* REQUERIMIENTO: Carga de foto en el carrito */}
+                                        <img 
+                                            className="cart-thumb" 
+                                            src={item.image} 
+                                            alt={item.name} 
+                                            onError={(e) => { e.target.src = "https://via.placeholder.com/120?text=Móvil"; }}
+                                        />
+                                        <div>
+                                            <strong>{item.name}</strong> 
+                                            <div style={{color: '#aaa', fontSize: '13px'}}>Cantidad: {item.qty}</div>
+                                        </div>
+                                    </div>
+                                    {/* REQUERIMIENTO: Pesos Chilenos por fila */}
+                                    <div style={{color: '#ff007f', fontWeight: 'bold'}}>
+                                        ${(item.price * item.qty).toLocaleString('es-CL')} CLP
+                                    </div>
+                                </div>
+                            ))}
+                            {/* REQUERIMIENTO: Total General en pesos chilenos */}
+                            <div className="cart-total">Total Cotizado: ${total.toLocaleString('es-CL')} CLP</div>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        // COMPONENTE: DATOS.JSX (Catálogo de tarjetas)
+        function Datos() {
+            const { products, addToCart } = React.useContext(AppContext);
+
+            return (
+                <div>
+                    <h2 style={{color: '#00ffcc', marginTop: 0}}>Modelos Registrados en la Red</h2>
+                    <div className="catalog-grid">
+                        {products.map(p => (
+                            <div className="product-card" key={p.id}>
+                                <img 
+                                    className="phone-thumb" 
+                                    src={p.image} 
+                                    alt={p.name}
+                                    onError={(e) => { e.target.src = "https://via.placeholder.com/120?text=Hardware"; }}
+                                />
+                                <span className="prod-tag">{p.category}</span>
+                                <h3 style={{margin: '10px 0 5px 0'}}>{p.name}</h3>
+                                <p style={{fontSize: '14px', color: '#aaa', margin: '0 0 10px 0', flexGrow: 1}}>{p.description}</p>
+                                <div className="price-tag">${p.price.toLocaleString('es-CL')} CLP</div>
+                                <button className="btn-action" onClick={() => addToCart(p)}>Añadir a Cotización</button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
+        // COMPONENTE MAIN / CONTROLADOR DE VISTAS
+        function MainContent() {
+            const { currentSection } = React.useContext(AppContext);
+            switch(currentSection) {
+                case 'catalogo': return <Datos />;
+                case 'admin': return <AdminCrud />;
+                case 'carrito': return <Carrito />;
+                default: return <Datos />;
+            }
+        }
+
+        // COMPONENTE MANDATORIO: FOOTER
+        function Footer() {
+            return (
+                <footer>
+                    <div>Desarrollo Arquitectura Frontend React - INACAP 2026</div>
+                    <div>
+                        Alumno: <span className="footer-highlight">Iván Jiménez</span> | 
+                        Docente: <span className="footer-prof">Victor Vázquez</span> | 
+                        Sección: <span className="footer-sec">Fb50-n3np13-c1</span>
+                    </div>
+                </footer>
+            );
+        }
+
+        // ESTRUCTURA PRINCIPAL DE LA APLICACIÓN
+        function App() {
+            return (
+                <AppProvider>
+                    <Cabecera />
+                    <main className="main-content">
+                        <MainContent />
+                    </main>
+                    <Footer />
+                </AppProvider>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
 
 
