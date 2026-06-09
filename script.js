@@ -1,74 +1,102 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    // 1. NAVEGACIÓN SPA
-    const navLinks = document.querySelectorAll('.nav-link');
+    // === 1. NAVEGACIÓN ENTRE SECCIONES ===
+    const links = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
 
-    navLinks.forEach(link => {
+    links.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const target = link.dataset.section;
+            const targetSection = link.getAttribute('data-section');
+
+            // Quitar clase activa a todos los links y secciones
+            links.forEach(l => l.classList.remove('active'));
             sections.forEach(s => s.classList.remove('active'));
-            navLinks.forEach(l => l.classList.remove('active'));
-            document.getElementById(target).classList.add('active');
+
+            // Activar el link actual y su sección correspondiente
             link.classList.add('active');
+            document.getElementById(targetSection).classList.add('active');
         });
     });
 
-    // 2. CARRUSEL (Criterio 2.1.1)
-    const slides = document.querySelectorAll('.carousel-img');
-    let currentSlide = 0;
+    // === 2. CARRUSEL DE IMÁGENES (HERO) ===
+    const track = document.querySelectorAll('.carousel-img');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
 
-    function moverSlide(n) {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (n + slides.length) % slides.length;
-        slides[currentSlide].classList.add('active');
+    function showImage(index) {
+        track.forEach(img => img.classList.remove('active'));
+        track[index].classList.add('active');
     }
 
-    document.getElementById('nextBtn')?.addEventListener('click', () => moverSlide(currentSlide + 1));
-    document.getElementById('prevBtn')?.addEventListener('click', () => moverSlide(currentSlide - 1));
+    if(prevBtn && nextBtn && track.length > 0) {
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? track.length - 1 : currentIndex - 1;
+            showImage(currentIndex);
+        });
 
-    // 3. OBJETOS Y MODAL (Criterio 2.1.3)
-    const modelos = {
-        startac: { titulo: "Motorola StarTAC", año: "1996", img: "Motorola-StarTAC.jpg", desc: "El primer teléfono plegable del mundo." },
-        s10: { titulo: "Siemens S10", año: "1997", img: "Siemens S10.jpg", desc: "Primer móvil con pantalla a color (4 colores)." },
-        nokia5110: { titulo: "Nokia 5110", año: "1998", img: "Nokia-5110.jpg", desc: "Famoso por el juego Snake y carcasas intercambiables." },
-        sph: { titulo: "Samsung SPH-M100", año: "1999", img: "Samsung SPH-M100.jpg", desc: "El primer teléfono con MP3 nativo." },
-        kyocera: { titulo: "Kyocera VP-210", año: "1999", img: "Kyocera VP-210.jpeg", desc: "Primer móvil con cámara para videollamadas." },
-        nokia3310: { titulo: "Nokia 3310", año: "2000", img: "Nokia-3310.jpg", desc: "El teléfono más resistente de la historia." },
-        ericsson: { titulo: "Ericsson R380s", año: "2000", img: "Ericsson_R380s_004.jpg", desc: "Primer dispositivo llamado 'Smartphone'." },
-        sl45i: { titulo: "Siemens SL45i", año: "2001", img: "Siemens-SL45i.jpg", desc: "Primer móvil con memoria expandible." },
-        t68i: { titulo: "Sony Ericsson T68i", año: "2002", img: "Sony-Ericsson-T68i.jpg", desc: "Primer Sony Ericsson con Bluetooth y color." }
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === track.length - 1) ? 0 : currentIndex + 1;
+            showImage(currentIndex);
+        });
+    }
+
+    // === 3. CONTADOR DE CARACTERES (CONTACTO) ===
+    const mensajeTextarea = document.getElementById('conMensaje');
+    const charCount = document.getElementById('charCount');
+
+    if(mensajeTextarea && charCount) {
+        mensajeTextarea.addEventListener('input', () => {
+            const totalLetters = mensajeTextarea.value.length;
+            charCount.textContent = `Caracteres: ${totalLetters}`;
+        });
+    }
+
+    // === 4. MODALES (VENTANAS DE HITOS) ===
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modal-body');
+    const modalClose = document.querySelector('.modal-close');
+    const cards = document.querySelectorAll('.hito-card');
+
+    // Información cyberpunk de los teléfonos para mostrar en el modal
+    const infoHitos = {
+        startac: { title: "Motorola StarTAC (1996)", desc: "El primer teléfono con diseño de concha (clamshell), revolucionando el tamaño y la portabilidad móvil." },
+        s10: { title: "Siemens S10 (1998)", desc: "Hito histórico por ser el primer dispositivo móvil con una pantalla a color (4 colores disponibles)." },
+        nokia5110: { title: "Nokia 5110 (1998)", desc: "Famoso por su resistencia extrema, carcasas intercambiables y por popularizar el juego de la serpiente (Snake)." },
+        sph: { title: "Samsung SPH-M100 (2000)", desc: "El pionero absoluto en reproducir música en formato MP3 directamente desde el dispositivo." },
+        kyocera: { title: "Kyocera VP-210 (1999)", desc: "El verdadero primer teléfono comercial de la historia con una cámara integrada para videollamadas." },
+        nokia3310: { title: "Nokia 3310 (2000)", desc: "Un ícono de la cultura pop global, recordado como un teléfono virtualmente indestructible." },
+        ericsson: { title: "Ericsson R380s (2000)", desc: "El primer dispositivo en ser comercializado oficialmente bajo el término 'Smartphone' con sistema Symbian." },
+        sl45i: { title: "Siemens SL45i (2001)", desc: "Primer teléfono con memoria externa expandible mediante tarjeta multimedia y soporte Java." },
+        t68i: { title: "Sony Ericsson T68i (2002)", desc: "Conectividad total mediante Bluetooth, pantalla a color avanzada y mensajería multimedia (MMS)." }
     };
 
-    document.querySelectorAll('.hito-card').forEach(card => {
+    cards.forEach(card => {
         card.addEventListener('click', () => {
-            const data = modelos[card.dataset.modal];
-            document.getElementById('modal-body').innerHTML = `
-                <img src="${data.img}" style="width:100%; height:250px; object-fit:contain;">
-                <h2 style="color:var(--primary); margin-top:15px;">${data.titulo} (${data.año})</h2>
-                <p>${data.desc}</p>
-            `;
-            document.getElementById('modal').style.display = 'flex';
+            const hitoKey = card.getAttribute('data-modal');
+            const data = infoHitos[hitoKey];
+
+            if(data) {
+                modalBody.innerHTML = `
+                    <h2>${data.title}</h2>
+                    <p style="margin-top:15px; line-height:1.6;">${data.desc}</p>
+                `;
+                modal.style.display = 'block';
+            }
         });
     });
 
-    document.querySelector('.modal-close').onclick = () => document.getElementById('modal').style.display = 'none';
+    if(modalClose) {
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    }
 
-    // 4. VALIDACIONES Y ARREGLOS (Criterio 2.1.2)
-    const inscritos = [];
-
-    document.getElementById('formRegistro').onsubmit = (e) => {
-        e.preventDefault();
-        const nombre = document.getElementById('regNombre').value;
-        const email = document.getElementById('regEmail').value;
-        inscritos.push({ nombre, email });
-        alert(`¡Inscrito correctamente! Total: ${inscritos.length}`);
-        e.target.reset();
-    };
-
-    const txtArea = document.getElementById('conMensaje');
-    txtArea.oninput = () => document.getElementById('charCount').innerText = `Caracteres: ${txtArea.value.length}`;
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 });
 
 
