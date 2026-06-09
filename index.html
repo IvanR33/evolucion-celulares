@@ -60,7 +60,7 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        // CREACIÓN DEL CONTEXTO GLOBAL (Equivalente a AppContext.jsx de la foto)
+        // CREACIÓN DEL CONTEXTO GLOBAL (Equivalente a AppContext.jsx)
         const AppContext = React.createContext();
 
         function AppProvider({ children }) {
@@ -76,7 +76,7 @@
             const [cart, setCart] = React.useState([]);
             const [currentSection, setCurrentSection] = React.useState('catalogo');
 
-            // Funciones globales del sistema
+            // Funciones globales del sistema CRUD
             const addProduct = (newProd) => {
                 setProducts([...products, { ...newProd, id: Date.now().toString() }]);
             };
@@ -130,7 +130,7 @@
             const handleSubmit = (e) => {
                 e.preventDefault();
                 if (!name || !price) return;
-                addProduct({ name, description, price: Number(price), category, image: 'https://via.placeholder.com/120?text=Nuevo+Dispositivo' });
+                addProduct({ name, description, price: Number(price), category, image: 'https://via.placeholder.com/120?text=Hardware' });
                 setName('');
                 setDescription('');
                 setPrice('');
@@ -215,7 +215,7 @@
             );
         }
 
-        // COMPONENTE: DATOS.JSX (Muestra la Grid del Catálogo)
+        // COMPONENTE: DATOS.JSX (Catálogo de tarjetas)
         function Datos() {
             const { products, addToCart } = React.useContext(AppContext);
 
@@ -230,7 +230,7 @@
                                     src={p.image} 
                                     alt={p.name}
                                     onError={(e) => { e.target.src = "https://via.placeholder.com/120?text=Hardware"; }}
-                                />
+                                / >
                                 <span className="prod-tag">{p.category}</span>
                                 <h3 style={{margin: '10px 0 5px 0'}}>{p.name}</h3>
                                 <p style={{fontSize: '14px', color: '#aaa', margin: '0 0 10px 0', flexGrow: 1}}>{p.description}</p>
